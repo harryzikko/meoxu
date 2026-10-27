@@ -34,22 +34,17 @@ jobs:
           flutter create --platforms=android --org com.meoxu.app --project-name meoxu .
           cp /tmp/pubspec.yaml pubspec.yaml
           rm -f test/widget_test.dart
-          sed -i 's/flutter.compileSdkVersion/34/g; s/flutter.minSdkVersion/21/g; s/flutter.targetSdkVersion/34/g' android/app/build.gradle 2>/dev/null || true
-          python3 scripts/prepare-android.py
+          cp config/AndroidManifest.xml android/app/src/main/AndroidManifest.xml
+          sed -i 's/flutter.compileSdkVersion/34/g; s/flutter.minSdkVersion/21/g; s/flutter.targetSdkVersion/34/g' android/app/build.gradle
 
-      - name: Install dependencies
-        run: flutter pub get
-
-      - name: Run unit tests
-        run: flutter test
+      - name: Resolve and verify
+        run: |
+          flutter pub get
+          flutter analyze --no-fatal-infos
+          flutter test
 
       - name: Build Android Release APK
-        run: |
-          if ! flutter build apk --release -v > build.log 2>&1; then
-            ERR_MSG=$(grep -A 5 -E "FAILURE: Build failed|error:|Exception:|Execution failed for task" build.log | head -n 15 | tr '\n' ' ' | tr '"' "'")
-            echo "::error title=Gradle Error::$ERR_MSG"
-            exit 1
-          fi
+        run: flutter build apk --release --no-tree-shake-icons
 
       - name: Organize Artifact
         run: |
@@ -83,15 +78,16 @@ jobs:
           flutter create --platforms=ios --org com.meoxu.app --project-name meoxu .
           cp /tmp/pubspec.yaml pubspec.yaml
           rm -f test/widget_test.dart
+          cp config/Info.plist ios/Runner/Info.plist
 
-      - name: Install dependencies
-        run: flutter pub get
-
-      - name: Run unit tests
-        run: flutter test
+      - name: Resolve and verify
+        run: |
+          flutter pub get
+          flutter analyze --no-fatal-infos
+          flutter test
 
       - name: Build iOS without code signing
-        run: flutter build ios --release --no-codesign
+        run: flutter build ios --release --no-codesign --no-tree-shake-icons
 
       - name: Package Unsigned IPA
         run: |
