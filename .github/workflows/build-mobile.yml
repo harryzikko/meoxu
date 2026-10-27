@@ -34,7 +34,6 @@ jobs:
           flutter create --platforms=android --org com.meoxu.app --project-name meoxu .
           cp /tmp/pubspec.yaml pubspec.yaml
           rm -f test/widget_test.dart
-          cp config/AndroidManifest.xml android/app/src/main/AndroidManifest.xml
           python3 scripts/prepare-android.py
 
       - name: Install dependencies
@@ -44,7 +43,12 @@ jobs:
         run: flutter test
 
       - name: Build Android Release APK
-        run: flutter build apk --release
+        run: |
+          flutter build apk --release -v > build.log 2>&1 || {
+            echo "::error::Flutter build APK failed! Showing last 80 lines of build log:"
+            tail -n 80 build.log
+            exit 1
+          }
 
       - name: Organize Artifact
         run: |
@@ -57,6 +61,14 @@ jobs:
           name: MeoXu-Android-APK
           path: dist/MeoXu-release.apk
           retention-days: 14
+
+      - name: Upload Failure Log
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-build-failure-log
+          path: build.log
+          retention-days: 3
 
   build-ios:
     name: Build iOS IPA (Unsigned)
@@ -78,7 +90,6 @@ jobs:
           flutter create --platforms=ios --org com.meoxu.app --project-name meoxu .
           cp /tmp/pubspec.yaml pubspec.yaml
           rm -f test/widget_test.dart
-          cp config/Info.plist ios/Runner/Info.plist
 
       - name: Install dependencies
         run: flutter pub get
