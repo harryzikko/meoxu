@@ -13,19 +13,39 @@ try:
         lines = f.read().splitlines()
 
     print(f"Total log lines: {len(lines)}")
-    # Find "* What went wrong:" or "FAILURE: Build failed"
-    error_idx = -1
+    
+    # 1. Filter lines with explicit error keywords
+    keywords = ['error:', 'exception:', 'target of uri', 'what went wrong', 'fatal:', 'failed to', 'undefined class', 'compilation failed']
+    matched_lines = []
     for i, line in enumerate(lines):
-        if '* What went wrong:' in line or 'FAILURE: Build failed' in line:
-            error_idx = i
+        lower = line.lower()
+        if any(k in lower for k in keywords):
+            # grab context
+            start = max(0, i - 2)
+            end = min(len(lines), i + 3)
+            matched_lines.append(f"--- Around line {i} ---")
+            matched_lines.extend(lines[start:end])
+            if len(matched_lines) > 50:
+                break
+    
+    # 2. Grab 60 lines right before "FAILURE: Build failed"
+    fail_idx = -1
+    for i, line in enumerate(lines):
+        if 'FAILURE: Build failed' in line or '* What went wrong:' in line:
+            fail_idx = i
             break
             
-    if error_idx != -1:
-        start = max(0, error_idx - 15)
-        end = min(len(lines), error_idx + 60)
+    if fail_idx != -1:
+        start = max(0, fail_idx - 60)
+        end = min(len(lines), fail_idx + 10)
         focus = '\n'.join(lines[start:end])
     else:
-        focus = '\n'.join(lines[-120:])
+        focus = '\n'.join(lines[-80:])
+        
+    body = (
+        "### ❌ Matched Error Keywords:\n```\n" + '\n'.join(matched_lines[:40]) + "\n```\n\n"
+        "### ❌ Pre-Failure Log Focus:\n```\n" + focus + "\n```"
+    )
     
     token = os.environ.get('GITHUB_TOKEN', '')
     repo = os.environ.get('GITHUB_REPOSITORY', '')
@@ -36,7 +56,7 @@ try:
         sys.exit(0)
         
     url = f"https://api.github.com/repos/{repo}/commits/{sha}/comments"
-    data = json.dumps({'body': f"### ❌ Android Build Error Focus:\n```\n{focus}\n```"}).encode('utf-8')
+    data = json.dumps({'body': body}).encode('utf-8')
     req = urllib.request.Request(url, data=data, headers={
         'Authorization': f'token {token}',
         'Content-Type': 'application/json',
