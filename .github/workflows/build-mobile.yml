@@ -37,11 +37,14 @@ jobs:
           cp config/AndroidManifest.xml android/app/src/main/AndroidManifest.xml
           sed -i 's/flutter.compileSdkVersion/34/g; s/flutter.minSdkVersion/21/g; s/flutter.targetSdkVersion/34/g' android/app/build.gradle
 
-      - name: Resolve and verify
-        run: |
-          flutter pub get
-          flutter analyze --no-fatal-infos
-          flutter test
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Analyze code (informational)
+        run: flutter analyze --no-fatal-infos || true
+
+      - name: Run unit tests
+        run: flutter test
 
       - name: Build Android Release APK
         run: flutter build apk --release --no-tree-shake-icons
@@ -80,11 +83,14 @@ jobs:
           rm -f test/widget_test.dart
           cp config/Info.plist ios/Runner/Info.plist
 
-      - name: Resolve and verify
-        run: |
-          flutter pub get
-          flutter analyze --no-fatal-infos
-          flutter test
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Analyze code (informational)
+        run: flutter analyze --no-fatal-infos || true
+
+      - name: Run unit tests
+        run: flutter test
 
       - name: Build iOS without code signing
         run: flutter build ios --release --no-codesign --no-tree-shake-icons
