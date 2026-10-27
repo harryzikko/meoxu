@@ -34,6 +34,7 @@ jobs:
           flutter create --platforms=android --org com.meoxu.app --project-name meoxu .
           cp /tmp/pubspec.yaml pubspec.yaml
           rm -f test/widget_test.dart
+          sed -i 's/flutter.compileSdkVersion/34/g; s/flutter.minSdkVersion/21/g; s/flutter.targetSdkVersion/34/g' android/app/build.gradle 2>/dev/null || true
           python3 scripts/prepare-android.py
 
       - name: Install dependencies
@@ -45,11 +46,8 @@ jobs:
       - name: Build Android Release APK
         run: |
           if ! flutter build apk --release -v > build.log 2>&1; then
-            echo "### ❌ Build Failure Log" >> $GITHUB_STEP_SUMMARY
-            echo '```' >> $GITHUB_STEP_SUMMARY
-            grep -E -C 3 "FAILURE|error:|exception|Exception" build.log | tail -n 80 >> $GITHUB_STEP_SUMMARY || true
-            tail -n 120 build.log >> $GITHUB_STEP_SUMMARY
-            echo '```' >> $GITHUB_STEP_SUMMARY
+            ERR_MSG=$(grep -A 5 -E "FAILURE: Build failed|error:|Exception:|Execution failed for task" build.log | head -n 15 | tr '\n' ' ' | tr '"' "'")
+            echo "::error title=Gradle Error::$ERR_MSG"
             exit 1
           fi
 
@@ -64,14 +62,6 @@ jobs:
           name: MeoXu-Android-APK
           path: dist/MeoXu-release.apk
           retention-days: 14
-
-      - name: Upload Failure Log
-        if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: android-build-failure-log
-          path: build.log
-          retention-days: 3
 
   build-ios:
     name: Build iOS IPA (Unsigned)
