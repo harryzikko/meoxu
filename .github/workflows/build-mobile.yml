@@ -34,12 +34,8 @@ jobs:
           flutter create --platforms=android --org com.meoxu.app --project-name meoxu .
           cp /tmp/pubspec.yaml pubspec.yaml
           rm -f test/widget_test.dart
-          # Inject Android permissions and app label
-          sed -i '/<application/i \    <uses-permission android:name="android.permission.INTERNET"/>\n    <uses-permission android:name="android.permission.RECORD_AUDIO"/>\n    <uses-permission android:name="android.permission.VIBRATE"/>' android/app/src/main/AndroidManifest.xml
-          sed -i 's/android:label="meoxu"/android:label="Meo Xu"/g' android/app/src/main/AndroidManifest.xml
-          # Set SDK levels and debug signature fallback for sideload release build
-          sed -i 's/flutter.compileSdkVersion/34/g; s/flutter.minSdkVersion/21/g; s/flutter.targetSdkVersion/34/g' android/app/build.gradle 2>/dev/null || true
-          sed -i 's/signingConfig signingConfigs.release/signingConfig signingConfigs.debug/g' android/app/build.gradle 2>/dev/null || true
+          cp config/AndroidManifest.xml android/app/src/main/AndroidManifest.xml
+          python3 scripts/prepare-android.py
 
       - name: Install dependencies
         run: flutter pub get
@@ -82,6 +78,7 @@ jobs:
           flutter create --platforms=ios --org com.meoxu.app --project-name meoxu .
           cp /tmp/pubspec.yaml pubspec.yaml
           rm -f test/widget_test.dart
+          cp config/Info.plist ios/Runner/Info.plist
 
       - name: Install dependencies
         run: flutter pub get
