@@ -7,6 +7,9 @@ on:
     branches: [main, master]
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build-android:
     name: Build Android Release APK
@@ -47,7 +50,29 @@ jobs:
         run: flutter test
 
       - name: Build Android Release APK
-        run: flutter build apk --release --no-tree-shake-icons
+        run: |
+          if ! flutter build apk --release --no-tree-shake-icons -v > build.log 2>&1; then
+            echo "::group::Build Log Tail"
+            tail -n 60 build.log
+            echo "::endgroup::"
+            python3 -c "
+import json
+try:
+    with open('build.log', 'r', encoding='utf-8', errors='replace') as f:
+        lines = f.readlines()
+    tail = ''.join(lines[-60:])
+    with open('comment.json', 'w', encoding='utf-8') as out:
+        json.dump({'body': '### ❌ Android Build Error Log:\n```\n' + tail + '\n```'}, out)
+except Exception as e:
+    pass
+"
+            curl -s -X POST \
+              -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+              -H "Content-Type: application/json" \
+              -d @comment.json \
+              "https://api.github.com/repos/${{ github.repository }}/commits/${{ github.sha }}/comments" || true
+            exit 1
+          fi
 
       - name: Organize Artifact
         run: |
