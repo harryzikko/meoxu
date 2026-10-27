@@ -11,6 +11,10 @@ Payload/
 *.ipa
 *.apk
 
+# Native platform scaffolds generated on CI/CD
+android/
+ios/
+
 # IDEs
 .idea/
 .vscode/
