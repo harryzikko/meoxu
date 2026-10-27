@@ -30,9 +30,11 @@ jobs:
 
       - name: Prepare Android Platform Scaffold
         run: |
-          if [ ! -d "android" ]; then
-            flutter create --platforms=android --org com.meoxu.app --project-name meoxu .
-          fi
+          cp pubspec.yaml /tmp/pubspec.yaml
+          flutter create --platforms=android --org com.meoxu.app --project-name meoxu .
+          cp /tmp/pubspec.yaml pubspec.yaml
+          rm -f test/widget_test.dart
+          sed -i 's/flutter.compileSdkVersion/34/g; s/flutter.minSdkVersion/21/g; s/flutter.targetSdkVersion/34/g' android/app/build.gradle 2>/dev/null || true
 
       - name: Install dependencies
         run: flutter pub get
@@ -71,9 +73,10 @@ jobs:
 
       - name: Prepare iOS Platform Scaffold
         run: |
-          if [ ! -d "ios" ]; then
-            flutter create --platforms=ios --org com.meoxu.app --project-name meoxu .
-          fi
+          cp pubspec.yaml /tmp/pubspec.yaml
+          flutter create --platforms=ios --org com.meoxu.app --project-name meoxu .
+          cp /tmp/pubspec.yaml pubspec.yaml
+          rm -f test/widget_test.dart
 
       - name: Install dependencies
         run: flutter pub get

@@ -2,19 +2,108 @@ import 'parser_result.dart';
 import '../utils/currency_formatter.dart';
 
 class ExpenseParser {
-  // Built-in categories with keywords
+  // Built-in categories with keywords in optimized priority order
   static const Map<String, List<String>> defaultKeywords = {
     'income': [
       'lương',
       'thuởng',
       'thưởng',
       'được cho',
+      'cho tiền',
+      'mẹ cho',
+      'ba cho',
+      'bố cho',
       'tiền về',
       'nhận tiền',
       'bán đồ',
       'hoàn tiền',
       'thu nhập',
       'lãi',
+      'tiền túi',
+    ],
+    'transport': [
+      'grab',
+      'be',
+      'gojek',
+      'taxi',
+      'xăng',
+      'gửi xe',
+      'bus',
+      'xe buýt',
+      'vé xe',
+      'rửa xe',
+      'thay nhớt',
+      'bảo dưỡng xe',
+      'sửa xe',
+      'xanh sm',
+      'vé tàu',
+      'vé máy bay',
+    ],
+    'entertainment': [
+      'vé xem phim',
+      'xem phim',
+      'cgv',
+      'phim',
+      'game',
+      'du lịch',
+      'netflix',
+      'sách',
+      'truyện',
+      'hát',
+      'karaoke',
+      'boardgame',
+      'spotify',
+      'youtube',
+      'vé xem kịch',
+      'vé concert',
+    ],
+    'health': [
+      'thuốc',
+      'khám',
+      'bác sĩ',
+      'gym',
+      'nha khoa',
+      'khẩu trang',
+      'bệnh viện',
+      'xét nghiệm',
+      'vitamin',
+      'thực phẩm chức năng',
+      'yoga',
+      'panadol',
+    ],
+    'shopping': [
+      'shopee',
+      'lazada',
+      'tiktok shop',
+      'quần',
+      'áo',
+      'giày',
+      'mỹ phẩm',
+      'son',
+      'váy',
+      'túi xách',
+      'đồng hồ',
+      'tai nghe',
+      'ốp lưng',
+      'đồ gia dụng',
+      'siêu thị',
+    ],
+    'bills': [
+      'tiền nhà',
+      'phòng trọ',
+      'tiền trọ',
+      'tiền điện',
+      'tiền nước',
+      'wifi',
+      'internet',
+      'rác',
+      'phí dịch vụ',
+      'chung cư',
+      'phí chung cư',
+      'truyền hình cáp',
+      'tiền mạng',
+      'hóa đơn',
+      'học phí',
     ],
     'food': [
       'ăn',
@@ -52,85 +141,8 @@ class ExpenseParser {
       'thịt',
       'rau',
     ],
-    'transport': [
-      'grab',
-      'be',
-      'gojek',
-      'taxi',
-      'xăng',
-      'gửi xe',
-      'bus',
-      'xe buýt',
-      'vé xe',
-      'rửa xe',
-      'thay nhớt',
-      'bảo dưỡng xe',
-      'sửa xe',
-      'xanh sm',
-      'vé tàu',
-      'vé máy bay',
-    ],
-    'bills': [
-      'tiền nhà',
-      'phòng trọ',
-      'tiền trọ',
-      'điện',
-      'nước',
-      'wifi',
-      'internet',
-      'rác',
-      'phí chung cư',
-      'truyền hình cáp',
-      'tiền mạng',
-      'hóa đơn',
-      'học phí',
-    ],
-    'entertainment': [
-      'phim',
-      'game',
-      'du lịch',
-      'netflix',
-      'xem phim',
-      'sách',
-      'truyện',
-      'hát',
-      'karaoke',
-      'boardgame',
-      'spotify',
-      'youtube',
-      'vé xem kịch',
-      'vé concert',
-    ],
-    'shopping': [
-      'mua',
-      'shopee',
-      'lazada',
-      'tiktok shop',
-      'quần',
-      'áo',
-      'giày',
-      'mỹ phẩm',
-      'son',
-      'váy',
-      'túi xách',
-      'đồng hồ',
-      'tai nghe',
-      'đồ gia dụng',
-      'siêu thị',
-    ],
-    'health': [
-      'thuốc',
-      'khám',
-      'bác sĩ',
-      'gym',
-      'nha khoa',
-      'khẩu trang',
-      'bệnh viện',
-      'xét nghiệm',
-      'vitamin',
-      'thực phẩm chức năng',
-      'yoga',
-    ],
+    'bills_single': ['điện', 'nước'],
+    'shopping_generic': ['mua'],
   };
 
   static const Map<String, String> categoryDisplayNames = {
@@ -143,6 +155,14 @@ class ExpenseParser {
     'income': 'Thu nhập',
     'other': 'Chi tiêu khác',
   };
+
+  static bool _containsWord(String text, String keyword) {
+    final pattern = RegExp(
+      '(?<=^|\\s)${RegExp.escape(keyword)}(?=\\s|\$|[,.!?])',
+      caseSensitive: false,
+    );
+    return pattern.hasMatch(text);
+  }
 
   /// Parses a raw user sentence into structured transaction data
   static ParserResult parse(
@@ -211,7 +231,6 @@ class ExpenseParser {
     }
 
     // 2. Extract Amount
-    // Regex matches expressions like '1tr250', '1tr2', '1.5tr', '45k', '50.000', '50000', or standalone number '70'
     final amountRegex = RegExp(
       r'(\d+(?:[.,]\d+)?\s*(?:tr|triệu|k|nghìn|ngàn|đ|vnd|m)\b|\b\d+tr\d+\b|\b\d{1,3}(?:\.\d{3})+\b|\b\d{4,9}\b|\b\d{2,3}\b)',
       caseSensitive: false,
@@ -221,7 +240,6 @@ class ExpenseParser {
     String matchedAmountToken = '';
     final matches = amountRegex.allMatches(text);
 
-    // Pick the most likely amount token (prefer suffixes like k, tr or large numbers)
     for (final m in matches) {
       final token = m.group(0)!;
       final parsed = CurrencyFormatter.parseQuickAmount(token);
@@ -238,7 +256,6 @@ class ExpenseParser {
       cleanNote = cleanNote.replaceFirst(matchedAmountToken, '').trim();
     }
 
-    // Clean multiple consecutive spaces and trailing punctuation
     cleanNote = cleanNote.replaceAll(RegExp(r'\s+'), ' ').trim();
     if (cleanNote.isEmpty) {
       cleanNote = 'Khoản chi không tên';
@@ -252,7 +269,7 @@ class ExpenseParser {
     // Check custom learned keywords first
     if (customLearnedKeywords != null) {
       for (final entry in customLearnedKeywords.entries) {
-        if (lowerNote.contains(entry.key.toLowerCase())) {
+        if (_containsWord(lowerNote, entry.key.toLowerCase())) {
           detectedCategory = entry.value;
           if (detectedCategory == 'income') {
             detectedType = TransactionType.income;
@@ -268,9 +285,24 @@ class ExpenseParser {
         final catId = catEntry.key;
         final words = catEntry.value;
         for (final word in words) {
-          if (lowerNote.contains(word)) {
-            detectedCategory = catId;
-            if (catId == 'income') {
+          if (_containsWord(lowerNote, word)) {
+            if (catId == 'shopping_generic') {
+              detectedCategory = 'shopping';
+            } else if (catId == 'bills_single') {
+              if (word == 'điện' && lowerNote.contains('điện thoại')) continue;
+              if (word == 'nước' &&
+                  (lowerNote.contains('nước ép') ||
+                      lowerNote.contains('nước ngọt') ||
+                      lowerNote.contains('nước sâm') ||
+                      lowerNote.contains('trà đá'))) {
+                continue;
+              }
+              detectedCategory = 'bills';
+            } else {
+              detectedCategory = catId;
+            }
+
+            if (detectedCategory == 'income') {
               detectedType = TransactionType.income;
             }
             break;
