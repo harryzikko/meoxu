@@ -23,10 +23,9 @@ class FishPlateCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: isDark ? AppColors.darkSurface : AppColors.surface,
         borderRadius: BorderRadius.circular(24),
-        border: Border.parse(
-          isDark
-              ? '1px solid ${AppColors.darkBorder.value.toRadixString(16)}'
-              : '1px solid ${AppColors.border.value.toRadixString(16)}',
+        border: Border.all(
+          color: isDark ? AppColors.darkBorder : AppColors.border,
+          width: 1,
         ),
         boxShadow: [
           BoxShadow(
