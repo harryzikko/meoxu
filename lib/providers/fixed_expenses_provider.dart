@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../models/fixed_expense.dart';
 import '../core/database/app_database.dart';
 
@@ -13,9 +14,24 @@ class FixedExpensesNotifier extends StateNotifier<List<FixedExpense>> {
       if (list.isEmpty) {
         // Defaults if empty
         final defaults = [
-          const FixedExpense(id: 'fix_1', name: 'Tiền nhà/phòng trọ', amount: 3000000.0, dayOfMonth: 5),
-          const FixedExpense(id: 'fix_2', name: 'Điện & Nước', amount: 500000.0, dayOfMonth: 10),
-          const FixedExpense(id: 'fix_3', name: 'Wifi & 4G', amount: 220000.0, dayOfMonth: 15),
+          const FixedExpense(
+            id: 'fix_1',
+            name: 'Tiền nhà/phòng trọ',
+            amount: 3000000.0,
+            dayOfMonth: 5,
+          ),
+          const FixedExpense(
+            id: 'fix_2',
+            name: 'Điện & Nước',
+            amount: 500000.0,
+            dayOfMonth: 10,
+          ),
+          const FixedExpense(
+            id: 'fix_3',
+            name: 'Wifi & 4G',
+            amount: 220000.0,
+            dayOfMonth: 15,
+          ),
         ];
         for (final item in defaults) {
           await AppDatabase.instance.insertFixedExpense(item);
@@ -38,6 +54,7 @@ class FixedExpensesNotifier extends StateNotifier<List<FixedExpense>> {
   }
 }
 
-final fixedExpensesProvider = StateNotifierProvider<FixedExpensesNotifier, List<FixedExpense>>((ref) {
-  return FixedExpensesNotifier();
-});
+final fixedExpensesProvider =
+    StateNotifierProvider<FixedExpensesNotifier, List<FixedExpense>>((ref) {
+      return FixedExpensesNotifier();
+    });

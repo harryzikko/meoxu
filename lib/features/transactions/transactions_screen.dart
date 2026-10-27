@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../../core/constants/app_colors.dart';
 import '../../core/constants/app_typography.dart';
 import '../../core/constants/app_strings.dart';
@@ -53,9 +54,7 @@ class _TransactionsScreenState extends ConsumerState<TransactionsScreen> {
     }
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Lịch sử giao dịch'),
-      ),
+      appBar: AppBar(title: const Text('Lịch sử giao dịch')),
       body: Column(
         children: [
           // Search & Filter Bar
@@ -67,14 +66,20 @@ class _TransactionsScreenState extends ConsumerState<TransactionsScreen> {
                   onChanged: (val) => setState(() => _searchQuery = val),
                   decoration: InputDecoration(
                     hintText: 'Tìm theo ghi chú...',
-                    prefixIcon: const Icon(Icons.search_rounded, color: AppColors.textSecondary),
+                    prefixIcon: const Icon(
+                      Icons.search_rounded,
+                      color: AppColors.textSecondary,
+                    ),
                     suffixIcon: _searchQuery.isNotEmpty
                         ? IconButton(
                             icon: const Icon(Icons.clear_rounded),
                             onPressed: () => setState(() => _searchQuery = ''),
                           )
                         : null,
-                    contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                    contentPadding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 10,
+                    ),
                   ),
                 ),
                 const SizedBox(height: 10),
@@ -87,7 +92,9 @@ class _TransactionsScreenState extends ConsumerState<TransactionsScreen> {
                       // All Filter
                       FilterChip(
                         label: const Text('Tất cả'),
-                        selected: _selectedCategory == null && _selectedEmotion == null,
+                        selected:
+                            _selectedCategory == null &&
+                            _selectedEmotion == null,
                         onSelected: (_) {
                           setState(() {
                             _selectedCategory = null;
@@ -119,25 +126,33 @@ class _TransactionsScreenState extends ConsumerState<TransactionsScreen> {
                       FilterChip(
                         label: const Text('😊 Vui'),
                         selected: _selectedEmotion == 'happy',
-                        onSelected: (val) => setState(() => _selectedEmotion = val ? 'happy' : null),
+                        onSelected: (val) => setState(
+                          () => _selectedEmotion = val ? 'happy' : null,
+                        ),
                       ),
                       const SizedBox(width: 6),
                       FilterChip(
                         label: const Text('👌 Cần'),
                         selected: _selectedEmotion == 'necessary',
-                        onSelected: (val) => setState(() => _selectedEmotion = val ? 'necessary' : null),
+                        onSelected: (val) => setState(
+                          () => _selectedEmotion = val ? 'necessary' : null,
+                        ),
                       ),
                       const SizedBox(width: 6),
                       FilterChip(
                         label: const Text('😿 Hối hận'),
                         selected: _selectedEmotion == 'regret',
-                        onSelected: (val) => setState(() => _selectedEmotion = val ? 'regret' : null),
+                        onSelected: (val) => setState(
+                          () => _selectedEmotion = val ? 'regret' : null,
+                        ),
                       ),
                       const SizedBox(width: 6),
                       FilterChip(
                         label: const Text('⚡ Bốc đồng'),
                         selected: _selectedEmotion == 'impulsive',
-                        onSelected: (val) => setState(() => _selectedEmotion = val ? 'impulsive' : null),
+                        onSelected: (val) => setState(
+                          () => _selectedEmotion = val ? 'impulsive' : null,
+                        ),
                       ),
                     ],
                   ),
@@ -152,11 +167,16 @@ class _TransactionsScreenState extends ConsumerState<TransactionsScreen> {
                 ? Center(
                     child: Text(
                       'Không tìm thấy giao dịch nào',
-                      style: AppTypography.bodyMedium.copyWith(color: AppColors.textTertiary),
+                      style: AppTypography.bodyMedium.copyWith(
+                        color: AppColors.textTertiary,
+                      ),
                     ),
                   )
                 : ListView.builder(
-                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 8,
+                    ),
                     itemCount: grouped.keys.length,
                     itemBuilder: (context, index) {
                       final header = grouped.keys.elementAt(index);
@@ -166,13 +186,19 @@ class _TransactionsScreenState extends ConsumerState<TransactionsScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
-                            padding: const EdgeInsets.only(top: 14, bottom: 6, left: 4),
+                            padding: const EdgeInsets.only(
+                              top: 14,
+                              bottom: 6,
+                              left: 4,
+                            ),
                             child: Text(
                               header,
                               style: AppTypography.titleMedium.copyWith(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w700,
-                                color: isDark ? AppColors.darkTextSecondary : AppColors.textSecondary,
+                                color: isDark
+                                    ? AppColors.darkTextSecondary
+                                    : AppColors.textSecondary,
                               ),
                             ),
                           ),
@@ -186,7 +212,10 @@ class _TransactionsScreenState extends ConsumerState<TransactionsScreen> {
                                   color: AppColors.primary,
                                   borderRadius: BorderRadius.circular(16),
                                 ),
-                                child: const Icon(Icons.edit_rounded, color: Colors.white),
+                                child: const Icon(
+                                  Icons.edit_rounded,
+                                  color: Colors.white,
+                                ),
                               ),
                               secondaryBackground: Container(
                                 alignment: Alignment.centerRight,
@@ -195,12 +224,17 @@ class _TransactionsScreenState extends ConsumerState<TransactionsScreen> {
                                   color: AppColors.danger,
                                   borderRadius: BorderRadius.circular(16),
                                 ),
-                                child: const Icon(Icons.delete_outline_rounded, color: Colors.white),
+                                child: const Icon(
+                                  Icons.delete_outline_rounded,
+                                  color: Colors.white,
+                                ),
                               ),
                               confirmDismiss: (direction) async {
                                 if (direction == DismissDirection.endToStart) {
                                   // Delete with undo
-                                  await ref.read(transactionProvider.notifier).deleteTransaction(item.id);
+                                  await ref
+                                      .read(transactionProvider.notifier)
+                                      .deleteTransaction(item.id);
                                   if (context.mounted) {
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
@@ -210,7 +244,11 @@ class _TransactionsScreenState extends ConsumerState<TransactionsScreen> {
                                           label: 'Hoàn tác',
                                           textColor: AppColors.primary,
                                           onPressed: () {
-                                            ref.read(transactionProvider.notifier).undoDelete();
+                                            ref
+                                                .read(
+                                                  transactionProvider.notifier,
+                                                )
+                                                .undoDelete();
                                           },
                                         ),
                                       ),
@@ -244,7 +282,9 @@ class _TransactionsScreenState extends ConsumerState<TransactionsScreen> {
 
   void _showEditDialog(TransactionItem item) {
     final noteCtrl = TextEditingController(text: item.note);
-    final amountCtrl = TextEditingController(text: item.amount.toStringAsFixed(0));
+    final amountCtrl = TextEditingController(
+      text: item.amount.toStringAsFixed(0),
+    );
     String catId = item.categoryId;
     String? emotion = item.emotion;
 
@@ -295,7 +335,9 @@ class _TransactionsScreenState extends ConsumerState<TransactionsScreen> {
                   categoryId: catId,
                   emotion: emotion,
                 );
-                await ref.read(transactionProvider.notifier).updateTransaction(updated);
+                await ref
+                    .read(transactionProvider.notifier)
+                    .updateTransaction(updated);
                 if (ctx.mounted) Navigator.pop(ctx);
               },
               child: const Text('Lưu thay đổi'),

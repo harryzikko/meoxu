@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../../core/constants/app_colors.dart';
 import '../../core/constants/app_typography.dart';
 import '../../core/utils/currency_formatter.dart';
@@ -16,15 +17,23 @@ class CatLetterScreen extends ConsumerWidget {
     final expenseTxs = allTransactions.where((tx) => tx.isExpense).toList();
 
     // Current week txs (last 7 days)
-    final thisWeekTxs = expenseTxs.where((tx) => now.difference(tx.dateTime).inDays <= 7).toList();
+    final thisWeekTxs = expenseTxs
+        .where((tx) => now.difference(tx.dateTime).inDays <= 7)
+        .toList();
     // Previous week txs (day 8 to 14)
     final lastWeekTxs = expenseTxs.where((tx) {
       final days = now.difference(tx.dateTime).inDays;
       return days > 7 && days <= 14;
     }).toList();
 
-    final currentTotal = thisWeekTxs.fold<double>(0.0, (sum, tx) => sum + tx.amount);
-    final lastTotal = lastWeekTxs.fold<double>(0.0, (sum, tx) => sum + tx.amount);
+    final currentTotal = thisWeekTxs.fold<double>(
+      0.0,
+      (sum, tx) => sum + tx.amount,
+    );
+    final lastTotal = lastWeekTxs.fold<double>(
+      0.0,
+      (sum, tx) => sum + tx.amount,
+    );
 
     if (thisWeekTxs.length < 5) {
       return WeeklyInsight(
@@ -33,7 +42,8 @@ class CatLetterScreen extends ConsumerWidget {
         previousWeekTotal: lastTotal,
         hasEnoughData: false,
         smallSuggestion: 'Cứ thong thả nhé! Ghi thêm vài giao dịch nữa để mèo tìm ra thói quen thú vị của bạn nha.',
-        bestPraise: 'Bạn đã bắt đầu hành trình hiểu bản thân cùng Mèo Xu rồi đấy!',
+        bestPraise:
+            'Bạn đã bắt đầu hành trình hiểu bản thân cùng Mèo Xu rồi đấy!',
       );
     }
 
@@ -52,35 +62,47 @@ class CatLetterScreen extends ConsumerWidget {
     }
     if (totalRegret > 0 && lateNightRegret > 0) {
       final pct = ((lateNightRegret / totalRegret) * 100).toInt();
-      discoveries.add('$pct% khoản bạn thấy hối hận thường xuất hiện sau 22h đêm.');
+      discoveries.add(
+        '$pct% khoản bạn thấy hối hận thường xuất hiện sau 22h đêm.',
+      );
     }
 
     // Pattern 2: Highest spending weekday
     final Map<int, double> dayTotals = {};
     for (final tx in thisWeekTxs) {
-      dayTotals[tx.dateTime.weekday] = (dayTotals[tx.dateTime.weekday] ?? 0.0) + tx.amount;
+      dayTotals[tx.dateTime.weekday] =
+          (dayTotals[tx.dateTime.weekday] ?? 0.0) + tx.amount;
     }
     if (dayTotals.isNotEmpty) {
-      final topDay = dayTotals.entries.reduce((a, b) => a.value > b.value ? a : b);
+      final topDay = dayTotals.entries.reduce(
+        (a, b) => a.value > b.value ? a : b,
+      );
       final weekdayName = _getWeekdayName(topDay.key);
-      discoveries.add('$weekdayName là ngày bạn chi tiêu nhiều nhất trong tuần.');
+      discoveries.add(
+        '$weekdayName là ngày bạn chi tiêu nhiều nhất trong tuần.',
+      );
     }
 
     // Pattern 3: Food or beverage joy
     int milkTeaCount = 0;
     int happyCount = 0;
     for (final tx in thisWeekTxs) {
-      if (tx.note.toLowerCase().contains('trà sữa') || tx.note.toLowerCase().contains('cà phê')) {
+      if (tx.note.toLowerCase().contains('trà sữa') ||
+          tx.note.toLowerCase().contains('cà phê')) {
         milkTeaCount++;
         if (tx.emotion == 'happy') happyCount++;
       }
     }
     if (milkTeaCount >= 2) {
-      discoveries.add('Bạn đã thưởng thức cà phê / trà sữa $milkTeaCount lần, trong đó $happyCount lần mang lại niềm vui trọn vẹn.');
+      discoveries.add(
+        'Bạn đã thưởng thức cà phê / trà sữa $milkTeaCount lần, trong đó $happyCount lần mang lại niềm vui trọn vẹn.',
+      );
     }
 
     if (discoveries.isEmpty) {
-      discoveries.add('Chi tiêu tuần này của bạn diễn ra rất cân bằng và ổn định!');
+      discoveries.add(
+        'Chi tiêu tuần này của bạn diễn ra rất cân bằng và ổn định!',
+      );
     }
 
     return WeeklyInsight(
@@ -88,7 +110,8 @@ class CatLetterScreen extends ConsumerWidget {
       currentWeekTotal: currentTotal,
       previousWeekTotal: lastTotal,
       discoveries: discoveries,
-      smallSuggestion: 'Thử đợi 10 phút trước khi thanh toán giỏ hàng online sau 22h nhé!',
+      smallSuggestion:
+          'Thử đợi 10 phút trước khi thanh toán giỏ hàng online sau 22h nhé!',
       bestPraise: 'Bạn luôn dành sự quan tâm và kiên nhẫn chăm sóc cho túi tiền của mình!',
       hasEnoughData: true,
     );
@@ -122,9 +145,7 @@ class CatLetterScreen extends ConsumerWidget {
     final insight = _generateInsight(txState.allTransactions);
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Thư của Mèo'),
-      ),
+      appBar: AppBar(title: const Text('Thư của Mèo')),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
         child: Column(
@@ -164,7 +185,9 @@ class CatLetterScreen extends ConsumerWidget {
                           const SizedBox(height: 2),
                           Text(
                             'Từ chú mèo ${profile.catName} đáng yêu 🐾',
-                            style: AppTypography.caption.copyWith(color: AppColors.primaryDark),
+                            style: AppTypography.caption.copyWith(
+                              color: AppColors.primaryDark,
+                            ),
                           ),
                         ],
                       ),
@@ -175,7 +198,10 @@ class CatLetterScreen extends ConsumerWidget {
                         decoration: BoxDecoration(
                           color: AppColors.surfaceVariant,
                           borderRadius: BorderRadius.circular(8),
-                          border: Border.all(color: AppColors.primary, width: 2),
+                          border: Border.all(
+                            color: AppColors.primary,
+                            width: 2,
+                          ),
                         ),
                         child: const Center(
                           child: Text('🐱', style: TextStyle(fontSize: 24)),
@@ -196,7 +222,10 @@ class CatLetterScreen extends ConsumerWidget {
                   Text(
                     'Tổng chi tuần này: ${CurrencyFormatter.format(insight.currentWeekTotal)}'
                     '${insight.previousWeekTotal > 0 ? ' (so với tuần trước: ${CurrencyFormatter.format(insight.previousWeekTotal)})' : ''}.',
-                    style: AppTypography.bodyMedium.copyWith(color: AppColors.textPrimary, height: 1.4),
+                    style: AppTypography.bodyMedium.copyWith(
+                      color: AppColors.textPrimary,
+                      height: 1.4,
+                    ),
                   ),
                   const SizedBox(height: 20),
 
@@ -215,7 +244,9 @@ class CatLetterScreen extends ConsumerWidget {
                       ),
                       child: Text(
                         'Tuần này mình chưa đủ 10 dữ liệu, cứ thong thả nhé! Mèo vẫn luôn ở đây quan sát và học cùng bạn.',
-                        style: AppTypography.bodyMedium.copyWith(color: AppColors.textPrimary),
+                        style: AppTypography.bodyMedium.copyWith(
+                          color: AppColors.textPrimary,
+                        ),
                       ),
                     )
                   else
@@ -252,12 +283,18 @@ class CatLetterScreen extends ConsumerWidget {
                     decoration: BoxDecoration(
                       color: AppColors.emotionNecessary.withOpacity(0.18),
                       borderRadius: BorderRadius.circular(16),
-                      border: Border.all(color: AppColors.emotionNecessary.withOpacity(0.4)),
+                      border: Border.all(
+                        color: AppColors.emotionNecessary.withOpacity(0.4),
+                      ),
                     ),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Icon(Icons.lightbulb_outline_rounded, color: AppColors.textPrimary, size: 20),
+                        const Icon(
+                          Icons.lightbulb_outline_rounded,
+                          color: AppColors.textPrimary,
+                          size: 20,
+                        ),
                         const SizedBox(width: 10),
                         Expanded(
                           child: Text(
@@ -285,7 +322,9 @@ class CatLetterScreen extends ConsumerWidget {
                     decoration: BoxDecoration(
                       color: AppColors.emotionHappy.withOpacity(0.2),
                       borderRadius: BorderRadius.circular(16),
-                      border: Border.all(color: AppColors.emotionHappy.withOpacity(0.5)),
+                      border: Border.all(
+                        color: AppColors.emotionHappy.withOpacity(0.5),
+                      ),
                     ),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -315,11 +354,15 @@ class CatLetterScreen extends ConsumerWidget {
                       children: [
                         Text(
                           'Ký tên,',
-                          style: AppTypography.caption.copyWith(fontStyle: FontStyle.italic),
+                          style: AppTypography.caption.copyWith(
+                            fontStyle: FontStyle.italic,
+                          ),
                         ),
                         Text(
                           '🐾 ${profile.catName}',
-                          style: AppTypography.titleMedium.copyWith(fontWeight: FontWeight.w800),
+                          style: AppTypography.titleMedium.copyWith(
+                            fontWeight: FontWeight.w800,
+                          ),
                         ),
                       ],
                     ),

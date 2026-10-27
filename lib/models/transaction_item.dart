@@ -76,7 +76,9 @@ class TransactionItem {
       type: map['type']?.toString() ?? 'expense',
       categoryId: map['category_id']?.toString() ?? 'other',
       note: map['note']?.toString() ?? '',
-      dateTime: DateTime.tryParse(map['date_time']?.toString() ?? '') ?? DateTime.now(),
+      dateTime:
+          DateTime.tryParse(map['date_time']?.toString() ?? '') ??
+          DateTime.now(),
       emotion: map['emotion']?.toString(),
       isFixed: map['is_fixed'] == 1 || map['is_fixed'] == true,
       source: map['source']?.toString() ?? 'manual',

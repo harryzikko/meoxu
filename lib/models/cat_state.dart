@@ -9,7 +9,8 @@ enum CatMood {
 }
 
 class CatState {
-  final int level; // 1: Mèo con, 2: Mèo trẻ, 3: Mèo trưởng thành, 4: Mèo thông thái
+  final int
+  level; // 1: Mèo con, 2: Mèo trẻ, 3: Mèo trưởng thành, 4: Mèo thông thái
   final int fishPoints;
   final List<String> unlockedAccessories;
   final List<String> equippedAccessories;
@@ -78,10 +79,30 @@ class CatState {
     return CatState(
       level: map['level'] as int? ?? 1,
       fishPoints: map['fish_points'] as int? ?? 50,
-      unlockedAccessories: (map['unlocked_accessories'] as String?)?.split(',').where((e) => e.isNotEmpty).toList() ?? ['bell_collar'],
-      equippedAccessories: (map['equipped_accessories'] as String?)?.split(',').where((e) => e.isNotEmpty).toList() ?? ['bell_collar'],
-      unlockedFurniture: (map['unlocked_furniture'] as String?)?.split(',').where((e) => e.isNotEmpty).toList() ?? ['cushion_mat'],
-      equippedFurniture: (map['equipped_furniture'] as String?)?.split(',').where((e) => e.isNotEmpty).toList() ?? ['cushion_mat'],
+      unlockedAccessories:
+          (map['unlocked_accessories'] as String?)
+              ?.split(',')
+              .where((e) => e.isNotEmpty)
+              .toList() ??
+          ['bell_collar'],
+      equippedAccessories:
+          (map['equipped_accessories'] as String?)
+              ?.split(',')
+              .where((e) => e.isNotEmpty)
+              .toList() ??
+          ['bell_collar'],
+      unlockedFurniture:
+          (map['unlocked_furniture'] as String?)
+              ?.split(',')
+              .where((e) => e.isNotEmpty)
+              .toList() ??
+          ['cushion_mat'],
+      equippedFurniture:
+          (map['equipped_furniture'] as String?)
+              ?.split(',')
+              .where((e) => e.isNotEmpty)
+              .toList() ??
+          ['cushion_mat'],
       currentMood: CatMood.values.firstWhere(
         (m) => m.name == map['current_mood'],
         orElse: () => CatMood.sleeping,

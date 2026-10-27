@@ -86,11 +86,13 @@ class UserProfile {
       catName: map['cat_name']?.toString() ?? 'Mèo Xu',
       catBreed: map['cat_breed']?.toString() ?? 'orange',
       monthlyIncome: (map['monthly_income'] as num?)?.toDouble() ?? 10000000.0,
-      monthlyWorkHours: (map['monthly_work_hours'] as num?)?.toDouble() ?? 176.0,
+      monthlyWorkHours:
+          (map['monthly_work_hours'] as num?)?.toDouble() ?? 176.0,
       savingPercentage: (map['saving_percentage'] as num?)?.toDouble() ?? 20.0,
       currency: map['currency']?.toString() ?? 'VNĐ',
       reminderTime: map['reminder_time']?.toString() ?? '20:30',
-      showWorkHours: (map['show_work_hours'] == 1 || map['show_work_hours'] == true),
+      showWorkHours:
+          (map['show_work_hours'] == 1 || map['show_work_hours'] == true),
       isDarkMode: (map['is_dark_mode'] == 1 || map['is_dark_mode'] == true),
       pinCode: map['pin_code']?.toString(),
       isOnboarded: (map['is_onboarded'] == 1 || map['is_onboarded'] == true),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../../core/constants/app_colors.dart';
 import '../../core/constants/app_typography.dart';
 import '../../core/utils/currency_formatter.dart';
@@ -22,15 +23,23 @@ class SettingsScreen extends ConsumerWidget {
     final StringBuffer buffer = StringBuffer();
     buffer.writeln('ID,Ngày giờ,Loại,Danh mục,Ghi chú,Số tiền,Cảm xúc');
     for (final tx in txs) {
-      buffer.writeln('${tx.id},${tx.dateTime.toIso8601String()},${tx.type},${tx.categoryId},"${tx.note}",${tx.amount},${tx.emotion ?? ""}');
+      buffer.writeln(
+        '${tx.id},${tx.dateTime.toIso8601String()},${tx.type},${tx.categoryId},"${tx.note}",${tx.amount},${tx.emotion ?? ""}',
+      );
     }
 
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Đã xuất thành công ${txs.length} dòng dữ liệu CSV')),
+      SnackBar(
+        content: Text('Đã xuất thành công ${txs.length} dòng dữ liệu CSV'),
+      ),
     );
   }
 
-  void _showIncomeDialog(BuildContext context, WidgetRef ref, double currentIncome) {
+  void _showIncomeDialog(
+    BuildContext context,
+    WidgetRef ref,
+    double currentIncome,
+  ) {
     final ctrl = TextEditingController(text: currentIncome.toStringAsFixed(0));
     showDialog(
       context: context,
@@ -45,15 +54,24 @@ class SettingsScreen extends ConsumerWidget {
           ),
         ),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(ctx), child: const Text('Hủy')),
+          TextButton(
+            onPressed: () => Navigator.pop(ctx),
+            child: const Text('Hủy'),
+          ),
           ElevatedButton(
             onPressed: () {
-              final val = double.tryParse(ctrl.text.replaceAll('.', '').replaceAll(',', ''));
+              final val = double.tryParse(
+                ctrl.text.replaceAll('.', '').replaceAll(',', ''),
+              );
               if (val != null && val > 0) {
-                ref.read(profileProvider.notifier).setFinance(
-                  monthlyIncome: val,
-                  savingPercentage: ref.read(profileProvider).savingPercentage,
-                );
+                ref
+                    .read(profileProvider.notifier)
+                    .setFinance(
+                      monthlyIncome: val,
+                      savingPercentage: ref
+                          .read(profileProvider)
+                          .savingPercentage,
+                    );
               }
               Navigator.pop(ctx);
             },
@@ -70,9 +88,7 @@ class SettingsScreen extends ConsumerWidget {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Cài đặt'),
-      ),
+      appBar: AppBar(title: const Text('Cài đặt')),
       body: ListView(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
         children: [
@@ -107,7 +123,8 @@ class SettingsScreen extends ConsumerWidget {
             title: 'Quy đổi tiền ra giờ làm việc',
             subtitle: 'Ví dụ: Cà phê ≈ 25 phút làm việc',
             value: profile.showWorkHours,
-            onChanged: (_) => ref.read(profileProvider.notifier).toggleWorkHours(),
+            onChanged: (_) =>
+                ref.read(profileProvider.notifier).toggleWorkHours(),
           ),
           _buildSwitchCard(
             isDark: isDark,
@@ -115,7 +132,8 @@ class SettingsScreen extends ConsumerWidget {
             title: 'Chế độ tối (Dark Mode)',
             subtitle: 'Nền nâu than ấm cúng, dịu mắt',
             value: profile.isDarkMode,
-            onChanged: (_) => ref.read(profileProvider.notifier).toggleDarkMode(),
+            onChanged: (_) =>
+                ref.read(profileProvider.notifier).toggleDarkMode(),
           ),
           _buildSettingCard(
             isDark: isDark,
@@ -128,10 +146,11 @@ class SettingsScreen extends ConsumerWidget {
                 initialTime: const TimeOfDay(hour: 20, minute: 30),
               );
               if (picked != null) {
-                final timeStr = '${picked.hour.toString().padLeft(2, '0')}:${picked.minute.toString().padLeft(2, '0')}';
-                ref.read(profileProvider.notifier).updateProfile(
-                  profile.copyWith(reminderTime: timeStr),
-                );
+                final timeStr =
+                    '${picked.hour.toString().padLeft(2, '0')}:${picked.minute.toString().padLeft(2, '0')}';
+                ref
+                    .read(profileProvider.notifier)
+                    .updateProfile(profile.copyWith(reminderTime: timeStr));
               }
             },
           ),
@@ -150,10 +169,14 @@ class SettingsScreen extends ConsumerWidget {
             isDark: isDark,
             icon: Icons.lock_outline_rounded,
             title: 'Khóa ứng dụng bằng mã PIN',
-            subtitle: profile.pinCode == null ? 'Chưa kích hoạt' : 'Đã bật bảo vệ',
+            subtitle: profile.pinCode == null
+                ? 'Chưa kích hoạt'
+                : 'Đã bật bảo vệ',
             onTap: () {
               ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Tính năng bảo vệ mã PIN đang hoạt động')),
+                const SnackBar(
+                  content: Text('Tính năng bảo vệ mã PIN đang hoạt động'),
+                ),
               );
             },
           ),
@@ -163,11 +186,16 @@ class SettingsScreen extends ConsumerWidget {
           Center(
             child: Column(
               children: [
-                const Text('🐾 Meo Xu v1.0.0', style: TextStyle(fontWeight: FontWeight.w700)),
+                const Text(
+                  '🐾 Meo Xu v1.0.0',
+                  style: TextStyle(fontWeight: FontWeight.w700),
+                ),
                 const SizedBox(height: 4),
                 Text(
                   'Không bắt bạn kỷ luật, chỉ giúp bạn hiểu mình.',
-                  style: AppTypography.caption.copyWith(fontStyle: FontStyle.italic),
+                  style: AppTypography.caption.copyWith(
+                    fontStyle: FontStyle.italic,
+                  ),
                   textAlign: TextAlign.center,
                 ),
               ],
@@ -184,7 +212,10 @@ class SettingsScreen extends ConsumerWidget {
       padding: const EdgeInsets.only(left: 4, bottom: 8),
       child: Text(
         title,
-        style: AppTypography.titleMedium.copyWith(fontSize: 14, fontWeight: FontWeight.w700),
+        style: AppTypography.titleMedium.copyWith(
+          fontSize: 14,
+          fontWeight: FontWeight.w700,
+        ),
       ),
     );
   }
@@ -201,13 +232,22 @@ class SettingsScreen extends ConsumerWidget {
       decoration: BoxDecoration(
         color: isDark ? AppColors.darkSurface : Colors.white,
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: isDark ? AppColors.darkBorder : AppColors.border),
+        border: Border.all(
+          color: isDark ? AppColors.darkBorder : AppColors.border,
+        ),
       ),
       child: ListTile(
         leading: Icon(icon, color: AppColors.primaryDark),
-        title: Text(title, style: AppTypography.titleMedium.copyWith(fontSize: 15)),
+        title: Text(
+          title,
+          style: AppTypography.titleMedium.copyWith(fontSize: 15),
+        ),
         subtitle: Text(subtitle, style: AppTypography.caption),
-        trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 14, color: AppColors.textTertiary),
+        trailing: const Icon(
+          Icons.arrow_forward_ios_rounded,
+          size: 14,
+          color: AppColors.textTertiary,
+        ),
         onTap: onTap,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       ),
@@ -227,11 +267,16 @@ class SettingsScreen extends ConsumerWidget {
       decoration: BoxDecoration(
         color: isDark ? AppColors.darkSurface : Colors.white,
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: isDark ? AppColors.darkBorder : AppColors.border),
+        border: Border.all(
+          color: isDark ? AppColors.darkBorder : AppColors.border,
+        ),
       ),
       child: SwitchListTile(
         secondary: Icon(icon, color: AppColors.primaryDark),
-        title: Text(title, style: AppTypography.titleMedium.copyWith(fontSize: 15)),
+        title: Text(
+          title,
+          style: AppTypography.titleMedium.copyWith(fontSize: 15),
+        ),
         subtitle: Text(subtitle, style: AppTypography.caption),
         value: value,
         activeColor: AppColors.primaryDark,

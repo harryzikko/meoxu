@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../../core/constants/app_colors.dart';
 import '../../core/constants/app_typography.dart';
 import '../../core/constants/app_strings.dart';
@@ -51,7 +52,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   }
 
   void _handleQuickInput(String text) {
-    final parsed = ExpenseParser.parse(text, customLearnedKeywords: _customKeywords);
+    final parsed = ExpenseParser.parse(
+      text,
+      customLearnedKeywords: _customKeywords,
+    );
     _showConfirmSheet(parsed, originalText: text);
   }
 
@@ -70,7 +74,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     );
   }
 
-  Future<void> _saveTransaction(ParserResult result, {String? originalKeyword}) async {
+  Future<void> _saveTransaction(
+    ParserResult result, {
+    String? originalKeyword,
+  }) async {
     final id = DateTime.now().millisecondsSinceEpoch.toString();
     final newItem = TransactionItem(
       id: id,
@@ -83,10 +90,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       status: 'confirmed',
     );
 
-    await ref.read(transactionProvider.notifier).addTransaction(
-      newItem,
-      originalKeyword: originalKeyword,
-    );
+    await ref
+        .read(transactionProvider.notifier)
+        .addTransaction(newItem, originalKeyword: originalKeyword);
 
     // Update cat points & streak
     await ref.read(catProvider.notifier).onTransactionRecorded();
@@ -96,7 +102,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       ScaffoldMessenger.of(context).hideCurrentSnackBar();
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Đã lưu: ${newItem.note} (${CurrencyFormatter.format(newItem.amount)})'),
+          content: Text(
+            'Đã lưu: ${newItem.note} (${CurrencyFormatter.format(newItem.amount)})',
+          ),
           duration: const Duration(seconds: 4),
           action: SnackBarAction(
             label: 'Hoàn tác',
@@ -122,7 +130,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       builder: (ctx) => EmotionSelectorDialog(
         onSelectEmotion: (emotion) async {
           Navigator.pop(ctx);
-          await ref.read(transactionProvider.notifier).attachEmotion(transactionId, emotion);
+          await ref
+              .read(transactionProvider.notifier)
+              .attachEmotion(transactionId, emotion);
           await ref.read(catProvider.notifier).onEmotionAttached();
         },
         onDismiss: () => Navigator.pop(ctx),
@@ -150,7 +160,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               padding: const EdgeInsets.all(24),
               decoration: BoxDecoration(
                 color: isDark ? AppColors.darkSurface : Colors.white,
-                borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
+                borderRadius: const BorderRadius.vertical(
+                  top: Radius.circular(24),
+                ),
               ),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -178,13 +190,17 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   const SizedBox(height: 20),
                   ElevatedButton(
                     onPressed: () {
-                      final amount = double.tryParse(amountCtrl.text.replaceAll('.', '').replaceAll(',', ''));
+                      final amount = double.tryParse(
+                        amountCtrl.text.replaceAll('.', '').replaceAll(',', ''),
+                      );
                       if (amount != null && amount > 0) {
                         Navigator.pop(ctx);
                         _saveTransaction(
                           ParserResult(
                             amount: amount,
-                            note: noteCtrl.text.trim().isEmpty ? 'Chi tiêu' : noteCtrl.text.trim(),
+                            note: noteCtrl.text.trim().isEmpty
+                                ? 'Chi tiêu'
+                                : noteCtrl.text.trim(),
                             categoryId: category,
                             categoryName: 'Ăn uống',
                             dateTime: DateTime.now(),
@@ -229,14 +245,19 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           children: [
             Text(
               profile.catName,
-              style: AppTypography.titleLarge.copyWith(fontWeight: FontWeight.w800),
+              style: AppTypography.titleLarge.copyWith(
+                fontWeight: FontWeight.w800,
+              ),
             ),
             const SizedBox(width: 8),
             InkWell(
               onTap: widget.onNavigateToCatHouse,
               borderRadius: BorderRadius.circular(16),
               child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 10,
+                  vertical: 4,
+                ),
                 decoration: BoxDecoration(
                   color: AppColors.surfaceVariant,
                   borderRadius: BorderRadius.circular(16),
@@ -280,12 +301,17 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                         ),
                         const SizedBox(height: 8),
                         Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 16,
+                            vertical: 8,
+                          ),
                           margin: const EdgeInsets.symmetric(horizontal: 12),
                           decoration: BoxDecoration(
                             color: AppColors.surfaceVariant,
                             borderRadius: BorderRadius.circular(16),
-                            border: Border.all(color: AppColors.primaryLight.withOpacity(0.5)),
+                            border: Border.all(
+                              color: AppColors.primaryLight.withOpacity(0.5),
+                            ),
                           ),
                           child: Text(
                             catMessage,
@@ -306,10 +332,12 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   FishPlateCard(
                     budget: budget,
                     onSavingChanged: (val) {
-                      ref.read(profileProvider.notifier).setFinance(
-                        monthlyIncome: profile.monthlyIncome,
-                        savingPercentage: val,
-                      );
+                      ref
+                          .read(profileProvider.notifier)
+                          .setFinance(
+                            monthlyIncome: profile.monthlyIncome,
+                            savingPercentage: val,
+                          );
                     },
                   ),
                   const SizedBox(height: 20),
@@ -320,7 +348,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     children: [
                       Text(
                         AppStrings.recentTransactions,
-                        style: AppTypography.titleMedium.copyWith(fontWeight: FontWeight.w700),
+                        style: AppTypography.titleMedium.copyWith(
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
                       TextButton(
                         onPressed: widget.onNavigateToTransactions,
@@ -342,7 +372,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                       alignment: Alignment.center,
                       child: Text(
                         AppStrings.noTransactionsToday,
-                        style: AppTypography.bodyMedium.copyWith(color: AppColors.textTertiary),
+                        style: AppTypography.bodyMedium.copyWith(
+                          color: AppColors.textTertiary,
+                        ),
                         textAlign: TextAlign.center,
                       ),
                     )
@@ -370,7 +402,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             onManualInputTap: _showManualInputDialog,
             onVoiceTap: () {
               ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Chức năng nhận giọng nói đang kích hoạt qua mic điện thoại')),
+                const SnackBar(
+                  content: Text(
+                    'Chức năng nhận giọng nói đang kích hoạt qua mic điện thoại',
+                  ),
+                ),
               );
             },
           ),

@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../models/user_profile.dart';
 import '../core/database/app_database.dart';
 
@@ -51,6 +52,8 @@ class ProfileNotifier extends StateNotifier<UserProfile> {
   }
 }
 
-final profileProvider = StateNotifierProvider<ProfileNotifier, UserProfile>((ref) {
+final profileProvider = StateNotifierProvider<ProfileNotifier, UserProfile>((
+  ref,
+) {
   return ProfileNotifier();
 });

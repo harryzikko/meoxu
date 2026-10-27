@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../models/cat_state.dart';
 import '../models/streak_state.dart';
 import '../core/database/app_database.dart';
@@ -13,10 +14,7 @@ class CatCombinedState {
     this.streak = const StreakState(),
   });
 
-  CatCombinedState copyWith({
-    CatState? cat,
-    StreakState? streak,
-  }) {
+  CatCombinedState copyWith({CatState? cat, StreakState? streak}) {
     return CatCombinedState(
       cat: cat ?? this.cat,
       streak: streak ?? this.streak,
@@ -38,15 +36,13 @@ class CatNotifier extends StateNotifier<CatCombinedState> {
   }
 
   void updateMood(CatMood newMood) {
-    state = state.copyWith(
-      cat: state.cat.copyWith(currentMood: newMood),
-    );
+    state = state.copyWith(cat: state.cat.copyWith(currentMood: newMood));
   }
 
   Future<void> onTransactionRecorded() async {
     // Add fish points
     final newFish = state.cat.fishPoints + 5;
-    
+
     // Check and update streak
     final now = DateTime.now();
     int newStreak = state.streak.currentStreak;

@@ -1,5 +1,7 @@
 import 'dart:async';
+
 import 'package:flutter/material.dart';
+
 import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_typography.dart';
 import '../../../core/parser/parser_result.dart';
@@ -118,13 +120,18 @@ class _ConfirmCardBottomSheetState extends State<ConfirmCardBottomSheet> {
                 child: Text(
                   'Mèo đã hiểu ý bạn:',
                   style: AppTypography.titleMedium.copyWith(
-                    color: isDark ? AppColors.darkTextPrimary : AppColors.textPrimary,
+                    color: isDark
+                        ? AppColors.darkTextPrimary
+                        : AppColors.textPrimary,
                   ),
                 ),
               ),
               if (!_isInteracted)
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 10,
+                    vertical: 4,
+                  ),
                   decoration: BoxDecoration(
                     color: AppColors.primary.withOpacity(0.2),
                     borderRadius: BorderRadius.circular(12),
@@ -150,7 +157,9 @@ class _ConfirmCardBottomSheetState extends State<ConfirmCardBottomSheet> {
             child: Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: isDark ? AppColors.darkSurfaceVariant : AppColors.surfaceVariant,
+                color: isDark
+                    ? AppColors.darkSurfaceVariant
+                    : AppColors.surfaceVariant,
                 borderRadius: BorderRadius.circular(16),
               ),
               child: Row(
@@ -159,7 +168,9 @@ class _ConfirmCardBottomSheetState extends State<ConfirmCardBottomSheet> {
                     _type == TransactionType.income
                         ? Icons.arrow_downward_rounded
                         : Icons.arrow_upward_rounded,
-                    color: _type == TransactionType.income ? AppColors.success : AppColors.primaryDark,
+                    color: _type == TransactionType.income
+                        ? AppColors.success
+                        : AppColors.primaryDark,
                   ),
                   const SizedBox(width: 10),
                   Text(
@@ -167,11 +178,17 @@ class _ConfirmCardBottomSheetState extends State<ConfirmCardBottomSheet> {
                     style: AppTypography.displayLarge.copyWith(
                       fontSize: 28,
                       fontWeight: FontWeight.w800,
-                      color: isDark ? AppColors.darkTextPrimary : AppColors.textPrimary,
+                      color: isDark
+                          ? AppColors.darkTextPrimary
+                          : AppColors.textPrimary,
                     ),
                   ),
                   const Spacer(),
-                  const Icon(Icons.edit_rounded, size: 18, color: AppColors.textTertiary),
+                  const Icon(
+                    Icons.edit_rounded,
+                    size: 18,
+                    color: AppColors.textTertiary,
+                  ),
                 ],
               ),
             ),
@@ -187,18 +204,26 @@ class _ConfirmCardBottomSheetState extends State<ConfirmCardBottomSheet> {
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
               decoration: BoxDecoration(
-                border: Border.all(color: isDark ? AppColors.darkBorder : AppColors.border),
+                border: Border.all(
+                  color: isDark ? AppColors.darkBorder : AppColors.border,
+                ),
                 borderRadius: BorderRadius.circular(14),
               ),
               child: Row(
                 children: [
-                  const Icon(Icons.edit_note_rounded, color: AppColors.textSecondary, size: 20),
+                  const Icon(
+                    Icons.edit_note_rounded,
+                    color: AppColors.textSecondary,
+                    size: 20,
+                  ),
                   const SizedBox(width: 10),
                   Expanded(
                     child: Text(
                       _note,
                       style: AppTypography.bodyLarge.copyWith(
-                        color: isDark ? AppColors.darkTextPrimary : AppColors.textPrimary,
+                        color: isDark
+                            ? AppColors.darkTextPrimary
+                            : AppColors.textPrimary,
                       ),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
@@ -214,7 +239,9 @@ class _ConfirmCardBottomSheetState extends State<ConfirmCardBottomSheet> {
           Text(
             'Danh mục:',
             style: AppTypography.caption.copyWith(
-              color: isDark ? AppColors.darkTextSecondary : AppColors.textSecondary,
+              color: isDark
+                  ? AppColors.darkTextSecondary
+                  : AppColors.textSecondary,
               fontWeight: FontWeight.w600,
             ),
           ),
@@ -230,26 +257,40 @@ class _ConfirmCardBottomSheetState extends State<ConfirmCardBottomSheet> {
                     label: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Icon(cat.icon, size: 16, color: isSelected ? Colors.white : cat.color),
+                        Icon(
+                          cat.icon,
+                          size: 16,
+                          color: isSelected ? Colors.white : cat.color,
+                        ),
                         const SizedBox(width: 6),
                         Text(cat.name),
                       ],
                     ),
                     selected: isSelected,
                     selectedColor: AppColors.primaryDark,
-                    backgroundColor: isDark ? AppColors.darkSurfaceVariant : Colors.white,
+                    backgroundColor: isDark
+                        ? AppColors.darkSurfaceVariant
+                        : Colors.white,
                     labelStyle: TextStyle(
                       fontFamily: AppTypography.fontFamily,
                       fontSize: 13,
-                      fontWeight: isSelected ? FontWeight.w700 : FontWeight.w500,
+                      fontWeight: isSelected
+                          ? FontWeight.w700
+                          : FontWeight.w500,
                       color: isSelected
                           ? Colors.white
-                          : (isDark ? AppColors.darkTextPrimary : AppColors.textPrimary),
+                          : (isDark
+                                ? AppColors.darkTextPrimary
+                                : AppColors.textPrimary),
                     ),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
                       side: BorderSide(
-                        color: isSelected ? AppColors.primaryDark : (isDark ? AppColors.darkBorder : AppColors.border),
+                        color: isSelected
+                            ? AppColors.primaryDark
+                            : (isDark
+                                  ? AppColors.darkBorder
+                                  : AppColors.border),
                       ),
                     ),
                     onSelected: (val) {
@@ -271,10 +312,7 @@ class _ConfirmCardBottomSheetState extends State<ConfirmCardBottomSheet> {
           const SizedBox(height: 20),
 
           // Action Button
-          ElevatedButton(
-            onPressed: _save,
-            child: const Text('Lưu giao dịch'),
-          ),
+          ElevatedButton(onPressed: _save, child: const Text('Lưu giao dịch')),
         ],
       ),
     );

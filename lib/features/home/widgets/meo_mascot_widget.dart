@@ -1,5 +1,7 @@
 import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
+
 import '../../../models/cat_state.dart';
 import '../../../core/constants/app_colors.dart';
 
@@ -37,13 +39,15 @@ class _MeoMascotWidgetState extends State<MeoMascotWidget>
       duration: const Duration(milliseconds: 2000),
     )..repeat(reverse: true);
 
-    _wagAnimation = Tween<double>(begin: -0.15, end: 0.15).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
-    );
+    _wagAnimation = Tween<double>(
+      begin: -0.15,
+      end: 0.15,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
 
-    _breatheAnimation = Tween<double>(begin: 0.98, end: 1.02).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
-    );
+    _breatheAnimation = Tween<double>(
+      begin: 0.98,
+      end: 1.02,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
   }
 
   @override
@@ -77,7 +81,9 @@ class _MeoMascotWidgetState extends State<MeoMascotWidget>
         animation: _controller,
         builder: (context, child) {
           final isDancing = widget.mood == CatMood.dancing;
-          final danceOffset = isDancing ? math.sin(_controller.value * math.pi * 4) * 8.0 : 0.0;
+          final danceOffset = isDancing
+              ? math.sin(_controller.value * math.pi * 4) * 8.0
+              : 0.0;
 
           return Transform.translate(
             offset: Offset(0, danceOffset),
@@ -160,9 +166,18 @@ class _CatPainter extends CustomPainter {
     }
 
     // 5. Rosy Cheeks (Má hồng)
-    final blushPaint = Paint()..color = const Color(0xFFFF9494).withOpacity(0.5);
-    canvas.drawCircle(Offset(center.dx - radius * 0.52, center.dy + radius * 0.18), radius * 0.15, blushPaint);
-    canvas.drawCircle(Offset(center.dx + radius * 0.52, center.dy + radius * 0.18), radius * 0.15, blushPaint);
+    final blushPaint = Paint()
+      ..color = const Color(0xFFFF9494).withOpacity(0.5);
+    canvas.drawCircle(
+      Offset(center.dx - radius * 0.52, center.dy + radius * 0.18),
+      radius * 0.15,
+      blushPaint,
+    );
+    canvas.drawCircle(
+      Offset(center.dx + radius * 0.52, center.dy + radius * 0.18),
+      radius * 0.15,
+      blushPaint,
+    );
 
     // 6. Eyes & Eyebrows based on mood
     _drawEyes(canvas, center, radius);
@@ -200,7 +215,12 @@ class _CatPainter extends CustomPainter {
     );
 
     path.moveTo(start.dx, start.dy);
-    path.quadraticBezierTo(center.dx + radius * 1.1, center.dy + radius * 0.3, end.dx, end.dy);
+    path.quadraticBezierTo(
+      center.dx + radius * 1.1,
+      center.dy + radius * 0.3,
+      end.dx,
+      end.dy,
+    );
     canvas.drawPath(path, tailPaint);
   }
 
@@ -268,8 +288,14 @@ class _CatPainter extends CustomPainter {
     final eyePaint = Paint()..color = const Color(0xFF2C221E);
     final eyeWhite = Paint()..color = Colors.white;
 
-    final leftEyeCenter = Offset(center.dx - radius * 0.36, center.dy - radius * 0.05);
-    final rightEyeCenter = Offset(center.dx + radius * 0.36, center.dy - radius * 0.05);
+    final leftEyeCenter = Offset(
+      center.dx - radius * 0.36,
+      center.dy - radius * 0.05,
+    );
+    final rightEyeCenter = Offset(
+      center.dx + radius * 0.36,
+      center.dy - radius * 0.05,
+    );
 
     if (mood == CatMood.sleeping) {
       // Sleeping curved lines ^_^
@@ -281,10 +307,20 @@ class _CatPainter extends CustomPainter {
 
       final pLeft = Path()
         ..moveTo(leftEyeCenter.dx - 10, leftEyeCenter.dy)
-        ..quadraticBezierTo(leftEyeCenter.dx, leftEyeCenter.dy - 8, leftEyeCenter.dx + 10, leftEyeCenter.dy);
+        ..quadraticBezierTo(
+          leftEyeCenter.dx,
+          leftEyeCenter.dy - 8,
+          leftEyeCenter.dx + 10,
+          leftEyeCenter.dy,
+        );
       final pRight = Path()
         ..moveTo(rightEyeCenter.dx - 10, rightEyeCenter.dy)
-        ..quadraticBezierTo(rightEyeCenter.dx, rightEyeCenter.dy - 8, rightEyeCenter.dx + 10, rightEyeCenter.dy);
+        ..quadraticBezierTo(
+          rightEyeCenter.dx,
+          rightEyeCenter.dy - 8,
+          rightEyeCenter.dx + 10,
+          rightEyeCenter.dy,
+        );
 
       canvas.drawPath(pLeft, sleepPaint);
       canvas.drawPath(pRight, sleepPaint);
@@ -298,10 +334,20 @@ class _CatPainter extends CustomPainter {
 
       final pLeft = Path()
         ..moveTo(leftEyeCenter.dx - 11, leftEyeCenter.dy + 2)
-        ..quadraticBezierTo(leftEyeCenter.dx, leftEyeCenter.dy - 10, leftEyeCenter.dx + 11, leftEyeCenter.dy + 2);
+        ..quadraticBezierTo(
+          leftEyeCenter.dx,
+          leftEyeCenter.dy - 10,
+          leftEyeCenter.dx + 11,
+          leftEyeCenter.dy + 2,
+        );
       final pRight = Path()
         ..moveTo(rightEyeCenter.dx - 11, rightEyeCenter.dy + 2)
-        ..quadraticBezierTo(rightEyeCenter.dx, rightEyeCenter.dy - 10, rightEyeCenter.dx + 11, rightEyeCenter.dy + 2);
+        ..quadraticBezierTo(
+          rightEyeCenter.dx,
+          rightEyeCenter.dy - 10,
+          rightEyeCenter.dx + 11,
+          rightEyeCenter.dy + 2,
+        );
 
       canvas.drawPath(pLeft, happyPaint);
       canvas.drawPath(pRight, happyPaint);
@@ -312,13 +358,29 @@ class _CatPainter extends CustomPainter {
       canvas.drawCircle(rightEyeCenter, eyeRadius, eyePaint);
 
       // Light reflection
-      canvas.drawCircle(Offset(leftEyeCenter.dx - 3, leftEyeCenter.dy - 3), eyeRadius * 0.35, eyeWhite);
-      canvas.drawCircle(Offset(rightEyeCenter.dx - 3, rightEyeCenter.dy - 3), eyeRadius * 0.35, eyeWhite);
+      canvas.drawCircle(
+        Offset(leftEyeCenter.dx - 3, leftEyeCenter.dy - 3),
+        eyeRadius * 0.35,
+        eyeWhite,
+      );
+      canvas.drawCircle(
+        Offset(rightEyeCenter.dx - 3, rightEyeCenter.dy - 3),
+        eyeRadius * 0.35,
+        eyeWhite,
+      );
 
       if (mood == CatMood.excited) {
         // Extra star twinkle in eyes
-        canvas.drawCircle(Offset(leftEyeCenter.dx + 4, leftEyeCenter.dy + 3), eyeRadius * 0.2, eyeWhite);
-        canvas.drawCircle(Offset(rightEyeCenter.dx + 4, rightEyeCenter.dy + 3), eyeRadius * 0.2, eyeWhite);
+        canvas.drawCircle(
+          Offset(leftEyeCenter.dx + 4, leftEyeCenter.dy + 3),
+          eyeRadius * 0.2,
+          eyeWhite,
+        );
+        canvas.drawCircle(
+          Offset(rightEyeCenter.dx + 4, rightEyeCenter.dy + 3),
+          eyeRadius * 0.2,
+          eyeWhite,
+        );
       }
     }
   }
@@ -343,8 +405,18 @@ class _CatPainter extends CustomPainter {
 
     final mouthPath = Path();
     mouthPath.moveTo(noseCenter.dx - 8, noseCenter.dy + 9);
-    mouthPath.quadraticBezierTo(noseCenter.dx - 4, noseCenter.dy + 12, noseCenter.dx, noseCenter.dy + 7);
-    mouthPath.quadraticBezierTo(noseCenter.dx + 4, noseCenter.dy + 12, noseCenter.dx + 8, noseCenter.dy + 9);
+    mouthPath.quadraticBezierTo(
+      noseCenter.dx - 4,
+      noseCenter.dy + 12,
+      noseCenter.dx,
+      noseCenter.dy + 7,
+    );
+    mouthPath.quadraticBezierTo(
+      noseCenter.dx + 4,
+      noseCenter.dy + 12,
+      noseCenter.dx + 8,
+      noseCenter.dy + 9,
+    );
     canvas.drawPath(mouthPath, mouthPaint);
 
     // Whiskers (Râu mèo)
@@ -355,12 +427,28 @@ class _CatPainter extends CustomPainter {
       ..strokeCap = StrokeCap.round;
 
     // Left whiskers
-    canvas.drawLine(Offset(center.dx - radius * 0.45, center.dy + radius * 0.1), Offset(center.dx - radius * 0.85, center.dy + radius * 0.05), whiskerPaint);
-    canvas.drawLine(Offset(center.dx - radius * 0.45, center.dy + radius * 0.18), Offset(center.dx - radius * 0.82, center.dy + radius * 0.22), whiskerPaint);
+    canvas.drawLine(
+      Offset(center.dx - radius * 0.45, center.dy + radius * 0.1),
+      Offset(center.dx - radius * 0.85, center.dy + radius * 0.05),
+      whiskerPaint,
+    );
+    canvas.drawLine(
+      Offset(center.dx - radius * 0.45, center.dy + radius * 0.18),
+      Offset(center.dx - radius * 0.82, center.dy + radius * 0.22),
+      whiskerPaint,
+    );
 
     // Right whiskers
-    canvas.drawLine(Offset(center.dx + radius * 0.45, center.dy + radius * 0.1), Offset(center.dx + radius * 0.85, center.dy + radius * 0.05), whiskerPaint);
-    canvas.drawLine(Offset(center.dx + radius * 0.45, center.dy + radius * 0.18), Offset(center.dx + radius * 0.82, center.dy + radius * 0.22), whiskerPaint);
+    canvas.drawLine(
+      Offset(center.dx + radius * 0.45, center.dy + radius * 0.1),
+      Offset(center.dx + radius * 0.85, center.dy + radius * 0.05),
+      whiskerPaint,
+    );
+    canvas.drawLine(
+      Offset(center.dx + radius * 0.45, center.dy + radius * 0.18),
+      Offset(center.dx + radius * 0.82, center.dy + radius * 0.22),
+      whiskerPaint,
+    );
   }
 
   void _drawPaws(Canvas canvas, Offset center, double radius) {
@@ -370,14 +458,48 @@ class _CatPainter extends CustomPainter {
       ..style = PaintingStyle.stroke
       ..strokeWidth = 2;
 
-    final leftPaw = Offset(center.dx - radius * 0.45, center.dy + radius * 0.78);
-    final rightPaw = Offset(center.dx + radius * 0.45, center.dy + radius * 0.78);
+    final leftPaw = Offset(
+      center.dx - radius * 0.45,
+      center.dy + radius * 0.78,
+    );
+    final rightPaw = Offset(
+      center.dx + radius * 0.45,
+      center.dy + radius * 0.78,
+    );
 
-    canvas.drawOval(Rect.fromCenter(center: leftPaw, width: radius * 0.38, height: radius * 0.28), pawPaint);
-    canvas.drawOval(Rect.fromCenter(center: leftPaw, width: radius * 0.38, height: radius * 0.28), pawBorder);
+    canvas.drawOval(
+      Rect.fromCenter(
+        center: leftPaw,
+        width: radius * 0.38,
+        height: radius * 0.28,
+      ),
+      pawPaint,
+    );
+    canvas.drawOval(
+      Rect.fromCenter(
+        center: leftPaw,
+        width: radius * 0.38,
+        height: radius * 0.28,
+      ),
+      pawBorder,
+    );
 
-    canvas.drawOval(Rect.fromCenter(center: rightPaw, width: radius * 0.38, height: radius * 0.28), pawPaint);
-    canvas.drawOval(Rect.fromCenter(center: rightPaw, width: radius * 0.38, height: radius * 0.28), pawBorder);
+    canvas.drawOval(
+      Rect.fromCenter(
+        center: rightPaw,
+        width: radius * 0.38,
+        height: radius * 0.28,
+      ),
+      pawPaint,
+    );
+    canvas.drawOval(
+      Rect.fromCenter(
+        center: rightPaw,
+        width: radius * 0.38,
+        height: radius * 0.28,
+      ),
+      pawBorder,
+    );
   }
 
   void _drawCollarAndPouch(Canvas canvas, Offset center, double radius) {
@@ -390,7 +512,12 @@ class _CatPainter extends CustomPainter {
 
     final collarPath = Path()
       ..moveTo(center.dx - radius * 0.5, center.dy + radius * 0.6)
-      ..quadraticBezierTo(center.dx, center.dy + radius * 0.75, center.dx + radius * 0.5, center.dy + radius * 0.6);
+      ..quadraticBezierTo(
+        center.dx,
+        center.dy + radius * 0.75,
+        center.dx + radius * 0.5,
+        center.dy + radius * 0.6,
+      );
     canvas.drawPath(collarPath, collarPaint);
 
     // Golden coin pouch (Túi tiền nhỏ ở cổ theo Mục 3.1)
@@ -400,7 +527,11 @@ class _CatPainter extends CustomPainter {
 
     // Pouch tie string
     final tiePaint = Paint()..color = const Color(0xFFE63946);
-    canvas.drawCircle(Offset(pouchCenter.dx, pouchCenter.dy - radius * 0.12), radius * 0.04, tiePaint);
+    canvas.drawCircle(
+      Offset(pouchCenter.dx, pouchCenter.dy - radius * 0.12),
+      radius * 0.04,
+      tiePaint,
+    );
 
     // Coin symbol "Xu"
     final coinBorder = Paint()
@@ -416,8 +547,14 @@ class _CatPainter extends CustomPainter {
       ..style = PaintingStyle.stroke
       ..strokeWidth = 2.5;
 
-    final leftCenter = Offset(center.dx - radius * 0.36, center.dy - radius * 0.05);
-    final rightCenter = Offset(center.dx + radius * 0.36, center.dy - radius * 0.05);
+    final leftCenter = Offset(
+      center.dx - radius * 0.36,
+      center.dy - radius * 0.05,
+    );
+    final rightCenter = Offset(
+      center.dx + radius * 0.36,
+      center.dy - radius * 0.05,
+    );
     final frameRadius = radius * 0.22;
 
     canvas.drawCircle(leftCenter, frameRadius, framePaint);

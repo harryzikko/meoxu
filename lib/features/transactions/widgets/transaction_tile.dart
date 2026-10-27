@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_typography.dart';
 import '../../../core/utils/currency_formatter.dart';
@@ -104,7 +105,9 @@ class TransactionTile extends StatelessWidget {
                           item.note.isEmpty ? cat.name : item.note,
                           style: AppTypography.titleMedium.copyWith(
                             fontSize: 15,
-                            color: isDark ? AppColors.darkTextPrimary : AppColors.textPrimary,
+                            color: isDark
+                                ? AppColors.darkTextPrimary
+                                : AppColors.textPrimary,
                           ),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
@@ -113,9 +116,13 @@ class TransactionTile extends StatelessWidget {
                       if (item.emotion != null) ...[
                         const SizedBox(width: 6),
                         Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 6,
+                            vertical: 2,
+                          ),
                           decoration: BoxDecoration(
-                            color: _getEmotionColor(item.emotion).withOpacity(0.2),
+                            color: _getEmotionColor(item.emotion)
+                                .withOpacity(0.2),
                             borderRadius: BorderRadius.circular(8),
                           ),
                           child: Text(
@@ -156,7 +163,9 @@ class TransactionTile extends StatelessWidget {
                 fontWeight: FontWeight.w800,
                 color: item.isIncome
                     ? AppColors.success
-                    : (isDark ? AppColors.darkTextPrimary : AppColors.textPrimary),
+                    : (isDark
+                          ? AppColors.darkTextPrimary
+                          : AppColors.textPrimary),
               ),
             ),
           ],

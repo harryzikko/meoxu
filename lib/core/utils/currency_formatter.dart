@@ -41,7 +41,8 @@ class CurrencyFormatter {
     }
 
     // Pattern for '1.5tr', '2.8m'
-    final decimalTrMatch = RegExp(r'^(\d+(?:\.\d+)?)(?:tr|m)$').firstMatch(cleaned);
+    final decimalTrMatch = RegExp(r'^(\d+(?:\.\d+)?)(?:tr|m)$')
+        .firstMatch(cleaned);
     if (decimalTrMatch != null) {
       final val = double.tryParse(decimalTrMatch.group(1)!);
       if (val != null) return val * 1000000.0;

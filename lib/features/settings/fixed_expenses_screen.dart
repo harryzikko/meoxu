@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../../core/constants/app_colors.dart';
 import '../../core/constants/app_typography.dart';
 import '../../core/utils/currency_formatter.dart';
@@ -10,7 +11,8 @@ class FixedExpensesScreen extends ConsumerStatefulWidget {
   const FixedExpensesScreen({super.key});
 
   @override
-  ConsumerState<FixedExpensesScreen> createState() => _FixedExpensesScreenState();
+  ConsumerState<FixedExpensesScreen> createState() =>
+      _FixedExpensesScreenState();
 }
 
 class _FixedExpensesScreenState extends ConsumerState<FixedExpensesScreen> {
@@ -29,7 +31,9 @@ class _FixedExpensesScreenState extends ConsumerState<FixedExpensesScreen> {
             children: [
               TextField(
                 controller: nameCtrl,
-                decoration: const InputDecoration(labelText: 'Tên khoản chi (ví dụ: Tiền trọ)'),
+                decoration: const InputDecoration(
+                  labelText: 'Tên khoản chi (ví dụ: Tiền trọ)',
+                ),
               ),
               const SizedBox(height: 10),
               TextField(
@@ -40,9 +44,14 @@ class _FixedExpensesScreenState extends ConsumerState<FixedExpensesScreen> {
               const SizedBox(height: 10),
               DropdownButtonFormField<int>(
                 value: day,
-                decoration: const InputDecoration(labelText: 'Ngày thanh toán trong tháng'),
+                decoration: const InputDecoration(
+                  labelText: 'Ngày thanh toán trong tháng',
+                ),
                 items: List.generate(31, (i) => i + 1).map((d) {
-                  return DropdownMenuItem(value: d, child: Text('Ngày $d hàng tháng'));
+                  return DropdownMenuItem(
+                    value: d,
+                    child: Text('Ngày $d hàng tháng'),
+                  );
                 }).toList(),
                 onChanged: (val) {
                   if (val != null) setDlgState(() => day = val);
@@ -57,7 +66,9 @@ class _FixedExpensesScreenState extends ConsumerState<FixedExpensesScreen> {
             ),
             ElevatedButton(
               onPressed: () {
-                final amount = double.tryParse(amountCtrl.text.replaceAll('.', '').replaceAll(',', ''));
+                final amount = double.tryParse(
+                  amountCtrl.text.replaceAll('.', '').replaceAll(',', ''),
+                );
                 if (amount != null && nameCtrl.text.trim().isNotEmpty) {
                   final newExp = FixedExpense(
                     id: DateTime.now().millisecondsSinceEpoch.toString(),
@@ -65,7 +76,9 @@ class _FixedExpensesScreenState extends ConsumerState<FixedExpensesScreen> {
                     amount: amount,
                     dayOfMonth: day,
                   );
-                  ref.read(fixedExpensesProvider.notifier).addFixedExpense(newExp);
+                  ref
+                      .read(fixedExpensesProvider.notifier)
+                      .addFixedExpense(newExp);
                   Navigator.pop(ctx);
                 }
               },
@@ -85,9 +98,7 @@ class _FixedExpensesScreenState extends ConsumerState<FixedExpensesScreen> {
     final totalFixed = fixedList.fold<double>(0.0, (sum, e) => sum + e.amount);
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Khoản chi cố định'),
-      ),
+      appBar: AppBar(title: const Text('Khoản chi cố định')),
       floatingActionButton: FloatingActionButton(
         onPressed: _showAddDialog,
         backgroundColor: AppColors.primary,
@@ -100,7 +111,9 @@ class _FixedExpensesScreenState extends ConsumerState<FixedExpensesScreen> {
             padding: const EdgeInsets.all(20),
             margin: const EdgeInsets.all(16),
             decoration: BoxDecoration(
-              color: isDark ? AppColors.darkSurfaceVariant : AppColors.surfaceVariant,
+              color: isDark
+                  ? AppColors.darkSurfaceVariant
+                  : AppColors.surfaceVariant,
               borderRadius: BorderRadius.circular(20),
             ),
             child: Row(
@@ -109,15 +122,25 @@ class _FixedExpensesScreenState extends ConsumerState<FixedExpensesScreen> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Tổng chi cố định hàng tháng', style: AppTypography.caption),
+                    Text(
+                      'Tổng chi cố định hàng tháng',
+                      style: AppTypography.caption,
+                    ),
                     const SizedBox(height: 4),
                     Text(
                       CurrencyFormatter.format(totalFixed),
-                      style: AppTypography.displayMedium.copyWith(fontSize: 22, fontWeight: FontWeight.w800),
+                      style: AppTypography.displayMedium.copyWith(
+                        fontSize: 22,
+                        fontWeight: FontWeight.w800,
+                      ),
                     ),
                   ],
                 ),
-                const Icon(Icons.shield_outlined, color: AppColors.primaryDark, size: 32),
+                const Icon(
+                  Icons.shield_outlined,
+                  color: AppColors.primaryDark,
+                  size: 32,
+                ),
               ],
             ),
           ),
@@ -125,7 +148,10 @@ class _FixedExpensesScreenState extends ConsumerState<FixedExpensesScreen> {
           Expanded(
             child: fixedList.isEmpty
                 ? Center(
-                    child: Text('Chưa có khoản cố định nào', style: AppTypography.bodyMedium),
+                    child: Text(
+                      'Chưa có khoản cố định nào',
+                      style: AppTypography.bodyMedium,
+                    ),
                   )
                 : ListView.builder(
                     padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -138,29 +164,52 @@ class _FixedExpensesScreenState extends ConsumerState<FixedExpensesScreen> {
                         decoration: BoxDecoration(
                           color: isDark ? AppColors.darkSurface : Colors.white,
                           borderRadius: BorderRadius.circular(16),
-                          border: Border.all(color: isDark ? AppColors.darkBorder : AppColors.border),
+                          border: Border.all(
+                            color: isDark
+                                ? AppColors.darkBorder
+                                : AppColors.border,
+                          ),
                         ),
                         child: Row(
                           children: [
-                            const Icon(Icons.receipt_rounded, color: AppColors.primaryDark),
+                            const Icon(
+                              Icons.receipt_rounded,
+                              color: AppColors.primaryDark,
+                            ),
                             const SizedBox(width: 12),
                             Expanded(
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(item.name, style: AppTypography.titleMedium.copyWith(fontSize: 15)),
-                                  Text('Thanh toán ngày ${item.dayOfMonth}', style: AppTypography.caption),
+                                  Text(
+                                    item.name,
+                                    style: AppTypography.titleMedium.copyWith(
+                                      fontSize: 15,
+                                    ),
+                                  ),
+                                  Text(
+                                    'Thanh toán ngày ${item.dayOfMonth}',
+                                    style: AppTypography.caption,
+                                  ),
                                 ],
                               ),
                             ),
                             Text(
                               CurrencyFormatter.format(item.amount),
-                              style: AppTypography.titleMedium.copyWith(fontWeight: FontWeight.w700),
+                              style: AppTypography.titleMedium.copyWith(
+                                fontWeight: FontWeight.w700,
+                              ),
                             ),
                             IconButton(
-                              icon: const Icon(Icons.delete_outline_rounded, color: AppColors.danger, size: 20),
+                              icon: const Icon(
+                                Icons.delete_outline_rounded,
+                                color: AppColors.danger,
+                                size: 20,
+                              ),
                               onPressed: () {
-                                ref.read(fixedExpensesProvider.notifier).removeFixedExpense(item.id);
+                                ref
+                                    .read(fixedExpensesProvider.notifier)
+                                    .removeFixedExpense(item.id);
                               },
                             ),
                           ],

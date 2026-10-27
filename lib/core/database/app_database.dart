@@ -1,5 +1,6 @@
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
+
 import '../../models/user_profile.dart';
 import '../../models/transaction_item.dart';
 import '../../models/fixed_expense.dart';
@@ -22,11 +23,7 @@ class AppDatabase {
     final dbPath = await getDatabasesPath();
     final path = join(dbPath, filePath);
 
-    return await openDatabase(
-      path,
-      version: 1,
-      onCreate: _createDB,
-    );
+    return await openDatabase(path, version: 1, onCreate: _createDB);
   }
 
   Future<void> _createDB(Database db, int version) async {
@@ -109,7 +106,10 @@ class AppDatabase {
     ''');
 
     // Insert initial default profile & states
-    await db.insert('user_profile', const UserProfile(id: 'default_user').toMap());
+    await db.insert(
+      'user_profile',
+      const UserProfile(id: 'default_user').toMap(),
+    );
     await db.insert('cat_state', {'id': 1, ...const CatState().toMap()});
     await db.insert('streak_state', {'id': 1, ...const StreakState().toMap()});
   }
@@ -173,17 +173,16 @@ class AppDatabase {
 
   Future<void> deleteTransaction(String id) async {
     final db = await database;
-    await db.delete(
-      'transactions',
-      where: 'id = ?',
-      whereArgs: [id],
-    );
+    await db.delete('transactions', where: 'id = ?', whereArgs: [id]);
   }
 
   // --- Fixed Expenses Operations ---
   Future<List<FixedExpense>> getFixedExpenses() async {
     final db = await database;
-    final results = await db.query('fixed_expenses', orderBy: 'day_of_month ASC');
+    final results = await db.query(
+      'fixed_expenses',
+      orderBy: 'day_of_month ASC',
+    );
     return results.map((e) => FixedExpense.fromMap(e)).toList();
   }
 
@@ -243,11 +242,10 @@ class AppDatabase {
 
   Future<void> saveKeywordRule(String keyword, String categoryId) async {
     final db = await database;
-    await db.insert(
-      'keyword_rules',
-      {'keyword': keyword.toLowerCase().trim(), 'category_id': categoryId},
-      conflictAlgorithm: ConflictAlgorithm.replace,
-    );
+    await db.insert('keyword_rules', {
+      'keyword': keyword.toLowerCase().trim(),
+      'category_id': categoryId,
+    }, conflictAlgorithm: ConflictAlgorithm.replace);
   }
 
   Future<void> close() async {

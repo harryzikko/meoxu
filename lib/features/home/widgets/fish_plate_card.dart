@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_typography.dart';
 import '../../../core/utils/currency_formatter.dart';
@@ -8,11 +9,7 @@ class FishPlateCard extends StatelessWidget {
   final BudgetCalculationResult budget;
   final ValueChanged<double>? onSavingChanged;
 
-  const FishPlateCard({
-    super.key,
-    required this.budget,
-    this.onSavingChanged,
-  });
+  const FishPlateCard({super.key, required this.budget, this.onSavingChanged});
 
   @override
   Widget build(BuildContext context) {
@@ -46,12 +43,18 @@ class FishPlateCard extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Icon(Icons.wb_sunny_rounded, size: 16, color: AppColors.primaryDark),
+              const Icon(
+                Icons.wb_sunny_rounded,
+                size: 16,
+                color: AppColors.primaryDark,
+              ),
               const SizedBox(width: 6),
               Text(
                 'Hôm nay thoải mái tiêu',
                 style: AppTypography.titleMedium.copyWith(
-                  color: isDark ? AppColors.darkTextSecondary : AppColors.textSecondary,
+                  color: isDark
+                      ? AppColors.darkTextSecondary
+                      : AppColors.textSecondary,
                   fontSize: 15,
                 ),
               ),
@@ -68,7 +71,9 @@ class FishPlateCard extends StatelessWidget {
                 fontWeight: FontWeight.w900,
                 color: budget.isOverspent
                     ? AppColors.danger
-                    : (isDark ? AppColors.darkTextPrimary : AppColors.textPrimary),
+                    : (isDark
+                          ? AppColors.darkTextPrimary
+                          : AppColors.textPrimary),
               ),
             ),
           ),
@@ -78,7 +83,9 @@ class FishPlateCard extends StatelessWidget {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
             decoration: BoxDecoration(
-              color: isDark ? AppColors.darkSurfaceVariant : AppColors.surfaceVariant,
+              color: isDark
+                  ? AppColors.darkSurfaceVariant
+                  : AppColors.surfaceVariant,
               borderRadius: BorderRadius.circular(30),
             ),
             child: Row(
@@ -88,7 +95,9 @@ class FishPlateCard extends StatelessWidget {
                   'Đĩa cá khô: ',
                   style: AppTypography.caption.copyWith(
                     fontWeight: FontWeight.w600,
-                    color: isDark ? AppColors.darkTextSecondary : AppColors.textSecondary,
+                    color: isDark
+                        ? AppColors.darkTextSecondary
+                        : AppColors.textSecondary,
                   ),
                 ),
                 const SizedBox(width: 4),
@@ -127,7 +136,11 @@ class FishPlateCard extends StatelessWidget {
               ),
               child: const Text(
                 'Mèo đã tự cân bằng lại cá cho các ngày sau rồi nhé! Thong thả nha~',
-                style: TextStyle(fontSize: 12, color: AppColors.textPrimary, fontWeight: FontWeight.w500),
+                style: TextStyle(
+                  fontSize: 12,
+                  color: AppColors.textPrimary,
+                  fontWeight: FontWeight.w500,
+                ),
                 textAlign: TextAlign.center,
               ),
             ),
@@ -143,7 +156,9 @@ class FishPlateCard extends StatelessWidget {
               Text(
                 'Mục tiêu tiết kiệm:',
                 style: AppTypography.caption.copyWith(
-                  color: isDark ? AppColors.darkTextSecondary : AppColors.textSecondary,
+                  color: isDark
+                      ? AppColors.darkTextSecondary
+                      : AppColors.textSecondary,
                   fontWeight: FontWeight.w600,
                 ),
               ),
@@ -160,7 +175,9 @@ class FishPlateCard extends StatelessWidget {
           SliderTheme(
             data: SliderTheme.of(context).copyWith(
               activeTrackColor: AppColors.primary,
-              inactiveTrackColor: isDark ? AppColors.darkBorder : AppColors.border,
+              inactiveTrackColor: isDark
+                  ? AppColors.darkBorder
+                  : AppColors.border,
               thumbColor: AppColors.primaryDark,
               trackHeight: 4,
               thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 7),

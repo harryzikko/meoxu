@@ -5,15 +5,15 @@ class AppColors {
   static const Color primary = Color(0xFFFFB26B); // Cam đào
   static const Color primaryLight = Color(0xFFFFCC99);
   static const Color primaryDark = Color(0xFFE58D43);
-  
+
   static const Color background = Color(0xFFFFF8F0); // Nền kem
   static const Color surface = Color(0xFFFFFFFF);
   static const Color surfaceVariant = Color(0xFFFFF2E2);
-  
+
   static const Color textPrimary = Color(0xFF4A3728); // Chữ nâu đậm
   static const Color textSecondary = Color(0xFF8A7565);
   static const Color textTertiary = Color(0xFFB5A699);
-  
+
   static const Color border = Color(0xFFEFE2D3);
   static const Color divider = Color(0xFFF5EBE1);
 

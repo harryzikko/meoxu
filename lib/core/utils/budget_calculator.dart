@@ -52,7 +52,8 @@ class BudgetCalculator {
     );
 
     // 2. Saving amount
-    final savingAmount = (profile.monthlyIncome * (profile.savingPercentage / 100.0));
+    final savingAmount =
+        (profile.monthlyIncome * (profile.savingPercentage / 100.0));
 
     // 3. Monthly budget for variable spending
     // ngân_sách_tháng = thu_nhập_dự_kiến − chi_cố_định − mục_tiêu_tiết_kiệm
@@ -78,16 +79,21 @@ class BudgetCalculator {
     // 5. Daily allowance formula from Section 4.3:
     // chi_thoải_mái_hôm_nay = (ngân_sách_tháng − đã_chi_thoải_mái_từ_đầu_tháng) / ngày_còn_lại
     final availablePool = monthlyBudget - spentBeforeToday;
-    double dailyAllowance = remainingDays > 0 ? (availablePool / remainingDays) : 0.0;
+    double dailyAllowance = remainingDays > 0
+        ? (availablePool / remainingDays)
+        : 0.0;
     if (dailyAllowance < 0) dailyAllowance = 0.0;
 
     // Remaining today
     final remainingToday = dailyAllowance - spentToday;
     final isOverspent = remainingToday <= 0;
-    final isUnder20Percent = dailyAllowance > 0 && (remainingToday / dailyAllowance) <= 0.2;
+    final isUnder20Percent =
+        dailyAllowance > 0 && (remainingToday / dailyAllowance) <= 0.2;
 
     // Fish percentage for visualization
-    double fishPct = dailyAllowance > 0 ? (remainingToday / dailyAllowance) : 0.0;
+    double fishPct = dailyAllowance > 0
+        ? (remainingToday / dailyAllowance)
+        : 0.0;
     if (fishPct < 0.0) fishPct = 0.0;
     if (fishPct > 1.0) fishPct = 1.0;
 

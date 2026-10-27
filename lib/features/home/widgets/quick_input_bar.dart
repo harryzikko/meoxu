@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_typography.dart';
 
@@ -65,7 +66,10 @@ class _QuickInputBarState extends State<QuickInputBar> {
             // Manual Keypad button
             IconButton(
               onPressed: widget.onManualInputTap,
-              icon: const Icon(Icons.dialpad_rounded, color: AppColors.textSecondary),
+              icon: const Icon(
+                Icons.dialpad_rounded,
+                color: AppColors.textSecondary,
+              ),
               tooltip: 'Nhập tay bằng số',
             ),
             const SizedBox(width: 4),
@@ -74,7 +78,9 @@ class _QuickInputBarState extends State<QuickInputBar> {
             Expanded(
               child: Container(
                 decoration: BoxDecoration(
-                  color: isDark ? AppColors.darkSurfaceVariant : AppColors.background,
+                  color: isDark
+                      ? AppColors.darkSurfaceVariant
+                      : AppColors.background,
                   borderRadius: BorderRadius.circular(24),
                 ),
                 child: TextField(
@@ -83,7 +89,9 @@ class _QuickInputBarState extends State<QuickInputBar> {
                   onSubmitted: (_) => _handleSubmitted(),
                   style: TextStyle(
                     fontFamily: AppTypography.fontFamily,
-                    color: isDark ? AppColors.darkTextPrimary : AppColors.textPrimary,
+                    color: isDark
+                        ? AppColors.darkTextPrimary
+                        : AppColors.textPrimary,
                     fontSize: 14,
                   ),
                   decoration: const InputDecoration(
@@ -91,7 +99,10 @@ class _QuickInputBarState extends State<QuickInputBar> {
                     border: InputBorder.none,
                     enabledBorder: InputBorder.none,
                     focusedBorder: InputBorder.none,
-                    contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                    contentPadding: EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 12,
+                    ),
                   ),
                 ),
               ),

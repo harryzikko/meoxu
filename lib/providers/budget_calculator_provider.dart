@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../core/utils/budget_calculator.dart';
 import 'profile_provider.dart';
 import 'fixed_expenses_provider.dart';

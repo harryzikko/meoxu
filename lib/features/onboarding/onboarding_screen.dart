@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../../core/constants/app_colors.dart';
 import '../../core/constants/app_typography.dart';
 import '../../core/constants/app_strings.dart';
@@ -26,18 +27,45 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
   String _catBreed = 'orange';
 
   // Step 3: Finance Info
-  final TextEditingController _incomeController = TextEditingController(text: '12000000');
+  final TextEditingController _incomeController = TextEditingController(
+    text: '12000000',
+  );
   double _savingPercent = 20.0;
 
   // Step 4: Reminder Time
   TimeOfDay _reminderTime = const TimeOfDay(hour: 20, minute: 30);
 
   final List<Map<String, dynamic>> _breeds = [
-    {'id': 'orange', 'name': 'Mèo Cam', 'color': Color(0xFFFFB26B), 'emoji': '🐱'},
-    {'id': 'tabby', 'name': 'Mèo Mướp', 'color': Color(0xFFC7A788), 'emoji': '🐯'},
-    {'id': 'calico', 'name': 'Tam Thể', 'color': Color(0xFFF0D5BA), 'emoji': '🐾'},
-    {'id': 'black', 'name': 'Mèo Đen', 'color': Color(0xFF4A4440), 'emoji': '🐈‍⬛'},
-    {'id': 'white', 'name': 'Mèo Trắng', 'color': Color(0xFFFAF7F2), 'emoji': '🤍'},
+    {
+      'id': 'orange',
+      'name': 'Mèo Cam',
+      'color': Color(0xFFFFB26B),
+      'emoji': '🐱',
+    },
+    {
+      'id': 'tabby',
+      'name': 'Mèo Mướp',
+      'color': Color(0xFFC7A788),
+      'emoji': '🐯',
+    },
+    {
+      'id': 'calico',
+      'name': 'Tam Thể',
+      'color': Color(0xFFF0D5BA),
+      'emoji': '🐾',
+    },
+    {
+      'id': 'black',
+      'name': 'Mèo Đen',
+      'color': Color(0xFF4A4440),
+      'emoji': '🐈‍⬛',
+    },
+    {
+      'id': 'white',
+      'name': 'Mèo Trắng',
+      'color': Color(0xFFFAF7F2),
+      'emoji': '🤍',
+    },
   ];
 
   @override
@@ -59,8 +87,13 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
   }
 
   Future<void> _finishOnboarding() async {
-    final income = double.tryParse(_incomeController.text.replaceAll('.', '').replaceAll(',', '')) ?? 12000000.0;
-    final timeStr = '${_reminderTime.hour.toString().padLeft(2, '0')}:${_reminderTime.minute.toString().padLeft(2, '0')}';
+    final income =
+        double.tryParse(
+          _incomeController.text.replaceAll('.', '').replaceAll(',', ''),
+        ) ??
+        12000000.0;
+    final timeStr =
+        '${_reminderTime.hour.toString().padLeft(2, '0')}:${_reminderTime.minute.toString().padLeft(2, '0')}';
 
     final currentProfile = ref.read(profileProvider);
     final updated = currentProfile.copyWith(
@@ -98,7 +131,9 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                         width: isActive ? 24 : 8,
                         height: 8,
                         decoration: BoxDecoration(
-                          color: isActive ? AppColors.primaryDark : AppColors.border,
+                          color: isActive
+                              ? AppColors.primaryDark
+                              : AppColors.border,
                           borderRadius: BorderRadius.circular(4),
                         ),
                       );
@@ -108,7 +143,9 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                     onPressed: _finishOnboarding,
                     child: Text(
                       AppStrings.onboardSkipBtn,
-                      style: AppTypography.bodyMedium.copyWith(color: AppColors.textSecondary),
+                      style: AppTypography.bodyMedium.copyWith(
+                        color: AppColors.textSecondary,
+                      ),
                     ),
                   ),
                 ],
@@ -138,7 +175,9 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                 child: ElevatedButton(
                   onPressed: _nextPage,
                   child: Text(
-                    _currentStep == 3 ? AppStrings.onboardStartBtn : AppStrings.onboardNextBtn,
+                    _currentStep == 3
+                        ? AppStrings.onboardStartBtn
+                        : AppStrings.onboardNextBtn,
                   ),
                 ),
               ),
@@ -156,11 +195,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          MeoMascotWidget(
-            mood: CatMood.happy,
-            breed: _catBreed,
-            size: 200,
-          ),
+          MeoMascotWidget(mood: CatMood.happy, breed: _catBreed, size: 200),
           const SizedBox(height: 28),
           Text(
             AppStrings.onboardWelcomeTitle,
@@ -190,7 +225,9 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                 const SizedBox(width: 8),
                 Text(
                   'Tặng bạn 50 đĩa cá khô đầu tiên!',
-                  style: AppTypography.labelLarge.copyWith(color: AppColors.primaryDark),
+                  style: AppTypography.labelLarge.copyWith(
+                    color: AppColors.primaryDark,
+                  ),
                 ),
               ],
             ),
@@ -265,7 +302,10 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
             onChanged: (val) => setState(() => _catName = val),
             decoration: InputDecoration(
               hintText: AppStrings.onboardCatNameHint,
-              prefixIcon: const Icon(Icons.pets_rounded, color: AppColors.primaryDark),
+              prefixIcon: const Icon(
+                Icons.pets_rounded,
+                color: AppColors.primaryDark,
+              ),
             ),
           ),
         ],
@@ -294,13 +334,19 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
           ),
           const SizedBox(height: 30),
 
-          Text('Thu nhập ước tính hàng tháng:', style: AppTypography.titleMedium),
+          Text(
+            'Thu nhập ước tính hàng tháng:',
+            style: AppTypography.titleMedium,
+          ),
           const SizedBox(height: 8),
           TextField(
             controller: _incomeController,
             keyboardType: TextInputType.number,
             decoration: const InputDecoration(
-              prefixIcon: Icon(Icons.payments_rounded, color: AppColors.primaryDark),
+              prefixIcon: Icon(
+                Icons.payments_rounded,
+                color: AppColors.primaryDark,
+              ),
               suffixText: 'VNĐ',
             ),
           ),
@@ -309,10 +355,15 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('Mục tiêu tiết kiệm mong muốn:', style: AppTypography.titleMedium),
+              Text(
+                'Mục tiêu tiết kiệm mong muốn:',
+                style: AppTypography.titleMedium,
+              ),
               Text(
                 '${_savingPercent.toInt()}%',
-                style: AppTypography.titleMedium.copyWith(color: AppColors.primaryDark),
+                style: AppTypography.titleMedium.copyWith(
+                  color: AppColors.primaryDark,
+                ),
               ),
             ],
           ),
@@ -342,11 +393,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          MeoMascotWidget(
-            mood: CatMood.excited,
-            breed: _catBreed,
-            size: 160,
-          ),
+          MeoMascotWidget(mood: CatMood.excited, breed: _catBreed, size: 160),
           const SizedBox(height: 20),
           Text(
             'Chọn giờ mèo ghé thăm',
@@ -382,14 +429,20 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const Icon(Icons.notifications_active_rounded, color: AppColors.primaryDark),
+                  const Icon(
+                    Icons.notifications_active_rounded,
+                    color: AppColors.primaryDark,
+                  ),
                   const SizedBox(width: 12),
                   Text(
                     '${_reminderTime.hour.toString().padLeft(2, '0')}:${_reminderTime.minute.toString().padLeft(2, '0')}',
                     style: AppTypography.displayLarge.copyWith(fontSize: 28),
                   ),
                   const SizedBox(width: 8),
-                  const Icon(Icons.arrow_drop_down_rounded, color: AppColors.primaryDark),
+                  const Icon(
+                    Icons.arrow_drop_down_rounded,
+                    color: AppColors.primaryDark,
+                  ),
                 ],
               ),
             ),

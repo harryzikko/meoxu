@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../models/transaction_item.dart';
 import '../core/database/app_database.dart';
 
@@ -41,27 +42,35 @@ class TransactionNotifier extends StateNotifier<TransactionState> {
     }
   }
 
-  Future<void> addTransaction(TransactionItem item, {String? originalKeyword}) async {
+  Future<void> addTransaction(
+    TransactionItem item, {
+    String? originalKeyword,
+  }) async {
     await AppDatabase.instance.insertTransaction(item);
-    state = state.copyWith(
-      allTransactions: [item, ...state.allTransactions],
-    );
+    state = state.copyWith(allTransactions: [item, ...state.allTransactions]);
 
     // Learn keyword if provided
     if (originalKeyword != null && originalKeyword.isNotEmpty) {
-      await AppDatabase.instance.saveKeywordRule(originalKeyword, item.categoryId);
+      await AppDatabase.instance.saveKeywordRule(
+        originalKeyword,
+        item.categoryId,
+      );
     }
   }
 
   Future<void> updateTransaction(TransactionItem item) async {
     await AppDatabase.instance.updateTransaction(item);
     state = state.copyWith(
-      allTransactions: state.allTransactions.map((tx) => tx.id == item.id ? item : tx).toList(),
+      allTransactions: state.allTransactions
+          .map((tx) => tx.id == item.id ? item : tx)
+          .toList(),
     );
   }
 
   Future<void> attachEmotion(String transactionId, String emotion) async {
-    final txIndex = state.allTransactions.indexWhere((tx) => tx.id == transactionId);
+    final txIndex = state.allTransactions.indexWhere(
+      (tx) => tx.id == transactionId,
+    );
     if (txIndex != -1) {
       final updated = state.allTransactions[txIndex].copyWith(emotion: emotion);
       await updateTransaction(updated);
@@ -72,7 +81,9 @@ class TransactionNotifier extends StateNotifier<TransactionState> {
     final itemToDelete = state.allTransactions.firstWhere((tx) => tx.id == id);
     await AppDatabase.instance.deleteTransaction(id);
     state = state.copyWith(
-      allTransactions: state.allTransactions.where((tx) => tx.id != id).toList(),
+      allTransactions: state.allTransactions
+          .where((tx) => tx.id != id)
+          .toList(),
       lastDeletedItem: itemToDelete,
     );
   }
@@ -85,6 +96,7 @@ class TransactionNotifier extends StateNotifier<TransactionState> {
   }
 }
 
-final transactionProvider = StateNotifierProvider<TransactionNotifier, TransactionState>((ref) {
-  return TransactionNotifier();
-});
+final transactionProvider =
+    StateNotifierProvider<TransactionNotifier, TransactionState>((ref) {
+      return TransactionNotifier();
+    });

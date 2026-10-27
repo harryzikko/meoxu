@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'core/theme/app_theme.dart';
 import 'core/constants/app_colors.dart';
 import 'providers/profile_provider.dart';
@@ -66,10 +67,7 @@ class _MainNavigationScaffoldState extends State<MainNavigationScaffold> {
     ];
 
     return Scaffold(
-      body: IndexedStack(
-        index: _currentIndex,
-        children: screens,
-      ),
+      body: IndexedStack(index: _currentIndex, children: screens),
       bottomNavigationBar: NavigationBar(
         selectedIndex: _currentIndex,
         backgroundColor: isDark ? AppColors.darkSurface : Colors.white,
@@ -78,27 +76,42 @@ class _MainNavigationScaffoldState extends State<MainNavigationScaffold> {
         destinations: const [
           NavigationDestination(
             icon: Icon(Icons.home_outlined),
-            selectedIcon: Icon(Icons.home_rounded, color: AppColors.primaryDark),
+            selectedIcon: Icon(
+              Icons.home_rounded,
+              color: AppColors.primaryDark,
+            ),
             label: 'Trang chủ',
           ),
           NavigationDestination(
             icon: Icon(Icons.receipt_long_outlined),
-            selectedIcon: Icon(Icons.receipt_long_rounded, color: AppColors.primaryDark),
+            selectedIcon: Icon(
+              Icons.receipt_long_rounded,
+              color: AppColors.primaryDark,
+            ),
             label: 'Giao dịch',
           ),
           NavigationDestination(
             icon: Icon(Icons.auto_awesome_outlined),
-            selectedIcon: Icon(Icons.auto_awesome_rounded, color: AppColors.primaryDark),
+            selectedIcon: Icon(
+              Icons.auto_awesome_rounded,
+              color: AppColors.primaryDark,
+            ),
             label: 'Nếu như',
           ),
           NavigationDestination(
             icon: Icon(Icons.mark_email_unread_outlined),
-            selectedIcon: Icon(Icons.mark_email_unread_rounded, color: AppColors.primaryDark),
+            selectedIcon: Icon(
+              Icons.mark_email_unread_rounded,
+              color: AppColors.primaryDark,
+            ),
             label: 'Thư mèo',
           ),
           NavigationDestination(
             icon: Icon(Icons.settings_outlined),
-            selectedIcon: Icon(Icons.settings_rounded, color: AppColors.primaryDark),
+            selectedIcon: Icon(
+              Icons.settings_rounded,
+              color: AppColors.primaryDark,
+            ),
             label: 'Cài đặt',
           ),
         ],

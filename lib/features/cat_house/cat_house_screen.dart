@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../../core/constants/app_colors.dart';
 import '../../core/constants/app_typography.dart';
 import '../../models/badge_item.dart';
@@ -30,9 +31,7 @@ class _CatHouseScreenState extends ConsumerState<CatHouseScreen> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Nhà của ${profile.catName}'),
-      ),
+      appBar: AppBar(title: Text('Nhà của ${profile.catName}')),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
         child: Column(
@@ -41,7 +40,9 @@ class _CatHouseScreenState extends ConsumerState<CatHouseScreen> {
             Container(
               padding: const EdgeInsets.all(24),
               decoration: BoxDecoration(
-                color: isDark ? AppColors.darkSurfaceVariant : AppColors.surfaceVariant,
+                color: isDark
+                    ? AppColors.darkSurfaceVariant
+                    : AppColors.surfaceVariant,
                 borderRadius: BorderRadius.circular(28),
                 border: Border.all(color: AppColors.primaryLight),
               ),
@@ -52,7 +53,10 @@ class _CatHouseScreenState extends ConsumerState<CatHouseScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 12,
+                          vertical: 6,
+                        ),
                         decoration: BoxDecoration(
                           color: AppColors.primary,
                           borderRadius: BorderRadius.circular(14),
@@ -66,7 +70,10 @@ class _CatHouseScreenState extends ConsumerState<CatHouseScreen> {
                         ),
                       ),
                       Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 12,
+                          vertical: 6,
+                        ),
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(14),
@@ -78,7 +85,9 @@ class _CatHouseScreenState extends ConsumerState<CatHouseScreen> {
                             const SizedBox(width: 4),
                             Text(
                               '${catState.cat.fishPoints} cá khô',
-                              style: AppTypography.labelLarge.copyWith(color: AppColors.primaryDark),
+                              style: AppTypography.labelLarge.copyWith(
+                                color: AppColors.primaryDark,
+                              ),
                             ),
                           ],
                         ),
@@ -98,7 +107,10 @@ class _CatHouseScreenState extends ConsumerState<CatHouseScreen> {
 
                   // Streak Status Card
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 10,
+                    ),
                     decoration: BoxDecoration(
                       color: Colors.white.withOpacity(0.8),
                       borderRadius: BorderRadius.circular(18),
@@ -108,21 +120,44 @@ class _CatHouseScreenState extends ConsumerState<CatHouseScreen> {
                       children: [
                         Column(
                           children: [
-                            Text('🔥 ${catState.streak.currentStreak} ngày', style: AppTypography.titleMedium),
-                            Text('Chuỗi hiện tại', style: AppTypography.caption),
+                            Text(
+                              '🔥 ${catState.streak.currentStreak} ngày',
+                              style: AppTypography.titleMedium,
+                            ),
+                            Text(
+                              'Chuỗi hiện tại',
+                              style: AppTypography.caption,
+                            ),
                           ],
                         ),
-                        Container(width: 1, height: 30, color: AppColors.border),
+                        Container(
+                          width: 1,
+                          height: 30,
+                          color: AppColors.border,
+                        ),
                         Column(
                           children: [
-                            Text('🏆 ${catState.streak.recordStreak} ngày', style: AppTypography.titleMedium),
-                            Text('Kỷ lục cao nhất', style: AppTypography.caption),
+                            Text(
+                              '🏆 ${catState.streak.recordStreak} ngày',
+                              style: AppTypography.titleMedium,
+                            ),
+                            Text(
+                              'Kỷ lục cao nhất',
+                              style: AppTypography.caption,
+                            ),
                           ],
                         ),
-                        Container(width: 1, height: 30, color: AppColors.border),
+                        Container(
+                          width: 1,
+                          height: 30,
+                          color: AppColors.border,
+                        ),
                         Column(
                           children: [
-                            Text('🧊 ${catState.streak.freezeCardsLeft}', style: AppTypography.titleMedium),
+                            Text(
+                              '🧊 ${catState.streak.freezeCardsLeft}',
+                              style: AppTypography.titleMedium,
+                            ),
                             Text('Thẻ nghỉ còn', style: AppTypography.caption),
                           ],
                         ),
@@ -138,10 +173,15 @@ class _CatHouseScreenState extends ConsumerState<CatHouseScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('Tủ đồ phụ kiện cho mèo', style: AppTypography.titleMedium),
+                Text(
+                  'Tủ đồ phụ kiện cho mèo',
+                  style: AppTypography.titleMedium,
+                ),
                 Text(
                   'Dùng cá khô để đổi',
-                  style: AppTypography.caption.copyWith(color: AppColors.textSecondary),
+                  style: AppTypography.caption.copyWith(
+                    color: AppColors.textSecondary,
+                  ),
                 ),
               ],
             ),
@@ -154,29 +194,48 @@ class _CatHouseScreenState extends ConsumerState<CatHouseScreen> {
 
               return Container(
                 margin: const EdgeInsets.only(bottom: 8),
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 12,
+                ),
                 decoration: BoxDecoration(
                   color: isDark ? AppColors.darkSurface : Colors.white,
                   borderRadius: BorderRadius.circular(16),
                   border: Border.all(
-                    color: isEquipped ? AppColors.primary : (isDark ? AppColors.darkBorder : AppColors.border),
+                    color: isEquipped
+                        ? AppColors.primary
+                        : (isDark ? AppColors.darkBorder : AppColors.border),
                     width: isEquipped ? 1.5 : 1.0,
                   ),
                 ),
                 child: Row(
                   children: [
-                    Text(acc['icon'] as String, style: const TextStyle(fontSize: 22)),
+                    Text(
+                      acc['icon'] as String,
+                      style: const TextStyle(fontSize: 22),
+                    ),
                     const SizedBox(width: 12),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(acc['name'] as String, style: AppTypography.titleMedium.copyWith(fontSize: 15)),
                           Text(
-                            isUnlocked ? (isEquipped ? 'Đang mặc' : 'Đã sở hữu') : 'Giá: $cost 🐟',
+                            acc['name'] as String,
+                            style: AppTypography.titleMedium.copyWith(
+                              fontSize: 15,
+                            ),
+                          ),
+                          Text(
+                            isUnlocked
+                                ? (isEquipped ? 'Đang mặc' : 'Đã sở hữu')
+                                : 'Giá: $cost 🐟',
                             style: AppTypography.caption.copyWith(
-                              color: isEquipped ? AppColors.primaryDark : AppColors.textTertiary,
-                              fontWeight: isEquipped ? FontWeight.w700 : FontWeight.w500,
+                              color: isEquipped
+                                  ? AppColors.primaryDark
+                                  : AppColors.textTertiary,
+                              fontWeight: isEquipped
+                                  ? FontWeight.w700
+                                  : FontWeight.w500,
                             ),
                           ),
                         ],
@@ -185,11 +244,18 @@ class _CatHouseScreenState extends ConsumerState<CatHouseScreen> {
                     if (isUnlocked)
                       ElevatedButton(
                         onPressed: () {
-                          ref.read(catProvider.notifier).toggleEquipAccessory(id);
+                          ref
+                              .read(catProvider.notifier)
+                              .toggleEquipAccessory(id);
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: isEquipped ? AppColors.surfaceVariant : AppColors.primary,
-                          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+                          backgroundColor: isEquipped
+                              ? AppColors.surfaceVariant
+                              : AppColors.primary,
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 14,
+                            vertical: 8,
+                          ),
                         ),
                         child: Text(
                           isEquipped ? 'Tháo ra' : 'Mặc vào',
@@ -200,18 +266,30 @@ class _CatHouseScreenState extends ConsumerState<CatHouseScreen> {
                       ElevatedButton(
                         onPressed: catState.cat.fishPoints >= cost
                             ? () async {
-                                final ok = await ref.read(catProvider.notifier).unlockAccessory(id, cost);
+                                final ok = await ref
+                                    .read(catProvider.notifier)
+                                    .unlockAccessory(id, cost);
                                 if (ok && mounted) {
                                   ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(content: Text('Đã mở khóa ${acc['name']}!')),
+                                    SnackBar(
+                                      content: Text(
+                                        'Đã mở khóa ${acc['name']}!',
+                                      ),
+                                    ),
                                   );
                                 }
                               }
                             : null,
                         style: ElevatedButton.styleFrom(
-                          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 14,
+                            vertical: 8,
+                          ),
                         ),
-                        child: const Text('Mở khóa', style: TextStyle(fontSize: 13)),
+                        child: const Text(
+                          'Mở khóa',
+                          style: TextStyle(fontSize: 13),
+                        ),
                       ),
                   ],
                 ),
@@ -222,7 +300,10 @@ class _CatHouseScreenState extends ConsumerState<CatHouseScreen> {
             // Badges Section
             Align(
               alignment: Alignment.centerLeft,
-              child: Text('Bộ sưu tập huy hiệu', style: AppTypography.titleMedium),
+              child: Text(
+                'Bộ sưu tập huy hiệu',
+                style: AppTypography.titleMedium,
+              ),
             ),
             const SizedBox(height: 12),
             GridView.builder(
@@ -242,7 +323,9 @@ class _CatHouseScreenState extends ConsumerState<CatHouseScreen> {
                   decoration: BoxDecoration(
                     color: isDark ? AppColors.darkSurface : Colors.white,
                     borderRadius: BorderRadius.circular(16),
-                    border: Border.all(color: isDark ? AppColors.darkBorder : AppColors.border),
+                    border: Border.all(
+                      color: isDark ? AppColors.darkBorder : AppColors.border,
+                    ),
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -251,7 +334,10 @@ class _CatHouseScreenState extends ConsumerState<CatHouseScreen> {
                       const SizedBox(height: 6),
                       Text(
                         badge.title,
-                        style: AppTypography.titleMedium.copyWith(fontSize: 13, fontWeight: FontWeight.w700),
+                        style: AppTypography.titleMedium.copyWith(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w700,
+                        ),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                       ),

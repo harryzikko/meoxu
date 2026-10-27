@@ -12,8 +12,10 @@ class WeeklyInsight {
     this.currentWeekTotal = 0.0,
     this.previousWeekTotal = 0.0,
     this.discoveries = const [],
-    this.smallSuggestion = 'Thử đợi 10 phút trước khi mua đồ online sau 22h nhé.',
-    this.bestPraise = 'Bạn đã rất chăm chỉ ghi chép và thấu hiểu chi tiêu của mình!',
+    this.smallSuggestion =
+        'Thử đợi 10 phút trước khi mua đồ online sau 22h nhé.',
+    this.bestPraise =
+        'Bạn đã rất chăm chỉ ghi chép và thấu hiểu chi tiêu của mình!',
     this.hasEnoughData = true,
   });
 }

@@ -4,32 +4,132 @@ import '../utils/currency_formatter.dart';
 class ExpenseParser {
   // Built-in categories with keywords
   static const Map<String, List<String>> defaultKeywords = {
-    'income': ['lương', 'thuởng', 'thưởng', 'được cho', 'tiền về', 'nhận tiền', 'bán đồ', 'hoàn tiền', 'thu nhập', 'lãi'],
+    'income': [
+      'lương',
+      'thuởng',
+      'thưởng',
+      'được cho',
+      'tiền về',
+      'nhận tiền',
+      'bán đồ',
+      'hoàn tiền',
+      'thu nhập',
+      'lãi',
+    ],
     'food': [
-      'ăn', 'bún', 'phở', 'cơm', 'cà phê', 'cf', 'cafe', 'trà sữa', 'trưa', 'sáng', 'tối',
-      'bánh', 'chè', 'nhậu', 'pizza', 'kfc', 'bột chiên', 'hủ tiếu', 'nem rán', 'gà rán',
-      'mì', 'miến', 'xôi', 'trà đá', 'sinh tố', 'nước ép', 'trái cây', 'hoa quả', 'đồ ăn',
-      'ăn vặt', 'chè bưởi', 'trứng', 'thịt', 'rau'
+      'ăn',
+      'bún',
+      'phở',
+      'cơm',
+      'cà phê',
+      'cf',
+      'cafe',
+      'trà sữa',
+      'trưa',
+      'sáng',
+      'tối',
+      'bánh',
+      'chè',
+      'nhậu',
+      'pizza',
+      'kfc',
+      'bột chiên',
+      'hủ tiếu',
+      'nem rán',
+      'gà rán',
+      'mì',
+      'miến',
+      'xôi',
+      'trà đá',
+      'sinh tố',
+      'nước ép',
+      'trái cây',
+      'hoa quả',
+      'đồ ăn',
+      'ăn vặt',
+      'chè bưởi',
+      'trứng',
+      'thịt',
+      'rau',
     ],
     'transport': [
-      'grab', 'be', 'gojek', 'taxi', 'xăng', 'gửi xe', 'bus', 'xe buýt', 'vé xe',
-      'rửa xe', 'thay nhớt', 'bảo dưỡng xe', 'sửa xe', 'xanh sm', 'vé tàu', 'vé máy bay'
+      'grab',
+      'be',
+      'gojek',
+      'taxi',
+      'xăng',
+      'gửi xe',
+      'bus',
+      'xe buýt',
+      'vé xe',
+      'rửa xe',
+      'thay nhớt',
+      'bảo dưỡng xe',
+      'sửa xe',
+      'xanh sm',
+      'vé tàu',
+      'vé máy bay',
     ],
     'bills': [
-      'tiền nhà', 'phòng trọ', 'tiền trọ', 'điện', 'nước', 'wifi', 'internet', 'rác',
-      'phí chung cư', 'truyền hình cáp', 'tiền mạng', 'hóa đơn', 'học phí'
+      'tiền nhà',
+      'phòng trọ',
+      'tiền trọ',
+      'điện',
+      'nước',
+      'wifi',
+      'internet',
+      'rác',
+      'phí chung cư',
+      'truyền hình cáp',
+      'tiền mạng',
+      'hóa đơn',
+      'học phí',
     ],
     'entertainment': [
-      'phim', 'game', 'du lịch', 'netflix', 'xem phim', 'sách', 'truyện', 'hát',
-      'karaoke', 'boardgame', 'spotify', 'youtube', 'vé xem kịch', 'vé concert'
+      'phim',
+      'game',
+      'du lịch',
+      'netflix',
+      'xem phim',
+      'sách',
+      'truyện',
+      'hát',
+      'karaoke',
+      'boardgame',
+      'spotify',
+      'youtube',
+      'vé xem kịch',
+      'vé concert',
     ],
     'shopping': [
-      'mua', 'shopee', 'lazada', 'tiktok shop', 'quần', 'áo', 'giày', 'mỹ phẩm',
-      'son', 'váy', 'túi xách', 'đồng hồ', 'tai nghe', 'đồ gia dụng', 'siêu thị'
+      'mua',
+      'shopee',
+      'lazada',
+      'tiktok shop',
+      'quần',
+      'áo',
+      'giày',
+      'mỹ phẩm',
+      'son',
+      'váy',
+      'túi xách',
+      'đồng hồ',
+      'tai nghe',
+      'đồ gia dụng',
+      'siêu thị',
     ],
     'health': [
-      'thuốc', 'khám', 'bác sĩ', 'gym', 'nha khoa', 'khẩu trang', 'bệnh viện',
-      'xét nghiệm', 'vitamin', 'thực phẩm chức năng', 'yoga'
+      'thuốc',
+      'khám',
+      'bác sĩ',
+      'gym',
+      'nha khoa',
+      'khẩu trang',
+      'bệnh viện',
+      'xét nghiệm',
+      'vitamin',
+      'thực phẩm chức năng',
+      'yoga',
     ],
   };
 
@@ -66,20 +166,48 @@ class ExpenseParser {
 
     if (lowerText.contains('hôm qua')) {
       targetDate = targetDate.subtract(const Duration(days: 1));
-      text = text.replaceAll(RegExp(r'hôm qua', caseSensitive: false), '').trim();
+      text = text
+          .replaceAll(RegExp(r'hôm qua', caseSensitive: false), '')
+          .trim();
     } else if (lowerText.contains('hôm kia')) {
       targetDate = targetDate.subtract(const Duration(days: 2));
-      text = text.replaceAll(RegExp(r'hôm kia', caseSensitive: false), '').trim();
+      text = text
+          .replaceAll(RegExp(r'hôm kia', caseSensitive: false), '')
+          .trim();
     } else if (lowerText.contains('sáng nay')) {
-      targetDate = DateTime(targetDate.year, targetDate.month, targetDate.day, 8, 30);
-      text = text.replaceAll(RegExp(r'sáng nay', caseSensitive: false), '').trim();
+      targetDate = DateTime(
+        targetDate.year,
+        targetDate.month,
+        targetDate.day,
+        8,
+        30,
+      );
+      text = text
+          .replaceAll(RegExp(r'sáng nay', caseSensitive: false), '')
+          .trim();
     } else if (lowerText.contains('trưa nay')) {
-      targetDate = DateTime(targetDate.year, targetDate.month, targetDate.day, 12, 15);
-      text = text.replaceAll(RegExp(r'trưa nay', caseSensitive: false), '').trim();
+      targetDate = DateTime(
+        targetDate.year,
+        targetDate.month,
+        targetDate.day,
+        12,
+        15,
+      );
+      text = text
+          .replaceAll(RegExp(r'trưa nay', caseSensitive: false), '')
+          .trim();
     } else if (lowerText.contains('tối qua')) {
       targetDate = targetDate.subtract(const Duration(days: 1));
-      targetDate = DateTime(targetDate.year, targetDate.month, targetDate.day, 19, 30);
-      text = text.replaceAll(RegExp(r'tối qua', caseSensitive: false), '').trim();
+      targetDate = DateTime(
+        targetDate.year,
+        targetDate.month,
+        targetDate.day,
+        19,
+        30,
+      );
+      text = text
+          .replaceAll(RegExp(r'tối qua', caseSensitive: false), '')
+          .trim();
     }
 
     // 2. Extract Amount

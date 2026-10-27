@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../core/constants/app_colors.dart';
 import '../../core/constants/app_typography.dart';
 import '../../core/utils/currency_formatter.dart';
@@ -28,7 +29,9 @@ class _WhatIfScreenState extends State<WhatIfScreen> {
     super.initState();
     _cost = widget.singleCost;
     _nameCtrl = TextEditingController(text: widget.itemName);
-    _costCtrl = TextEditingController(text: widget.singleCost.toStringAsFixed(0));
+    _costCtrl = TextEditingController(
+      text: widget.singleCost.toStringAsFixed(0),
+    );
   }
 
   @override
@@ -50,7 +53,8 @@ class _WhatIfScreenState extends State<WhatIfScreen> {
 
     String equivalentReward = '1 chuyến du lịch nghỉ dưỡng Đà Lạt';
     if (savedPerYear >= 20000000) {
-      equivalentReward = '1 chiếc iPhone mới toanh hoặc 1 chuyến du lịch Nhật Bản';
+      equivalentReward =
+          '1 chiếc iPhone mới toanh hoặc 1 chuyến du lịch Nhật Bản';
     } else if (savedPerYear >= 10000000) {
       equivalentReward = '1 chiếc laptop làm việc hoặc 1 chuyến vi vu Thái Lan';
     } else if (savedPerYear >= 5000000) {
@@ -58,9 +62,7 @@ class _WhatIfScreenState extends State<WhatIfScreen> {
     }
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Nếu như... ✨'),
-      ),
+      appBar: AppBar(title: const Text('Nếu như... ✨')),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
         child: Column(
@@ -72,18 +74,26 @@ class _WhatIfScreenState extends State<WhatIfScreen> {
               decoration: BoxDecoration(
                 color: isDark ? AppColors.darkSurface : Colors.white,
                 borderRadius: BorderRadius.circular(20),
-                border: Border.all(color: isDark ? AppColors.darkBorder : AppColors.border),
+                border: Border.all(
+                  color: isDark ? AppColors.darkBorder : AppColors.border,
+                ),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Khoản chi lặp lại bạn muốn thử nghiệm:', style: AppTypography.titleMedium),
+                  Text(
+                    'Khoản chi lặp lại bạn muốn thử nghiệm:',
+                    style: AppTypography.titleMedium,
+                  ),
                   const SizedBox(height: 12),
                   TextField(
                     controller: _nameCtrl,
                     decoration: const InputDecoration(
                       labelText: 'Tên thói quen',
-                      prefixIcon: Icon(Icons.coffee_rounded, color: AppColors.primaryDark),
+                      prefixIcon: Icon(
+                        Icons.coffee_rounded,
+                        color: AppColors.primaryDark,
+                      ),
                     ),
                   ),
                   const SizedBox(height: 12),
@@ -92,7 +102,10 @@ class _WhatIfScreenState extends State<WhatIfScreen> {
                     keyboardType: TextInputType.number,
                     decoration: const InputDecoration(
                       labelText: 'Số tiền mỗi lần',
-                      prefixIcon: Icon(Icons.payments_rounded, color: AppColors.primaryDark),
+                      prefixIcon: Icon(
+                        Icons.payments_rounded,
+                        color: AppColors.primaryDark,
+                      ),
                       suffixText: 'VNĐ',
                     ),
                     onChanged: (val) {
@@ -111,7 +124,9 @@ class _WhatIfScreenState extends State<WhatIfScreen> {
             Container(
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
-                color: isDark ? AppColors.darkSurfaceVariant : AppColors.surfaceVariant,
+                color: isDark
+                    ? AppColors.darkSurfaceVariant
+                    : AppColors.surfaceVariant,
                 borderRadius: BorderRadius.circular(20),
                 border: Border.all(color: AppColors.primaryLight),
               ),
@@ -182,11 +197,16 @@ class _WhatIfScreenState extends State<WhatIfScreen> {
                     decoration: BoxDecoration(
                       color: isDark ? AppColors.darkSurface : Colors.white,
                       borderRadius: BorderRadius.circular(18),
-                      border: Border.all(color: isDark ? AppColors.darkBorder : AppColors.border),
+                      border: Border.all(
+                        color: isDark ? AppColors.darkBorder : AppColors.border,
+                      ),
                     ),
                     child: Column(
                       children: [
-                        Text('Mỗi tháng tiết kiệm', style: AppTypography.caption),
+                        Text(
+                          'Mỗi tháng tiết kiệm',
+                          style: AppTypography.caption,
+                        ),
                         const SizedBox(height: 6),
                         Text(
                           CurrencyFormatter.formatCompact(savedPerMonth),
@@ -206,7 +226,9 @@ class _WhatIfScreenState extends State<WhatIfScreen> {
                     decoration: BoxDecoration(
                       color: isDark ? AppColors.darkSurface : Colors.white,
                       borderRadius: BorderRadius.circular(18),
-                      border: Border.all(color: isDark ? AppColors.darkBorder : AppColors.border),
+                      border: Border.all(
+                        color: isDark ? AppColors.darkBorder : AppColors.border,
+                      ),
                     ),
                     child: Column(
                       children: [

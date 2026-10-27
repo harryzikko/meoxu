@@ -14,8 +14,16 @@ void main() {
     );
 
     final fixedExpenses = [
-      const FixedExpense(id: '1', name: 'Tiền trọ', amount: 3000000.0), // 3 triệu
-      const FixedExpense(id: '2', name: 'Điện nước + wifi', amount: 600000.0), // 600k
+      const FixedExpense(
+        id: '1',
+        name: 'Tiền trọ',
+        amount: 3000000.0,
+      ), // 3 triệu
+      const FixedExpense(
+        id: '2',
+        name: 'Điện nước + wifi',
+        amount: 600000.0,
+      ), // 600k
     ];
     // Total fixed: 3.6 triệu
     // Saving: 3.0 triệu
@@ -134,22 +142,27 @@ void main() {
       expect(result.remainingToday, equals(400000.0));
     });
 
-    test('Changing saving percentage dynamically updates budget immediately', () {
-      final updatedProfile = profile.copyWith(savingPercentage: 10.0); // reduced from 20% to 10%
-      final day1 = DateTime(2026, 4, 1);
+    test(
+      'Changing saving percentage dynamically updates budget immediately',
+      () {
+        final updatedProfile = profile.copyWith(
+          savingPercentage: 10.0,
+        ); // reduced from 20% to 10%
+        final day1 = DateTime(2026, 4, 1);
 
-      final result = BudgetCalculator.calculate(
-        profile: updatedProfile,
-        fixedExpenses: fixedExpenses,
-        monthlyTransactions: [],
-        currentDate: day1,
-      );
+        final result = BudgetCalculator.calculate(
+          profile: updatedProfile,
+          fixedExpenses: fixedExpenses,
+          monthlyTransactions: [],
+          currentDate: day1,
+        );
 
-      // Saving: 1.5 triệu (instead of 3.0 triệu)
-      // Monthly budget = 15.0 - 3.6 - 1.5 = 9.9 triệu
-      expect(result.monthlyBudget, equals(9900000.0));
-      // Daily allowance = 9,900,000 / 30 = 330,000 VND (increased from 280k)
-      expect(result.dailyAllowance, equals(330000.0));
-    });
+        // Saving: 1.5 triệu (instead of 3.0 triệu)
+        // Monthly budget = 15.0 - 3.6 - 1.5 = 9.9 triệu
+        expect(result.monthlyBudget, equals(9900000.0));
+        // Daily allowance = 9,900,000 / 30 = 330,000 VND (increased from 280k)
+        expect(result.dailyAllowance, equals(330000.0));
+      },
+    );
   });
 }

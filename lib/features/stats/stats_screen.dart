@@ -1,6 +1,8 @@
 import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../../core/constants/app_colors.dart';
 import '../../core/constants/app_typography.dart';
 import '../../core/utils/currency_formatter.dart';
@@ -24,7 +26,9 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     final now = DateTime.now();
-    final expenseTxs = txState.allTransactions.where((tx) => tx.isExpense).toList();
+    final expenseTxs = txState.allTransactions
+        .where((tx) => tx.isExpense)
+        .toList();
 
     // Filter by week or month
     final activeTxs = expenseTxs.where((tx) {
@@ -37,7 +41,10 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
       }
     }).toList();
 
-    final totalSpent = activeTxs.fold<double>(0.0, (sum, tx) => sum + tx.amount);
+    final totalSpent = activeTxs.fold<double>(
+      0.0,
+      (sum, tx) => sum + tx.amount,
+    );
 
     // Calculate emotion counts
     int happyCount = 0;
@@ -50,7 +57,8 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
       if (tx.emotion == 'regret') regretCount++;
       if (tx.emotion == 'impulsive') impulsiveCount++;
     }
-    final totalWithEmotion = happyCount + necessaryCount + regretCount + impulsiveCount;
+    final totalWithEmotion =
+        happyCount + necessaryCount + regretCount + impulsiveCount;
 
     // Top 5 highest expenses
     final topExpenses = List<TransactionItem>.from(activeTxs)
@@ -58,9 +66,7 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
     final top5 = topExpenses.take(5).toList();
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Thống kê & Thấu hiểu'),
-      ),
+      appBar: AppBar(title: const Text('Thống kê & Thấu hiểu')),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
         child: Column(
@@ -70,7 +76,9 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
             Container(
               padding: const EdgeInsets.all(4),
               decoration: BoxDecoration(
-                color: isDark ? AppColors.darkSurfaceVariant : AppColors.surfaceVariant,
+                color: isDark
+                    ? AppColors.darkSurfaceVariant
+                    : AppColors.surfaceVariant,
                 borderRadius: BorderRadius.circular(16),
               ),
               child: Row(
@@ -96,14 +104,18 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
               decoration: BoxDecoration(
                 color: isDark ? AppColors.darkSurface : AppColors.surface,
                 borderRadius: BorderRadius.circular(20),
-                border: Border.all(color: isDark ? AppColors.darkBorder : AppColors.border),
+                border: Border.all(
+                  color: isDark ? AppColors.darkBorder : AppColors.border,
+                ),
               ),
               child: Column(
                 children: [
                   Text(
                     'Tổng chi tiêu',
                     style: AppTypography.bodyMedium.copyWith(
-                      color: isDark ? AppColors.darkTextSecondary : AppColors.textSecondary,
+                      color: isDark
+                          ? AppColors.darkTextSecondary
+                          : AppColors.textSecondary,
                     ),
                   ),
                   const SizedBox(height: 6),
@@ -111,7 +123,9 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
                     CurrencyFormatter.format(totalSpent),
                     style: AppTypography.displayLarge.copyWith(
                       fontWeight: FontWeight.w800,
-                      color: isDark ? AppColors.darkTextPrimary : AppColors.textPrimary,
+                      color: isDark
+                          ? AppColors.darkTextPrimary
+                          : AppColors.textPrimary,
                     ),
                   ),
                   const SizedBox(height: 4),
@@ -133,7 +147,9 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
               decoration: BoxDecoration(
                 color: isDark ? AppColors.darkSurface : Colors.white,
                 borderRadius: BorderRadius.circular(20),
-                border: Border.all(color: isDark ? AppColors.darkBorder : AppColors.border),
+                border: Border.all(
+                  color: isDark ? AppColors.darkBorder : AppColors.border,
+                ),
               ),
               child: _buildSimpleBarChart(activeTxs, isDark),
             ),
@@ -147,17 +163,43 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
               decoration: BoxDecoration(
                 color: isDark ? AppColors.darkSurface : Colors.white,
                 borderRadius: BorderRadius.circular(20),
-                border: Border.all(color: isDark ? AppColors.darkBorder : AppColors.border),
+                border: Border.all(
+                  color: isDark ? AppColors.darkBorder : AppColors.border,
+                ),
               ),
               child: Column(
                 children: [
-                  _buildEmotionBar('Vui vẻ', '😊', happyCount, totalWithEmotion, AppColors.emotionHappy),
+                  _buildEmotionBar(
+                    'Vui vẻ',
+                    '😊',
+                    happyCount,
+                    totalWithEmotion,
+                    AppColors.emotionHappy,
+                  ),
                   const SizedBox(height: 10),
-                  _buildEmotionBar('Cần thiết', '👌', necessaryCount, totalWithEmotion, AppColors.emotionNecessary),
+                  _buildEmotionBar(
+                    'Cần thiết',
+                    '👌',
+                    necessaryCount,
+                    totalWithEmotion,
+                    AppColors.emotionNecessary,
+                  ),
                   const SizedBox(height: 10),
-                  _buildEmotionBar('Hối hận', '😿', regretCount, totalWithEmotion, AppColors.emotionRegret),
+                  _buildEmotionBar(
+                    'Hối hận',
+                    '😿',
+                    regretCount,
+                    totalWithEmotion,
+                    AppColors.emotionRegret,
+                  ),
                   const SizedBox(height: 10),
-                  _buildEmotionBar('Bốc đồng', '⚡', impulsiveCount, totalWithEmotion, AppColors.emotionImpulsive),
+                  _buildEmotionBar(
+                    'Bốc đồng',
+                    '⚡',
+                    impulsiveCount,
+                    totalWithEmotion,
+                    AppColors.emotionImpulsive,
+                  ),
                 ],
               ),
             ),
@@ -169,18 +211,25 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
             if (top5.isEmpty)
               Text(
                 'Chưa có dữ liệu chi tiêu',
-                style: AppTypography.bodyMedium.copyWith(color: AppColors.textTertiary),
+                style: AppTypography.bodyMedium.copyWith(
+                  color: AppColors.textTertiary,
+                ),
               )
             else
               ...top5.map((tx) {
                 final cat = CategoryItem.getById(tx.categoryId);
                 return Container(
                   margin: const EdgeInsets.only(bottom: 8),
-                  padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 14,
+                    vertical: 12,
+                  ),
                   decoration: BoxDecoration(
                     color: isDark ? AppColors.darkSurface : Colors.white,
                     borderRadius: BorderRadius.circular(16),
-                    border: Border.all(color: isDark ? AppColors.darkBorder : AppColors.border),
+                    border: Border.all(
+                      color: isDark ? AppColors.darkBorder : AppColors.border,
+                    ),
                   ),
                   child: Row(
                     children: [
@@ -189,12 +238,16 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
                       Expanded(
                         child: Text(
                           tx.note.isEmpty ? cat.name : tx.note,
-                          style: AppTypography.bodyLarge.copyWith(fontWeight: FontWeight.w600),
+                          style: AppTypography.bodyLarge.copyWith(
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
                       ),
                       Text(
                         CurrencyFormatter.format(tx.amount),
-                        style: AppTypography.titleMedium.copyWith(fontWeight: FontWeight.w800),
+                        style: AppTypography.titleMedium.copyWith(
+                          fontWeight: FontWeight.w800,
+                        ),
                       ),
                     ],
                   ),
@@ -284,7 +337,13 @@ class _StatsScreenState extends ConsumerState<StatsScreen> {
     );
   }
 
-  Widget _buildEmotionBar(String label, String emoji, int count, int total, Color barColor) {
+  Widget _buildEmotionBar(
+    String label,
+    String emoji,
+    int count,
+    int total,
+    Color barColor,
+  ) {
     final pct = total > 0 ? (count / total) : 0.0;
 
     return Row(

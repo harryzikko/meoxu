@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_typography.dart';
 
@@ -17,10 +18,30 @@ class EmotionSelectorDialog extends StatelessWidget {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     final emotions = [
-      {'id': 'happy', 'label': 'Vui vẻ', 'emoji': '😊', 'color': AppColors.emotionHappy},
-      {'id': 'necessary', 'label': 'Cần thiết', 'emoji': '👌', 'color': AppColors.emotionNecessary},
-      {'id': 'regret', 'label': 'Hối hận', 'emoji': '😿', 'color': AppColors.emotionRegret},
-      {'id': 'impulsive', 'label': 'Bốc đồng', 'emoji': '⚡', 'color': AppColors.emotionImpulsive},
+      {
+        'id': 'happy',
+        'label': 'Vui vẻ',
+        'emoji': '😊',
+        'color': AppColors.emotionHappy,
+      },
+      {
+        'id': 'necessary',
+        'label': 'Cần thiết',
+        'emoji': '👌',
+        'color': AppColors.emotionNecessary,
+      },
+      {
+        'id': 'regret',
+        'label': 'Hối hận',
+        'emoji': '😿',
+        'color': AppColors.emotionRegret,
+      },
+      {
+        'id': 'impulsive',
+        'label': 'Bốc đồng',
+        'emoji': '⚡',
+        'color': AppColors.emotionImpulsive,
+      },
     ];
 
     return Container(
@@ -39,7 +60,9 @@ class EmotionSelectorDialog extends StatelessWidget {
               Text(
                 'Khoản này bạn thấy thế nào?',
                 style: AppTypography.titleMedium.copyWith(
-                  color: isDark ? AppColors.darkTextPrimary : AppColors.textPrimary,
+                  color: isDark
+                      ? AppColors.darkTextPrimary
+                      : AppColors.textPrimary,
                 ),
               ),
               const Spacer(),
@@ -68,13 +91,18 @@ class EmotionSelectorDialog extends StatelessWidget {
                   ),
                   child: Column(
                     children: [
-                      Text(item['emoji'] as String, style: const TextStyle(fontSize: 26)),
+                      Text(
+                        item['emoji'] as String,
+                        style: const TextStyle(fontSize: 26),
+                      ),
                       const SizedBox(height: 6),
                       Text(
                         item['label'] as String,
                         style: AppTypography.caption.copyWith(
                           fontWeight: FontWeight.w700,
-                          color: isDark ? AppColors.darkTextPrimary : AppColors.textPrimary,
+                          color: isDark
+                              ? AppColors.darkTextPrimary
+                              : AppColors.textPrimary,
                         ),
                       ),
                     ],
@@ -86,7 +114,9 @@ class EmotionSelectorDialog extends StatelessWidget {
           const SizedBox(height: 12),
           Text(
             'Mẹo: Bạn có thể bỏ qua bất kỳ lúc nào!',
-            style: AppTypography.caption.copyWith(color: AppColors.textTertiary),
+            style: AppTypography.caption.copyWith(
+              color: AppColors.textTertiary,
+            ),
           ),
         ],
       ),
