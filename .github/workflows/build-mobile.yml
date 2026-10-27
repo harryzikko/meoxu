@@ -44,11 +44,14 @@ jobs:
 
       - name: Build Android Release APK
         run: |
-          flutter build apk --release -v > build.log 2>&1 || {
-            echo "::error::Flutter build APK failed! Showing last 80 lines of build log:"
-            tail -n 80 build.log
+          if ! flutter build apk --release -v > build.log 2>&1; then
+            echo "### ❌ Build Failure Log" >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
+            grep -E -C 3 "FAILURE|error:|exception|Exception" build.log | tail -n 80 >> $GITHUB_STEP_SUMMARY || true
+            tail -n 120 build.log >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
             exit 1
-          }
+          fi
 
       - name: Organize Artifact
         run: |
