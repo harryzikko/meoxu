@@ -52,7 +52,7 @@ class ContributionHistorySheet extends ConsumerWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.between,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Row(
                   children: [
@@ -111,7 +111,7 @@ class ContributionHistorySheet extends ConsumerWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.between,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Column(
@@ -323,7 +323,7 @@ class ContributionHistorySheet extends ConsumerWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.between,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Row(
                             children: [
@@ -407,7 +407,7 @@ class ContributionHistorySheet extends ConsumerWidget {
                 const SizedBox(height: 20),
                 // Contribution Feed List
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.between,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(
                       children: [
@@ -483,7 +483,7 @@ class ContributionHistorySheet extends ConsumerWidget {
                               children: [
                                 Row(
                                   mainAxisAlignment:
-                                      MainAxisAlignment.between,
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
                                       item.contributorName,

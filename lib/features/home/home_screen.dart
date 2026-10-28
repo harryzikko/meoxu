@@ -239,10 +239,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           hasNoTransactions: hasNoTx,
         );
 
-    final dailyAllowance = budget.dailyBudget;
-    final spentToday = budget.todaySpent;
+    final dailyAllowance = budget.dailyAllowance;
+    final spentToday = budget.spentToday;
     final remainingAllowance = budget.remainingToday;
-    final progressRatio = budget.percentageRemaining.clamp(0.0, 1.0);
+    final progressRatio = budget.fishPercentage.clamp(0.0, 1.0);
 
     return Scaffold(
       backgroundColor:
@@ -562,7 +562,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                       child: Column(
                         children: [
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.between,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Row(
                                 children: [

@@ -486,7 +486,7 @@ class CatLetterScreen extends ConsumerWidget {
                 // Insight Card 2
                 _buildPatternCard(
                   emoji: '⚡',
-                  bgColor: AppColors.emotionJoy.withOpacity(0.18),
+                  bgColor: AppColors.emotionHappy.withOpacity(0.18),
                   title: 'Thứ Sáu tự thưởng',
                   desc: insight.discoveries.length > 1
                       ? insight.discoveries[1]

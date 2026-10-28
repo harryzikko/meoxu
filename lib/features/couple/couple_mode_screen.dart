@@ -721,7 +721,7 @@ class _CoupleModeScreenState extends ConsumerState<CoupleModeScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Row(
-                  mainAxisAlignment: MainAxisAlignment.between,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(
                       children: [
@@ -1556,7 +1556,7 @@ class _CoupleModeScreenState extends ConsumerState<CoupleModeScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.between,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const Row(
                       children: [
@@ -1596,7 +1596,7 @@ class _CoupleModeScreenState extends ConsumerState<CoupleModeScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.between,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Row(
                               children: [
