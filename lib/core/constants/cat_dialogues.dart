@@ -66,7 +66,7 @@ class CatDialogueEngine {
       ],
       'playful': [
         'A há! Đúng huyệt ngứa rồi $term ơi! Cho thêm 10 giây nựng nữa nào haha!',
-        'Được đấy người anh em! Nựng thế này mai $catName canh cá khô chuẩn 10 điểm!',
+        'Được đấy $term ơi! Nựng thế này mai $catName canh cá khô chuẩn 10 điểm!',
         '*Lăn ngửa phơi bụng* Đã tay chưa $term? Tính phí một cái xoa bụng bằng 1 que kem nhé!',
       ],
       'zen': [
@@ -181,7 +181,7 @@ class CatDialogueEngine {
         ],
         'playful': [
           'Dậy đi $term ơi! Mặt trời rọi tới mông rồi, làm cốc cà phê rồi chiến đấu thôi nào!',
-          'Chào ngày mới người anh em! Hôm nay mục tiêu gom thêm cá khô bỏ hũ nhé!',
+          'Chào ngày mới $term! Hôm nay mục tiêu gom thêm cá khô bỏ hũ nhé!',
         ],
         'zen': [
           'Một buổi sáng an lành nhé $term. Hít thở thật sâu và đón nhận ngày mới dịu dàng.',
@@ -218,8 +218,8 @@ class CatDialogueEngine {
         'Mọi việc của ngày hôm nay đã chu toàn. $term hãy nghỉ ngơi để tái tạo năng lượng.',
       ],
       'playful': [
-        'Cú đêm hả $term? Tắt màn hình đi ngủ thôi, mai còn thức sớm cày cuốc chớ người anh em!',
-        'Coi chừng quầng thâm mắt to hơn mắt $catName đấy nha haha! Ngủ thôi nào!',
+        'Cú đêm hả $term? Tắt màn hình đi ngủ thôi, mai còn thức sớm cày cuốc chớ!',
+        'Coi chừng quầng thâm mắt to hơn mắt $catName đấy nha $term haha! Ngủ thôi nào!',
       ],
       'zen': [
         'Gác lại những bộn bề của ngày hôm nay nhé $term. Giấc ngủ ngon là liều thuốc chữa lành quý giá nhất.',
