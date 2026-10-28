@@ -7,6 +7,7 @@ import '../../../core/utils/currency_formatter.dart';
 import '../../../models/transaction_item.dart';
 import '../../../providers/transaction_provider.dart';
 import '../../../providers/cat_provider.dart';
+import 'cat_toast.dart';
 
 class VoiceInputSheet extends ConsumerStatefulWidget {
   const VoiceInputSheet({super.key});
@@ -123,13 +124,15 @@ class _VoiceInputSheetState extends ConsumerState<VoiceInputSheet>
 
     if (mounted) {
       Navigator.pop(context);
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            '🎙️ Đã ghi nhận giọng nói: ${CurrencyFormatter.format(item.amount)} (${item.note})! +5 cá 🐟',
-          ),
-          backgroundColor: AppColors.primaryDark,
-        ),
+      CatToast.show(
+        context: context,
+        title: 'Meo Xu đã cất ví giùm bạn!',
+        subtitle: '${item.note} • ${CurrencyFormatter.format(item.amount)}',
+        catDialogue: 'Giọng nói truyền cảm quá Sen ơi! Đã cất ví và cộng +5 cá khô 🐟🎙️',
+        fishBonus: 5,
+        onUndo: () {
+          ref.read(transactionProvider.notifier).undoDelete();
+        },
       );
     }
   }

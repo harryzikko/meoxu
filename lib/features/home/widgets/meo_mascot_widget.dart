@@ -13,6 +13,8 @@ class MeoMascotWidget extends StatefulWidget {
   final VoidCallback? onTap;
   final VoidCallback? onPet;
   final bool enablePetting;
+  final bool isEating;
+  final VoidCallback? onPurr;
 
   const MeoMascotWidget({
     super.key,
@@ -23,7 +25,9 @@ class MeoMascotWidget extends StatefulWidget {
     this.size = 180.0,
     this.onTap,
     this.onPet,
+    this.onPurr,
     this.enablePetting = true,
+    this.isEating = false,
   });
 
   @override
@@ -35,15 +39,18 @@ class _MeoMascotWidgetState extends State<MeoMascotWidget>
   late AnimationController _idleController;
   late AnimationController _petController;
   late AnimationController _blinkController;
+  late AnimationController _eatingController;
 
   late Animation<double> _wagAnimation;
   late Animation<double> _breatheAnimation;
   late Animation<double> _squishAnimation;
   late Animation<double> _earTwitchAnimation;
+  late Animation<double> _eatingAnimation;
 
   final List<_FloatingHeart> _hearts = [];
   final math.Random _random = math.Random();
   bool _isPettingActive = false;
+  DateTime _lastPanPurrTime = DateTime.now();
 
   @override
   void initState() {
@@ -100,6 +107,48 @@ class _MeoMascotWidgetState extends State<MeoMascotWidget>
       vsync: this,
       duration: const Duration(milliseconds: 3800),
     )..repeat();
+
+    // 4. Eating animation
+    _eatingController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 1400),
+    );
+    _eatingAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
+      CurvedAnimation(parent: _eatingController, curve: Curves.easeInOut),
+    );
+
+    if (widget.isEating) {
+      _triggerEatingAnimation();
+    }
+  }
+
+  @override
+  void didUpdateWidget(covariant MeoMascotWidget oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.isEating && !oldWidget.isEating) {
+      _triggerEatingAnimation();
+    }
+  }
+
+  void _triggerEatingAnimation() {
+    HapticFeedback.mediumImpact();
+    _eatingController.forward(from: 0.0);
+    final spawnX = widget.size / 2;
+    final spawnY = widget.size * 0.6;
+    for (int i = 0; i < 5; i++) {
+      _hearts.add(
+        _FloatingHeart(
+          x: spawnX + (_random.nextDouble() - 0.5) * 30,
+          y: spawnY + (_random.nextDouble() - 0.5) * 15,
+          symbol: i % 2 == 0 ? '✨' : '🐟',
+          color: const Color(0xFFFFB703),
+          size: 14.0 + _random.nextDouble() * 8,
+          vx: (_random.nextDouble() - 0.5) * 40,
+          vy: -40.0 - _random.nextDouble() * 30,
+        ),
+      );
+    }
+    if (mounted) setState(() {});
   }
 
   @override
@@ -107,27 +156,32 @@ class _MeoMascotWidgetState extends State<MeoMascotWidget>
     _idleController.dispose();
     _petController.dispose();
     _blinkController.dispose();
+    _eatingController.dispose();
     super.dispose();
   }
 
-  void _triggerPetting([Offset? localPosition]) {
+  void _triggerPetting([Offset? localPosition, bool isContinuous = false]) {
     if (!widget.enablePetting) {
       widget.onTap?.call();
       return;
     }
 
-    // Haptic purr feedback
-    HapticFeedback.lightImpact();
+    if (isContinuous) {
+      HapticFeedback.selectionClick();
+    } else {
+      HapticFeedback.lightImpact();
+    }
 
-    // Trigger bounce
-    _petController.forward(from: 0.0);
+    if (!_petController.isAnimating) {
+      _petController.forward(from: 0.0);
+    }
 
-    // Spawn floating hearts & sparkles
     final spawnX = localPosition?.dx ?? (widget.size / 2);
     final spawnY = localPosition?.dy ?? (widget.size * 0.45);
 
-    final symbols = ['♥', '✨', '🐾', '♥', '🌸'];
-    for (int i = 0; i < 4; i++) {
+    final symbols = ['♥', '✨', '🐾', '♥', '🌸', '💖'];
+    final count = isContinuous ? 2 : 4;
+    for (int i = 0; i < count; i++) {
       _hearts.add(
         _FloatingHeart(
           x: spawnX + (_random.nextDouble() - 0.5) * 45,
@@ -145,8 +199,20 @@ class _MeoMascotWidgetState extends State<MeoMascotWidget>
       _isPettingActive = true;
     });
 
-    widget.onPet?.call();
-    widget.onTap?.call();
+    if (!isContinuous) {
+      widget.onPet?.call();
+      widget.onTap?.call();
+    }
+    widget.onPurr?.call();
+  }
+
+  void _handlePanUpdate(Offset localPos) {
+    if (!widget.enablePetting) return;
+    final now = DateTime.now();
+    if (now.difference(_lastPanPurrTime).inMilliseconds > 130) {
+      _lastPanPurrTime = now;
+      _triggerPetting(localPos, true);
+    }
   }
 
   Color get _catBodyColor {
@@ -175,6 +241,8 @@ class _MeoMascotWidgetState extends State<MeoMascotWidget>
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTapDown: (details) => _triggerPetting(details.localPosition),
+      onPanStart: (details) => _triggerPetting(details.localPosition, false),
+      onPanUpdate: (details) => _handlePanUpdate(details.localPosition),
       child: SizedBox(
         width: widget.size,
         height: widget.size,
@@ -188,6 +256,7 @@ class _MeoMascotWidgetState extends State<MeoMascotWidget>
                 _idleController,
                 _petController,
                 _blinkController,
+                _eatingController,
               ]),
               builder: (context, child) {
                 final isDancing = widget.mood == CatMood.dancing;
@@ -201,6 +270,7 @@ class _MeoMascotWidgetState extends State<MeoMascotWidget>
                 // Blink phase: blink closed briefly around 90-95% of cycle
                 final blinkProgress = _blinkController.value;
                 final isBlinking = blinkProgress > 0.92 && blinkProgress < 0.97;
+                final isEatingNow = _eatingController.isAnimating || widget.isEating;
 
                 return Transform.translate(
                   offset: Offset(0, danceOffset),
@@ -220,6 +290,8 @@ class _MeoMascotWidgetState extends State<MeoMascotWidget>
                         animProgress: _idleController.value,
                         isPetting: _isPettingActive,
                         isBlinking: isBlinking,
+                        isEating: isEatingNow,
+                        eatingProgress: _eatingController.value,
                       ),
                     ),
                   ),
@@ -359,6 +431,8 @@ class _CatPainter extends CustomPainter {
   final double animProgress;
   final bool isPetting;
   final bool isBlinking;
+  final bool isEating;
+  final double eatingProgress;
 
   _CatPainter({
     required this.mood,
@@ -371,12 +445,19 @@ class _CatPainter extends CustomPainter {
     required this.animProgress,
     required this.isPetting,
     required this.isBlinking,
+    this.isEating = false,
+    this.eatingProgress = 0.0,
   });
 
   @override
   void paint(Canvas canvas, Size size) {
     final center = Offset(size.width / 2, size.height / 2);
     final radius = size.width * 0.36;
+
+    // Purr vibration waves when petted
+    if (isPetting || mood == CatMood.purring) {
+      _drawPurrWaves(canvas, center, radius);
+    }
 
     // 1. Soft Shadow
     final shadowPaint = Paint()
@@ -799,27 +880,47 @@ class _CatPainter extends CustomPainter {
     canvas.drawPath(nosePath, nosePaint);
 
     // Mouth
-    final mouthPaint = Paint()
-      ..color = const Color(0xFF4A3728)
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 2.2
-      ..strokeCap = StrokeCap.round;
+    if (isEating) {
+      final chewCycle = (math.sin(eatingProgress * math.pi * 6)).abs();
+      final mouthOpenPaint = Paint()..color = const Color(0xFF5D1D1D);
+      final tonguePaint = Paint()..color = const Color(0xFFFF85A1);
 
-    final mouthPath = Path();
-    mouthPath.moveTo(noseCenter.dx - 9, noseCenter.dy + 10);
-    mouthPath.quadraticBezierTo(
-      noseCenter.dx - 4.5,
-      noseCenter.dy + 13,
-      noseCenter.dx,
-      noseCenter.dy + 7,
-    );
-    mouthPath.quadraticBezierTo(
-      noseCenter.dx + 4.5,
-      noseCenter.dy + 13,
-      noseCenter.dx + 9,
-      noseCenter.dy + 10,
-    );
-    canvas.drawPath(mouthPath, mouthPaint);
+      final mouthRect = Rect.fromCenter(
+        center: Offset(noseCenter.dx, noseCenter.dy + 12 + chewCycle * 3),
+        width: 14 + chewCycle * 6,
+        height: 8 + chewCycle * 7,
+      );
+      canvas.drawOval(mouthRect, mouthOpenPaint);
+      canvas.drawCircle(
+        Offset(noseCenter.dx, noseCenter.dy + 13 + chewCycle * 3),
+        3.5,
+        tonguePaint,
+      );
+
+      _drawEatingFish(canvas, noseCenter, chewCycle);
+    } else {
+      final mouthPaint = Paint()
+        ..color = const Color(0xFF4A3728)
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = 2.2
+        ..strokeCap = StrokeCap.round;
+
+      final mouthPath = Path();
+      mouthPath.moveTo(noseCenter.dx - 9, noseCenter.dy + 10);
+      mouthPath.quadraticBezierTo(
+        noseCenter.dx - 4.5,
+        noseCenter.dy + 13,
+        noseCenter.dx,
+        noseCenter.dy + 7,
+      );
+      mouthPath.quadraticBezierTo(
+        noseCenter.dx + 4.5,
+        noseCenter.dy + 13,
+        noseCenter.dx + 9,
+        noseCenter.dy + 10,
+      );
+      canvas.drawPath(mouthPath, mouthPaint);
+    }
 
     // Whiskers (White on black cat, brown on others)
     final isDarkCat = breed == 'black';
@@ -1218,6 +1319,59 @@ class _CatPainter extends CustomPainter {
     );
   }
 
+  void _drawPurrWaves(Canvas canvas, Offset center, double radius) {
+    final purrPaint = Paint()
+      ..color = const Color(0xFFFF9F43).withOpacity(0.65)
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 2.2
+      ..strokeCap = StrokeCap.round;
+
+    final leftEarX = center.dx - radius * 0.75;
+    final rightEarX = center.dx + radius * 0.75;
+    final earY = center.dy - radius * 0.65;
+
+    // Left purr ripples
+    final pLeft = Path()
+      ..moveTo(leftEarX - 10, earY - 6)
+      ..quadraticBezierTo(leftEarX - 16, earY, leftEarX - 10, earY + 6);
+    canvas.drawPath(pLeft, purrPaint);
+
+    final pLeft2 = Path()
+      ..moveTo(leftEarX - 18, earY - 10)
+      ..quadraticBezierTo(leftEarX - 25, earY, leftEarX - 18, earY + 10);
+    canvas.drawPath(pLeft2, purrPaint);
+
+    // Right purr ripples
+    final pRight = Path()
+      ..moveTo(rightEarX + 10, earY - 6)
+      ..quadraticBezierTo(rightEarX + 16, earY, rightEarX + 10, earY + 6);
+    canvas.drawPath(pRight, purrPaint);
+
+    final pRight2 = Path()
+      ..moveTo(rightEarX + 18, earY - 10)
+      ..quadraticBezierTo(rightEarX + 25, earY, rightEarX + 18, earY + 10);
+    canvas.drawPath(pRight2, purrPaint);
+  }
+
+  void _drawEatingFish(Canvas canvas, Offset noseCenter, double chewCycle) {
+    final fishPaint = Paint()..color = const Color(0xFFFFB703);
+    final fishCenter = Offset(noseCenter.dx + 8, noseCenter.dy + 14);
+
+    canvas.drawOval(
+      Rect.fromCenter(center: fishCenter, width: 14, height: 7),
+      fishPaint,
+    );
+    canvas.drawCircle(
+      Offset(fishCenter.dx + 4, fishCenter.dy - 1),
+      1.2,
+      Paint()..color = Colors.black87,
+    );
+
+    final crumbPaint = Paint()..color = const Color(0xFFFFB703);
+    canvas.drawCircle(Offset(fishCenter.dx - 8, fishCenter.dy - 4 + chewCycle * 2), 1.8, crumbPaint);
+    canvas.drawCircle(Offset(fishCenter.dx - 4, fishCenter.dy + 6 - chewCycle * 3), 1.5, crumbPaint);
+  }
+
   @override
   bool shouldRepaint(covariant _CatPainter oldDelegate) {
     return oldDelegate.mood != mood ||
@@ -1229,6 +1383,8 @@ class _CatPainter extends CustomPainter {
         oldDelegate.accessories != accessories ||
         oldDelegate.animProgress != animProgress ||
         oldDelegate.isPetting != isPetting ||
-        oldDelegate.isBlinking != isBlinking;
+        oldDelegate.isBlinking != isBlinking ||
+        oldDelegate.isEating != isEating ||
+        oldDelegate.eatingProgress != eatingProgress;
   }
 }

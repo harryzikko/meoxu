@@ -7,6 +7,7 @@ import '../../../core/utils/currency_formatter.dart';
 import '../../../models/transaction_item.dart';
 import '../../../providers/transaction_provider.dart';
 import '../../../providers/cat_provider.dart';
+import 'cat_toast.dart';
 
 class NumericKeypadSheet extends ConsumerStatefulWidget {
   const NumericKeypadSheet({super.key});
@@ -91,11 +92,15 @@ class _NumericKeypadSheetState extends ConsumerState<NumericKeypadSheet> {
 
     if (mounted) {
       Navigator.pop(context);
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('🎉 Đã ghi nhận: ${CurrencyFormatter.format(_amount)}! Mèo Xu tích +5 cá! 🐟'),
-          backgroundColor: AppColors.primaryDark,
-        ),
+      CatToast.show(
+        context: context,
+        title: 'Meo Xu đã cất ví giùm bạn!',
+        subtitle: '${item.note} • ${CurrencyFormatter.format(_amount)}',
+        catDialogue: 'Nhập số nhanh chuẩn chỉnh! Thưởng Sen ngay +5 cá khô 🐟✨',
+        fishBonus: 5,
+        onUndo: () {
+          ref.read(transactionProvider.notifier).undoDelete();
+        },
       );
     }
   }

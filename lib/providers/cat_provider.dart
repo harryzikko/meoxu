@@ -103,6 +103,17 @@ class CatNotifier extends StateNotifier<CatCombinedState> {
     await AppDatabase.instance.updateCatState(updated);
   }
 
+  Future<bool> feedCat({int fishCost = 1}) async {
+    if (state.cat.fishPoints < fishCost) return false;
+    final updated = state.cat.copyWith(
+      fishPoints: state.cat.fishPoints - fishCost,
+      currentMood: CatMood.purring,
+    );
+    state = state.copyWith(cat: updated);
+    await AppDatabase.instance.updateCatState(updated);
+    return true;
+  }
+
   Future<bool> unlockAccessory(String id, int cost) async {
     if (state.cat.fishPoints < cost) return false;
     final updatedAccessories = [...state.cat.unlockedAccessories, id];

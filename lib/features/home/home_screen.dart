@@ -20,6 +20,9 @@ import 'widgets/confirm_card_bottom_sheet.dart';
 import 'widgets/emotion_selector_dialog.dart';
 import 'widgets/numeric_keypad_sheet.dart';
 import 'widgets/voice_input_sheet.dart';
+import 'widgets/flying_fish_animator.dart';
+import 'widgets/cat_toast.dart';
+import 'widgets/daily_fortune_card.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   final VoidCallback onNavigateToTransactions;
@@ -36,11 +39,57 @@ class HomeScreen extends ConsumerStatefulWidget {
 }
 
 class _HomeScreenState extends ConsumerState<HomeScreen> {
+  final GlobalKey<FlyingFishOverlayState> _flyingFishKey = GlobalKey<FlyingFishOverlayState>();
   final TextEditingController _fastInputCtrl = TextEditingController();
   Map<String, String> _customKeywords = {};
   String? _overrideDialogue;
   String _previewText = '';
   bool _showPreview = false;
+  bool _isEatingCat = false;
+
+  String get _ambientTimeGreeting {
+    final hour = DateTime.now().hour;
+    if (hour >= 6 && hour < 12) return 'Sáng sớm rực rỡ ☀️';
+    if (hour >= 12 && hour < 18) return 'Chiều thảnh thơi 🌤️';
+    if (hour >= 18 && hour < 22) return 'Lên đèn ấm cúng 🏮';
+    return 'Cú đêm tĩnh lặng 🌙';
+  }
+
+  Color get _ambientBadgeColor {
+    final hour = DateTime.now().hour;
+    if (hour >= 22 || hour < 6) return const Color(0xFF6C5CE7);
+    if (hour >= 18) return const Color(0xFFE17055);
+    if (hour >= 12) return const Color(0xFF0984E3);
+    return const Color(0xFF2B6A45);
+  }
+
+  void _feedCatFish() async {
+    final cat = ref.read(catProvider).cat;
+    if (cat.fishPoints < 1) {
+      HapticFeedback.vibrate();
+      CatToast.show(
+        context: context,
+        title: 'Hết cá khô mất rồi meo~',
+        subtitle: 'Cần ít nhất 1 cá khô 🐟',
+        catDialogue: 'Sen ghi chép thêm một khoản chi để nhận thêm cá thưởng nhé!',
+        fishBonus: 0,
+      );
+      return;
+    }
+
+    final success = await ref.read(catProvider.notifier).feedCat(fishCost: 1);
+    if (success) {
+      setState(() {
+        _isEatingCat = true;
+        _overrideDialogue = 'Nhai nhóp nhép... Cá khô giòn rụm thơm ngon quá Sen ơi! Mèo no bụng rồi, yêu Sen nhất trần đời! 🐾♥';
+      });
+      Future.delayed(const Duration(milliseconds: 1600), () {
+        if (mounted) {
+          setState(() => _isEatingCat = false);
+        }
+      });
+    }
+  }
 
   @override
   void initState() {
@@ -130,22 +179,33 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     if (mounted) {
       _fastInputCtrl.clear();
       setState(() => _showPreview = false);
-      ScaffoldMessenger.of(context).hideCurrentSnackBar();
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            '🎉 Đã lưu: ${newItem.note} (${CurrencyFormatter.format(newItem.amount)})! +5 cá khô 🐟',
-          ),
-          duration: const Duration(seconds: 3),
-          backgroundColor: AppColors.primaryDark,
-          action: SnackBarAction(
-            label: 'Hoàn tác',
-            textColor: Colors.white,
-            onPressed: () {
-              ref.read(transactionProvider.notifier).undoDelete();
-            },
-          ),
-        ),
+
+      // 1. Shoot Flying Fish Particles into Cat's fish plate
+      final size = MediaQuery.of(context).size;
+      _flyingFishKey.currentState?.shootFish(
+        start: Offset(size.width / 2, size.height - 110),
+        target: Offset(size.width / 2, 230),
+      );
+
+      // 2. Show Delightful Cat Toast
+      final profile = ref.read(profileProvider);
+      final catDialogue = CatDialogueEngine.getDialogue(
+        personality: profile.catPersonality,
+        callTerm: profile.formattedCallTerm,
+        catName: profile.catName,
+        userName: profile.userName,
+        mood: CatMood.excited,
+      );
+
+      CatToast.show(
+        context: context,
+        title: 'Meo Xu đã cất ví giùm bạn!',
+        subtitle: '${newItem.note} • ${CurrencyFormatter.format(newItem.amount)}',
+        catDialogue: catDialogue,
+        fishBonus: 5,
+        onUndo: () {
+          ref.read(transactionProvider.notifier).undoDelete();
+        },
       );
     }
 
@@ -244,10 +304,12 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     final remainingAllowance = budget.remainingToday;
     final progressRatio = budget.fishPercentage.clamp(0.0, 1.0);
 
-    return Scaffold(
-      backgroundColor:
-          isDark ? AppColors.darkBackground : const Color(0xFFFFF8F0),
-      appBar: AppBar(
+    return FlyingFishOverlay(
+      key: _flyingFishKey,
+      child: Scaffold(
+        backgroundColor:
+            isDark ? AppColors.darkBackground : const Color(0xFFFFF8F0),
+        appBar: AppBar(
         backgroundColor: (isDark ? AppColors.darkBackground : const Color(0xFFFFF8F0))
             .withOpacity(0.92),
         elevation: 0,
@@ -406,23 +468,19 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     padding: const EdgeInsets.symmetric(
                         horizontal: 10, vertical: 5),
                     decoration: BoxDecoration(
-                      color: const Color(0xFFE8F8F0),
+                      color: _ambientBadgeColor.withOpacity(0.12),
                       borderRadius: BorderRadius.circular(16),
+                      border: Border.all(
+                        color: _ambientBadgeColor.withOpacity(0.35),
+                      ),
                     ),
-                    child: const Row(
-                      children: [
-                        Icon(Icons.eco_rounded,
-                            size: 14, color: Color(0xFF2B6A45)),
-                        SizedBox(width: 4),
-                        Text(
-                          'Thảnh thơi',
-                          style: TextStyle(
-                            fontSize: 11,
-                            fontWeight: FontWeight.w800,
-                            color: Color(0xFF2B6A45),
-                          ),
-                        ),
-                      ],
+                    child: Text(
+                      _ambientTimeGreeting,
+                      style: TextStyle(
+                        fontSize: 11,
+                        fontWeight: FontWeight.w800,
+                        color: _ambientBadgeColor,
+                      ),
                     ),
                   ),
                 ],
@@ -451,6 +509,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                       eyeColor: profile.eyeColor,
                       equippedAccessories: catCombined.cat.equippedAccessories,
                       size: 140,
+                      isEating: _isEatingCat,
                       onPet: () {
                         final petMsg = CatDialogueEngine.getDialogue(
                           personality: profile.catPersonality,
@@ -502,6 +561,70 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                           ),
                         ),
                       ),
+                    ),
+                    const SizedBox(height: 10),
+                    // Interactive Cat Quick Buttons (Feed & Purr)
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ElevatedButton.icon(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: const Color(0xFFFFF3DC),
+                            foregroundColor: const Color(0xFFB45309),
+                            elevation: 0,
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 12, vertical: 6),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16),
+                            ),
+                            side: const BorderSide(
+                              color: Color(0xFFFFD166),
+                              width: 1.2,
+                            ),
+                          ),
+                          onPressed: _feedCatFish,
+                          icon: const Text('🐟', style: TextStyle(fontSize: 13)),
+                          label: const Text(
+                            'Cho ăn cá (1 cá)',
+                            style: TextStyle(
+                                fontSize: 11.5, fontWeight: FontWeight.w800),
+                          ),
+                        ),
+                        const SizedBox(width: 8),
+                        OutlinedButton.icon(
+                          style: OutlinedButton.styleFrom(
+                            side: BorderSide(
+                              color: AppColors.primary.withOpacity(0.5),
+                            ),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 12, vertical: 6),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16),
+                            ),
+                          ),
+                          onPressed: () {
+                            HapticFeedback.lightImpact();
+                            final petMsg = CatDialogueEngine.getDialogue(
+                              personality: profile.catPersonality,
+                              callTerm: profile.formattedCallTerm,
+                              catName: profile.catName,
+                              userName: profile.userName,
+                              mood: CatMood.purring,
+                              isPetting: true,
+                            );
+                            setState(() => _overrideDialogue = petMsg);
+                          },
+                          icon: const Text('🐾', style: TextStyle(fontSize: 13)),
+                          label: Text(
+                            'Xoa bụng rừ rừ',
+                            style: TextStyle(
+                              fontSize: 11.5,
+                              fontWeight: FontWeight.w800,
+                              color: isDark ? Colors.white : AppColors.textPrimary,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                     const SizedBox(height: 16),
                     // Central Single Massive Metric
@@ -714,6 +837,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   ],
                 ),
               ),
+              const SizedBox(height: 16),
+              // 3. Quẻ Bói Mèo Mỗi Ngày
+              const DailyFortuneCard(),
               const SizedBox(height: 16),
               // 4. Recent Transactions Section
               Row(
@@ -1033,6 +1159,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           ),
         ],
       ),
-    );
-  }
+    ),
+  );
+}
 }
