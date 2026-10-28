@@ -7,6 +7,7 @@ import '../../core/utils/currency_formatter.dart';
 import '../../providers/profile_provider.dart';
 import '../../providers/transaction_provider.dart';
 import 'fixed_expenses_screen.dart';
+import '../cat_house/cat_house_screen.dart';
 
 class SettingsScreen extends ConsumerWidget {
   const SettingsScreen({super.key});
@@ -116,7 +117,19 @@ class SettingsScreen extends ConsumerWidget {
           const SizedBox(height: 18),
 
           // Section: Trải nghiệm & Mèo Xu
-          _buildSectionHeader('Trải nghiệm ứng dụng'),
+          _buildSectionHeader('Trải nghiệm ứng dụng & Mèo Xu'),
+          _buildSettingCard(
+            isDark: isDark,
+            icon: Icons.pets_rounded,
+            title: 'Cá nhân hóa & Phòng mèo cưng',
+            subtitle: 'Tên, xưng hô, tính cách, màu lông & mắt, phụ kiện',
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const CatHouseScreen()),
+              );
+            },
+          ),
           _buildSwitchCard(
             isDark: isDark,
             icon: Icons.access_time_rounded,

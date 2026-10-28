@@ -6,6 +6,7 @@ enum CatMood {
   confused, // Vượt mức tiêu hôm nay (không trách móc)
   dancing, // Đạt chuỗi 7 ngày liên tục
   hungry, // Quá 24h chưa ghi chép
+  purring, // Được xoa đầu/nựng yêu thích thú
 }
 
 class CatState {

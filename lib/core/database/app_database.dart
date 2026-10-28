@@ -23,7 +23,28 @@ class AppDatabase {
     final dbPath = await getDatabasesPath();
     final path = join(dbPath, filePath);
 
-    return await openDatabase(path, version: 1, onCreate: _createDB);
+    return await openDatabase(
+      path,
+      version: 2,
+      onCreate: _createDB,
+      onUpgrade: _upgradeDB,
+    );
+  }
+
+  Future<void> _upgradeDB(Database db, int oldVersion, int newVersion) async {
+    if (oldVersion < 2) {
+      try {
+        await db.execute(
+          'ALTER TABLE user_profile ADD COLUMN cat_personality TEXT',
+        );
+      } catch (_) {}
+      try {
+        await db.execute('ALTER TABLE user_profile ADD COLUMN call_term TEXT');
+      } catch (_) {}
+      try {
+        await db.execute('ALTER TABLE user_profile ADD COLUMN eye_color TEXT');
+      } catch (_) {}
+    }
   }
 
   Future<void> _createDB(Database db, int version) async {
@@ -34,6 +55,9 @@ class AppDatabase {
         user_name TEXT,
         cat_name TEXT,
         cat_breed TEXT,
+        cat_personality TEXT,
+        call_term TEXT,
+        eye_color TEXT,
         monthly_income REAL,
         monthly_work_hours REAL,
         saving_percentage REAL,

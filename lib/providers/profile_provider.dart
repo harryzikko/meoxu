@@ -25,6 +25,25 @@ class ProfileNotifier extends StateNotifier<UserProfile> {
     await updateProfile(updated);
   }
 
+  Future<void> updateCatCustomization({
+    String? catName,
+    String? catBreed,
+    String? catPersonality,
+    String? callTerm,
+    String? eyeColor,
+    String? userName,
+  }) async {
+    final updated = state.copyWith(
+      catName: catName,
+      catBreed: catBreed,
+      catPersonality: catPersonality,
+      callTerm: callTerm,
+      eyeColor: eyeColor,
+      userName: userName,
+    );
+    await updateProfile(updated);
+  }
+
   Future<void> setFinance({
     required double monthlyIncome,
     required double savingPercentage,

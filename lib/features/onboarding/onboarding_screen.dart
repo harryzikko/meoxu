@@ -66,6 +66,18 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
       'color': Color(0xFFFAF7F2),
       'emoji': '🤍',
     },
+    {
+      'id': 'siamese',
+      'name': 'Mèo Xiêm',
+      'color': Color(0xFFF2E6D8),
+      'emoji': '🤎',
+    },
+    {
+      'id': 'tuxedo',
+      'name': 'Tuxedo',
+      'color': Color(0xFF2C2F33),
+      'emoji': '🎩',
+    },
   ];
 
   @override

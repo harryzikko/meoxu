@@ -20,6 +20,7 @@ import 'widgets/quick_input_bar.dart';
 import 'widgets/confirm_card_bottom_sheet.dart';
 import 'widgets/emotion_selector_dialog.dart';
 import '../transactions/widgets/transaction_tile.dart';
+import '../../core/constants/cat_dialogues.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   final VoidCallback onNavigateToTransactions;
@@ -37,6 +38,7 @@ class HomeScreen extends ConsumerStatefulWidget {
 
 class _HomeScreenState extends ConsumerState<HomeScreen> {
   Map<String, String> _customKeywords = {};
+  String? _overrideDialogue;
 
   @override
   void initState() {
@@ -227,16 +229,20 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     final budget = ref.watch(budgetCalculationProvider);
 
     final recentTxs = txState.allTransactions.take(3).toList();
+    final hasNoTx = txState.allTransactions.isEmpty;
 
-    // Determine Cat Mood message
-    String catMessage = AppStrings.catHappyMsg;
-    if (txState.allTransactions.isEmpty) {
-      catMessage = AppStrings.catSleepingMsg;
-    } else if (budget.isOverspent) {
-      catMessage = AppStrings.catConfusedMsg;
-    } else if (budget.isUnder20Percent) {
-      catMessage = AppStrings.catWorriedMsg;
-    }
+    // Determine Cat message using CatDialogueEngine
+    final catMessage = _overrideDialogue ??
+        CatDialogueEngine.getDialogue(
+          personality: profile.catPersonality,
+          callTerm: profile.formattedCallTerm,
+          catName: profile.catName,
+          userName: profile.userName,
+          mood: catState.cat.currentMood,
+          isOverspent: budget.isOverspent,
+          isUnder20Percent: budget.isUnder20Percent,
+          hasNoTransactions: hasNoTx,
+        );
 
     return Scaffold(
       appBar: AppBar(
@@ -280,6 +286,13 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             ),
           ],
         ),
+        actions: [
+          IconButton(
+            tooltip: 'Phòng của ${profile.catName}',
+            icon: const Icon(Icons.cottage_outlined, color: AppColors.primaryDark),
+            onPressed: widget.onNavigateToCatHouse,
+          ),
+        ],
       ),
       body: Column(
         children: [
@@ -288,45 +301,102 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
               child: Column(
                 children: [
-                  // Animated Mascot in Center
-                  GestureDetector(
-                    onTap: widget.onNavigateToCatHouse,
-                    child: Column(
-                      children: [
-                        MeoMascotWidget(
-                          mood: catState.cat.currentMood,
-                          breed: profile.catBreed,
-                          equippedAccessories: catState.cat.equippedAccessories,
-                          size: 160,
-                        ),
-                        const SizedBox(height: 8),
-                        Container(
+                  // Animated Mascot & Responsive Speech Bubble
+                  Column(
+                    children: [
+                      MeoMascotWidget(
+                        mood: catState.cat.currentMood,
+                        breed: profile.catBreed,
+                        eyeColor: profile.eyeColor,
+                        equippedAccessories: catState.cat.equippedAccessories,
+                        size: 165,
+                        onPet: () {
+                          final petMsg = CatDialogueEngine.getDialogue(
+                            personality: profile.catPersonality,
+                            callTerm: profile.formattedCallTerm,
+                            catName: profile.catName,
+                            userName: profile.userName,
+                            mood: catState.cat.currentMood,
+                            isPetting: true,
+                          );
+                          setState(() {
+                            _overrideDialogue = petMsg;
+                          });
+                        },
+                      ),
+                      const SizedBox(height: 10),
+                      InkWell(
+                        onTap: () {
+                          final nextMsg = CatDialogueEngine.getDialogue(
+                            personality: profile.catPersonality,
+                            callTerm: profile.formattedCallTerm,
+                            catName: profile.catName,
+                            userName: profile.userName,
+                            mood: catState.cat.currentMood,
+                            isOverspent: budget.isOverspent,
+                            isUnder20Percent: budget.isUnder20Percent,
+                            hasNoTransactions: hasNoTx,
+                          );
+                          setState(() {
+                            _overrideDialogue = nextMsg;
+                          });
+                        },
+                        borderRadius: BorderRadius.circular(18),
+                        child: Container(
                           padding: const EdgeInsets.symmetric(
                             horizontal: 16,
-                            vertical: 8,
+                            vertical: 10,
                           ),
-                          margin: const EdgeInsets.symmetric(horizontal: 12),
+                          margin: const EdgeInsets.symmetric(horizontal: 8),
                           decoration: BoxDecoration(
                             color: AppColors.surfaceVariant,
-                            borderRadius: BorderRadius.circular(16),
+                            borderRadius: BorderRadius.circular(18),
                             border: Border.all(
-                              color: AppColors.primaryLight.withOpacity(0.5),
+                              color: AppColors.primaryLight.withOpacity(0.6),
+                              width: 1.2,
                             ),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.03),
+                                blurRadius: 6,
+                                offset: const Offset(0, 2),
+                              ),
+                            ],
                           ),
                           child: Text(
                             catMessage,
                             style: AppTypography.bodyMedium.copyWith(
                               color: AppColors.textPrimary,
                               fontWeight: FontWeight.w600,
-                              fontSize: 13,
+                              fontSize: 13.5,
+                              height: 1.35,
                             ),
                             textAlign: TextAlign.center,
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                      const SizedBox(height: 6),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Icon(
+                            Icons.touch_app_outlined,
+                            size: 12,
+                            color: AppColors.textTertiary,
+                          ),
+                          const SizedBox(width: 4),
+                          Text(
+                            'Chạm nựng mèo • Nhấn đổi câu thoại',
+                            style: AppTypography.caption.copyWith(
+                              fontSize: 11,
+                              color: AppColors.textTertiary,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
-                  const SizedBox(height: 18),
+                  const SizedBox(height: 16),
 
                   // Fish Plate & Big Number Card
                   FishPlateCard(

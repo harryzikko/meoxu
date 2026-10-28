@@ -2,7 +2,10 @@ class UserProfile {
   final String id;
   final String userName;
   final String catName;
-  final String catBreed; // 'orange', 'tabby', 'calico', 'black', 'white'
+  final String catBreed; // 'orange', 'tabby', 'calico', 'black', 'white', 'siamese', 'tuxedo'
+  final String catPersonality; // 'sweet', 'butler', 'playful', 'zen'
+  final String callTerm; // 'sen', 'ban', 'chu_nhan', 'dong_chi', 'nguoi_anh_em' or custom
+  final String eyeColor; // 'amber', 'ocean_blue', 'emerald', 'heterochromia'
   final double monthlyIncome;
   final double monthlyWorkHours;
   final double savingPercentage; // 0.0 - 100.0
@@ -18,6 +21,9 @@ class UserProfile {
     this.userName = 'Bạn',
     this.catName = 'Mèo Xu',
     this.catBreed = 'orange',
+    this.catPersonality = 'sweet',
+    this.callTerm = 'sen',
+    this.eyeColor = 'amber',
     this.monthlyIncome = 10000000.0,
     this.monthlyWorkHours = 176.0,
     this.savingPercentage = 20.0,
@@ -29,11 +35,31 @@ class UserProfile {
     this.isOnboarded = false,
   });
 
+  String get formattedCallTerm {
+    switch (callTerm) {
+      case 'sen':
+        return 'Sen';
+      case 'ban':
+        return 'Bạn';
+      case 'chu_nhan':
+        return 'Chủ nhân';
+      case 'dong_chi':
+        return 'Đồng chí';
+      case 'nguoi_anh_em':
+        return 'Người anh em';
+      default:
+        return callTerm.isNotEmpty ? callTerm : 'Sen';
+    }
+  }
+
   UserProfile copyWith({
     String? id,
     String? userName,
     String? catName,
     String? catBreed,
+    String? catPersonality,
+    String? callTerm,
+    String? eyeColor,
     double? monthlyIncome,
     double? monthlyWorkHours,
     double? savingPercentage,
@@ -49,6 +75,9 @@ class UserProfile {
       userName: userName ?? this.userName,
       catName: catName ?? this.catName,
       catBreed: catBreed ?? this.catBreed,
+      catPersonality: catPersonality ?? this.catPersonality,
+      callTerm: callTerm ?? this.callTerm,
+      eyeColor: eyeColor ?? this.eyeColor,
       monthlyIncome: monthlyIncome ?? this.monthlyIncome,
       monthlyWorkHours: monthlyWorkHours ?? this.monthlyWorkHours,
       savingPercentage: savingPercentage ?? this.savingPercentage,
@@ -67,6 +96,9 @@ class UserProfile {
       'user_name': userName,
       'cat_name': catName,
       'cat_breed': catBreed,
+      'cat_personality': catPersonality,
+      'call_term': callTerm,
+      'eye_color': eyeColor,
       'monthly_income': monthlyIncome,
       'monthly_work_hours': monthlyWorkHours,
       'saving_percentage': savingPercentage,
@@ -85,6 +117,9 @@ class UserProfile {
       userName: map['user_name']?.toString() ?? 'Bạn',
       catName: map['cat_name']?.toString() ?? 'Mèo Xu',
       catBreed: map['cat_breed']?.toString() ?? 'orange',
+      catPersonality: map['cat_personality']?.toString() ?? 'sweet',
+      callTerm: map['call_term']?.toString() ?? 'sen',
+      eyeColor: map['eye_color']?.toString() ?? 'amber',
       monthlyIncome: (map['monthly_income'] as num?)?.toDouble() ?? 10000000.0,
       monthlyWorkHours:
           (map['monthly_work_hours'] as num?)?.toDouble() ?? 176.0,
