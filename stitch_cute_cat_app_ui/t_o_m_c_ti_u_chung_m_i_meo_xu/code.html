@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400..900;1,6..12,400..900&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "on-tertiary": "#ffffff", "surface-container-lowest": "#ffffff", "outline": "#877365", "inverse-primary": "#ffb77a", "tertiary-fixed-dim": "#98cbff", "secondary-container": "#fdb16a", "surface-variant": "#fbddc7", "on-secondary": "#ffffff", "on-secondary-fixed": "#2e1600", "dark-ink-primary": "#FFF4EA", "inverse-on-surface": "#ffede2", "status-fish-amber": "#FFA756", "surface-tint": "#8f4e00", "surface-bright": "#fff8f5", "on-primary": "#ffffff", "primary-fixed-dim": "#ffb77a", "secondary-fixed-dim": "#ffb877", "dark-ink-secondary": "#C8B6A6", "dark-bg-canvas": "#231B15", "on-secondary-fixed-variant": "#6c3a00", "on-primary-fixed": "#2e1500", "on-error": "#ffffff", "surface-dim": "#f2d4bf", "on-tertiary-container": "#004a77", "on-tertiary-fixed-variant": "#004a77", "surface": "#fff8f5", "on-primary-fixed-variant": "#6d3a00", "inverse-surface": "#3f2d1e", "on-tertiary-fixed": "#001d33", "bg-surface-card": "#FFFFFF", "bg-canvas-cream": "#FFF8F0", "secondary-fixed": "#ffdcc1", "surface-container-highest": "#fbddc7", "emotion-regret": "#F28B9B", "ink-primary": "#4A3728", "on-background": "#28180b", "surface-container-low": "#fff1e9", "ink-muted": "A89485", "emotion-impulse": "#FFD36B", "tertiary-fixed": "#cfe5ff", "on-error-container": "#93000a", "primary-fixed": "#ffdcc2", "primary-container": "#ff9f43", "ink-secondary": "#7D6451", "background": "#fff8f5", "secondary": "#8a5010", "tertiary": "#246293", "emotion-necessity": "#8EC5FC", "on-secondary-container": "#774100", "primary": "#8f4e00", "dark-bg-surface": "#2F251E", "tertiary-container": "#83baf0", "surface-container-high": "#ffe3cf", "surface-container": "#ffeadc", "outline-variant": "#dac2b1", "on-surface": "#28180b", "on-surface-variant": "#544437", "on-primary-container": "#6d3a00", "bg-surface-subtle": "#FDF2E4", "error-container": "#ffdad6", "emotion-joy": "#7ED6A5", "error": "#ba1a1a" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "space-xl": "1.75rem", "margin": "1.25rem", "space-md": "0.75rem", "space-sm": "0.5rem", "space-lg": "1.25rem", "space-xs": "0.25rem", "gutter": "1rem" }, fontFamily: { "body-md": ["Nunito Sans"], "label-sm": ["Nunito Sans"], "headline-lg": ["Nunito Sans"], "display-hero-mobile": ["Nunito Sans"], "label-md": ["Nunito Sans"], "currency-stat": ["Nunito Sans"], "display-hero": ["Nunito Sans"], "headline-sm": ["Nunito Sans"], "headline-md": ["Nunito Sans"], "body-sm": ["Nunito Sans"], "body-lg": ["Nunito Sans"], "work-hour-badge": ["Nunito Sans"] }, fontSize: { "body-md": ["14px", { "lineHeight": "22px", "fontWeight": "500" }], "label-sm": ["11px", { "lineHeight": "14px", "fontWeight": "600" }], "headline-lg": ["26px", { "lineHeight": "34px", "fontWeight": "800" }], "display-hero-mobile": ["32px", { "lineHeight": "40px", "fontWeight": "800" }], "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "700" }], "currency-stat": ["32px", { "lineHeight": "38px", "fontWeight": "900" }], "display-hero": ["38px", { "lineHeight": "46px", "fontWeight": "800" }], "headline-sm": ["17px", { "lineHeight": "24px", "fontWeight": "700" }], "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "700" }], "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "500" }], "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "600" }], "work-hour-badge": ["12px", { "lineHeight": "16px", "fontWeight": "700" }] } } } };</script><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#fff8f5;color:#28180b;font-family:'Nunito Sans',sans-serif;-webkit-tap-highlight-color:transparent;}body{overscroll-behavior-y:none;}.pb-safe{padding-bottom:calc(env(safe-area-inset-bottom,0px) + 0.5rem);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 500,'GRAD' 0,'opsz' 24;}body{min-height:max(884px,100dvh);}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-body-md flex flex-col min-h-screen text-on-surface"><header class="fixed top-0 inset-x-0 z-50 bg-surface/85 backdrop-blur-xl pt-safe shadow-[0_4px_20px_rgba(74,55,40,0.04)]"><div class="h-16 px-margin flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-xs"><button aria-label="Quay lại" class="w-11 h-11 -ml-2 flex items-center justify-center text-on-surface rounded-full active:bg-surface-container transition-colors" onclick="history.back()"><span class="material-symbols-outlined text-2xl">arrow_back_ios_new</span></button><div class="flex flex-col justify-center"><h1 class="font-headline-sm text-headline-sm font-bold text-on-surface tracking-tight truncate max-w-[200px]">Chế Độ Hai Chú Mèo   Couple Mode</h1><p class="font-label-sm text-label-sm text-on-surface-variant truncate max-w-[200px]">Hai chú mèo đồng hành</p></div></div><div class="flex items-center gap-space-xs"><div class="flex items-center gap-1 px-2.5 py-1 bg-surface-container rounded-full shadow-[0_2px_8px_rgba(74,55,40,0.04)]"><span class="text-xs leading-none">🐟</span><span class="font-bold text-primary text-label-sm font-label-sm">120</span></div><div class="w-11 h-11 flex items-center justify-center flex-shrink-0"><img alt="Profile" class="w-8 h-8 rounded-full object-cover shadow-[0_2px_8px_rgba(74,55,40,0.08)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoAZ9ksNkqWEkDvI8rA3Kjv4cjj_4aLSie3CiSEzwSkopV3dsPshNGuNW1E6TA6v1uU4x07hcPr51MvvNCAREQt-7ZlJGQeA1xPhaWWEbXsRg9L-QgzDOYTYxlfOG98ut2EMJ3E9NeQlUXI-rwnw6Uh8gXLNJGXF_ouWF1UIVImhU89e5YJU_M6_4idDQ7FB9oH1hUvUzdTncCuiVE05GEodP0g747stA3gtZy02c"/></div></div></div></header><main class="flex flex-col relative w-full pt-16 bg-surface min-h-screen"><div class="flex flex-col w-full pb-32">
+<!-- Top Progress & Mascot Hero Card -->
+<div class="px-margin pt-space-md">
+<div class="bg-surface-container-lowest rounded-3xl p-space-lg shadow-[0_4px_24px_rgba(74,55,40,0.06)] relative overflow-hidden">
+<!-- Decorative Warm Ambient Light Gradient -->
+<div class="absolute -top-12 -right-12 w-40 h-40 bg-secondary-container/20 rounded-full blur-2xl pointer-events-none"></div>
+<!-- Mascot Illustration Banner -->
+<div class="relative w-full h-44 rounded-2xl overflow-hidden mb-space-md flex items-center justify-center bg-surface-container-low shadow-sm">
+<img class="w-full h-full object-cover" data-alt="Charming watercolor warm illustration in Japanese gentle storybook style featuring two cheerful cats: an energetic ginger tabby cat Bé Xu with a red ribbon collar and a fluffy white cat Bé Miu with a golden bell collar, sitting together under a kotatsu table in a sunlit wooden room, happily saving dried fish into a ceramic jar labeled Kibou with soft amber autumn sunlight streaming through shoji doors." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1HZDFI_V1viwyTIjYKPCcSUQ6Xtj2sV80U4kNHeX0HimM5dfSiv2bB7UGvDtZZ2UBqGYRq3Bns8IuFgYmZDoRm4qS7xO1FoB1DA4BzkOJDz0rLKg59URG--cry4irj8Cdc6Y3ke_-dISxG15ImZn59geubieGab5zWJMoJ9nDLYQvRpkAiAaC_HoaKok1KjYsabEghjoKQSbs9ELpvhZKZ7BhMlw-CBPRMELWCFY"/>
+<div class="absolute inset-0 bg-gradient-to-t from-dark-ink-primary/20 via-transparent to-transparent"></div>
+<div class="absolute bottom-2.5 left-3 right-3 bg-surface-container-lowest/90 backdrop-blur-md px-3 py-1.5 rounded-full flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-1.5">
+<span class="text-xs">🐾</span>
+<span class="font-label-sm text-label-sm text-ink-primary">Bé Xu &amp; Bé Miu đang đợi kế hoạch mới!</span>
+</div>
+<span class="font-label-sm text-label-sm text-primary font-bold">Thảnh thơi gom cá</span>
+</div>
+</div>
+<!-- Hero Message -->
+<div class="flex items-start justify-between gap-space-sm mb-space-md">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-ink-primary tracking-tight">Ống Tiết Kiệm Của Hai Đứa</h2>
+<p class="font-body-sm text-body-sm text-ink-secondary mt-0.5">Mỗi ngày một chút cá khô, cùng nhau đi muôn nơi meo~</p>
+</div>
+<div class="w-10 h-10 rounded-2xl bg-secondary-container/20 flex items-center justify-center flex-shrink-0 text-primary">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</div>
+</div>
+<!-- Preset Goal Badges -->
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm text-ink-secondary">Chọn nhanh chủ đề yêu thích:</span>
+<div class="flex gap-2 overflow-x-auto pb-1 -mx-1 px-1 scrollbar-none" id="theme-pills">
+<button class="theme-pill px-3.5 py-2 rounded-2xl bg-primary-container text-on-primary font-label-md text-label-md flex items-center gap-1.5 flex-shrink-0 shadow-sm transition-all scale-100 active:scale-95" data-amount="10.000.000" data-theme="🏕️ Du lịch Đà Lạt" type="button">
+<span>🏕️</span> Trốn phố Đà Lạt
+          </button>
+<button class="theme-pill px-3.5 py-2 rounded-2xl bg-surface-container text-ink-primary font-label-md text-label-md flex items-center gap-1.5 flex-shrink-0 hover:bg-surface-container-high transition-all active:scale-95" data-amount="25.000.000" data-theme="🛵 Xe xinh chung đôi" type="button">
+<span>🛵</span> Xe xinh chung đôi
+          </button>
+<button class="theme-pill px-3.5 py-2 rounded-2xl bg-surface-container text-ink-primary font-label-md text-label-md flex items-center gap-1.5 flex-shrink-0 hover:bg-surface-container-high transition-all active:scale-95" data-amount="50.000.000" data-theme="🏠 Tổ ấm tương lai" type="button">
+<span>🏠</span> Tổ ấm nhỏ
+          </button>
+<button class="theme-pill px-3.5 py-2 rounded-2xl bg-surface-container text-ink-primary font-label-md text-label-md flex items-center gap-1.5 flex-shrink-0 hover:bg-surface-container-high transition-all active:scale-95" data-amount="6.000.000" data-theme="🎸 Đêm nhạc thần tượng" type="button">
+<span>🎸</span> Concert
+          </button>
+<button class="theme-pill px-3.5 py-2 rounded-2xl bg-surface-container text-ink-primary font-label-md text-label-md flex items-center gap-1.5 flex-shrink-0 hover:bg-surface-container-high transition-all active:scale-95" data-amount="8.000.000" data-theme="💍 Quà kỷ niệm 2 năm" type="button">
+<span>💍</span> Kỷ niệm năm
+          </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 1: Goal Details Form -->
+<div class="px-margin pt-space-xl">
+<div class="flex items-center gap-2 mb-space-sm">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<h3 class="font-headline-sm text-headline-sm text-ink-primary">1. Chi tiết dự định</h3>
+</div>
+<div class="bg-surface-container-lowest rounded-3xl p-space-lg shadow-[0_4px_20px_rgba(74,55,40,0.04)] flex flex-col gap-space-md">
+<!-- Goal Name -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm text-ink-secondary" for="goal-name-input">Tên mục tiêu chung</label>
+<div class="flex items-center gap-2.5 bg-surface-container-low px-3.5 py-3 rounded-2xl focus-within:bg-surface-container focus-within:shadow-sm transition-all">
+<span class="text-lg">🌸</span>
+<input class="bg-transparent font-body-lg text-body-lg font-bold text-ink-primary w-full outline-none placeholder:text-ink-secondary/60" id="goal-name-input" placeholder="Ví dụ: Mua máy pha cà phê xịn..." type="text" value="Chuyến đi ngắm hoa Dã Quỳ Đà Lạt 🌸🏕️"/>
+</div>
+</div>
+<!-- Target Amount -->
+<div class="flex flex-col gap-1.5">
+<div class="flex justify-between items-center">
+<label class="font-label-sm text-label-sm text-ink-secondary" for="goal-amount-input">Số tiền cần tích lũy cả hai</label>
+<span class="font-work-hour-badge text-work-hour-badge text-primary bg-primary-fixed px-2 py-0.5 rounded-full">Kỳ vọng</span>
+</div>
+<div class="flex items-center justify-between bg-surface-container-low px-4 py-3 rounded-2xl focus-within:bg-surface-container transition-all">
+<input class="bg-transparent font-currency-stat text-currency-stat text-primary font-black w-full outline-none" id="goal-amount-input" type="text" value="10.000.000"/>
+<span class="font-headline-md text-headline-md text-ink-primary font-bold pl-2">đ</span>
+</div>
+<!-- Quick Amount Selectors -->
+<div class="grid grid-cols-4 gap-2 pt-1">
+<button class="amount-btn py-1.5 px-2 bg-surface-container rounded-xl font-label-md text-label-md text-ink-primary active:bg-secondary-container transition-colors" data-val="3.000.000" type="button">3 Triệu</button>
+<button class="amount-btn py-1.5 px-2 bg-surface-container rounded-xl font-label-md text-label-md text-ink-primary active:bg-secondary-container transition-colors" data-val="5.000.000" type="button">5 Triệu</button>
+<button class="amount-btn py-1.5 px-2 bg-primary-container text-on-primary rounded-xl font-label-md text-label-md font-bold shadow-sm" data-val="10.000.000" type="button">10 Triệu</button>
+<button class="amount-btn py-1.5 px-2 bg-surface-container rounded-xl font-label-md text-label-md text-ink-primary active:bg-secondary-container transition-colors" data-val="20.000.000" type="button">20 Triệu</button>
+</div>
+<!-- Cute Mascot Conversion Box -->
+<div class="mt-2 bg-bg-surface-subtle p-3 rounded-2xl flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-status-fish-amber/20 flex items-center justify-center flex-shrink-0 text-status-fish-amber">
+<span class="text-lg">🐟</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm text-primary font-bold">Quy đổi thảnh thơi</span>
+<p class="font-body-sm text-body-sm text-ink-primary truncate" id="conversion-text">≈ 2.500 con cá khô 🐟 hoặc 146 giờ làm việc chung</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 2: Target Date & Contribution Pace -->
+<div class="px-margin pt-space-xl">
+<div class="flex items-center gap-2 mb-space-sm">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<h3 class="font-headline-sm text-headline-sm text-ink-primary">2. Thời hạn &amp; Nhịp gom cá</h3>
+</div>
+<div class="bg-surface-container-lowest rounded-3xl p-space-lg shadow-[0_4px_20px_rgba(74,55,40,0.04)] flex flex-col gap-space-md">
+<!-- Target Date Picker -->
+<div class="flex items-center justify-between bg-surface-container-low p-3.5 rounded-2xl">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-2xl">event</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-ink-secondary">Ngày đích đến cùng nhau</span>
+<div class="font-headline-sm text-headline-sm text-ink-primary">25/11/2024</div>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-primary font-bold bg-primary-fixed px-3 py-1 rounded-full">Còn 45 ngày</span>
+</div>
+<!-- Rhythm Radio Cluster -->
+<div class="flex flex-col gap-2">
+<span class="font-label-sm text-label-sm text-ink-secondary">Tần suất đóng góp thoải mái nhất:</span>
+<label class="flex items-center justify-between p-3 rounded-2xl bg-surface-container-low hover:bg-surface-container cursor-pointer transition-colors">
+<div class="flex items-center gap-3">
+<span class="text-xl">📅</span>
+<div>
+<div class="font-body-lg text-body-lg font-bold text-ink-primary">Hàng tuần (Cuối tuần gộp cá)</div>
+<div class="font-body-sm text-body-sm text-ink-secondary">Mỗi tối Chủ Nhật hai đứa cùng chốt sổ thảnh thơi</div>
+</div>
+</div>
+<input checked="" class="accent-primary w-5 h-5" name="rhythm" type="radio"/>
+</label>
+<label class="flex items-center justify-between p-3 rounded-2xl bg-surface-container-low hover:bg-surface-container cursor-pointer transition-colors">
+<div class="flex items-center gap-3">
+<span class="text-xl">☀️</span>
+<div>
+<div class="font-body-lg text-body-lg font-bold text-ink-primary">Hàng ngày (Góp theo đĩa cá dư)</div>
+<div class="font-body-sm text-body-sm text-ink-secondary">Mỗi ngày trích một phần nhỏ khi đi ngủ</div>
+</div>
+</div>
+<input class="accent-primary w-5 h-5" name="rhythm" type="radio"/>
+</label>
+<label class="flex items-center justify-between p-3 rounded-2xl bg-surface-container-low hover:bg-surface-container cursor-pointer transition-colors">
+<div class="flex items-center gap-3">
+<span class="text-xl">🎈</span>
+<div>
+<div class="font-body-lg text-body-lg font-bold text-ink-primary">Linh hoạt tự do</div>
+<div class="font-body-sm text-body-sm text-ink-secondary">Bao giờ có thưởng hoặc tiền dư thì thả vào</div>
+</div>
+</div>
+<input class="accent-primary w-5 h-5" name="rhythm" type="radio"/>
+</label>
+</div>
+</div>
+</div>
+<!-- Section 3: Contribution Split & Pair Preview -->
+<div class="px-margin pt-space-xl">
+<div class="flex items-center gap-2 mb-space-sm">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<h3 class="font-headline-sm text-headline-sm text-ink-primary">3. Phân chia đóng góp yêu thương</h3>
+</div>
+<div class="bg-surface-container-lowest rounded-3xl p-space-lg shadow-[0_4px_20px_rgba(74,55,40,0.04)] flex flex-col gap-space-md">
+<!-- Split selector buttons -->
+<div class="grid grid-cols-3 gap-1.5 p-1 bg-surface-container-low rounded-2xl text-center">
+<button class="split-tab py-2 rounded-xl bg-surface-container-lowest text-primary font-label-md text-label-md font-bold shadow-sm transition-all" id="split-50" type="button">50% - 50%<br/><span class="font-label-sm text-label-sm font-normal">Đều nhau</span></button>
+<button class="split-tab py-2 rounded-xl text-ink-secondary font-label-md text-label-md font-medium transition-all" id="split-income" type="button">60% - 40%<br/><span class="font-label-sm text-label-sm font-normal">Thu nhập</span></button>
+<button class="split-tab py-2 rounded-xl text-ink-secondary font-label-md text-label-md font-medium transition-all" id="split-free" type="button">Tùy biến<br/><span class="font-label-sm text-label-sm font-normal">Linh hoạt</span></button>
+</div>
+<!-- Couple Dynamic Preview Cards -->
+<div class="grid grid-cols-2 gap-space-sm">
+<!-- Partner A: Linh -->
+<div class="bg-bg-surface-subtle p-3.5 rounded-2xl flex flex-col items-center text-center relative overflow-hidden">
+<div class="w-12 h-12 rounded-full bg-secondary-container/30 flex items-center justify-center mb-2 relative">
+<span class="text-2xl">🐱</span>
+<span class="absolute -bottom-1 -right-1 w-4 h-4 bg-emotion-joy rounded-full border-2 border-surface-container-lowest"></span>
+</div>
+<span class="font-label-md text-label-md font-bold text-ink-primary">Linh &amp; Bé Xu</span>
+<span class="font-label-sm text-label-sm text-primary bg-primary-fixed px-2 py-0.5 rounded-full mt-1">Góp 50%</span>
+<div class="font-headline-sm text-headline-sm font-extrabold text-ink-primary mt-2">5.000.000đ</div>
+<span class="font-label-sm text-label-sm text-ink-secondary mt-0.5">≈ 55.000đ / ngày</span>
+</div>
+<!-- Partner B: Nam -->
+<div class="bg-surface-container-low p-3.5 rounded-2xl flex flex-col items-center text-center relative overflow-hidden">
+<div class="w-12 h-12 rounded-full bg-tertiary-container/30 flex items-center justify-center mb-2 relative">
+<span class="text-2xl">😺</span>
+<span class="absolute -bottom-1 -right-1 w-4 h-4 bg-emotion-necessity rounded-full border-2 border-surface-container-lowest"></span>
+</div>
+<span class="font-label-md text-label-md font-bold text-ink-primary">Nam &amp; Bé Miu</span>
+<span class="font-label-sm text-label-sm text-tertiary bg-tertiary-fixed px-2 py-0.5 rounded-full mt-1">Góp 50%</span>
+<div class="font-headline-sm text-headline-sm font-extrabold text-ink-primary mt-2">5.000.000đ</div>
+<span class="font-label-sm text-label-sm text-ink-secondary mt-0.5">≈ 55.000đ / ngày</span>
+</div>
+</div>
+<!-- Gentle auto-skim feature toggle -->
+<div class="bg-surface-container-low p-3.5 rounded-2xl flex items-center justify-between gap-3">
+<div class="flex items-start gap-3">
+<span class="text-2xl pt-0.5">🐟</span>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md font-bold text-ink-primary">Tự động gom phần cá khô dư thừa</span>
+<p class="font-body-sm text-body-sm text-ink-secondary">Ngày nào tiêu ít hơn hạn mức thoải mái, phần dư sẽ tự động lăn vào đây meo~</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer flex-shrink-0">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+</div>
+</div>
+<!-- Section 4: Gamification & Couple Bet -->
+<div class="px-margin pt-space-xl">
+<div class="flex items-center gap-2 mb-space-sm">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<h3 class="font-headline-sm text-headline-sm text-ink-primary">4. Kèo vui cán đích 🎉</h3>
+</div>
+<div class="bg-surface-container-lowest rounded-3xl p-space-lg shadow-[0_4px_20px_rgba(74,55,40,0.04)] flex flex-col gap-space-sm">
+<div class="flex items-center justify-between mb-1">
+<span class="font-label-sm text-label-sm text-ink-secondary">Đặt kèo thưởng để có động lực:</span>
+<span class="font-label-sm text-label-sm text-primary font-bold">Chạm để chọn</span>
+</div>
+<div class="space-y-2">
+<label class="flex items-center gap-3 p-3 rounded-2xl bg-primary-fixed/25 border-none cursor-pointer">
+<input checked="" class="accent-primary w-4 h-4 flex-shrink-0" name="bet" type="radio"/>
+<div class="flex items-center gap-2">
+<span class="text-lg">💆</span>
+<span class="font-body-md text-body-md text-ink-primary font-bold">Ai xong phần mình trước được massage lưng 1 tuần!</span>
+</div>
+</label>
+<label class="flex items-center gap-3 p-3 rounded-2xl bg-surface-container-low hover:bg-surface-container cursor-pointer transition-colors">
+<input class="accent-primary w-4 h-4 flex-shrink-0" name="bet" type="radio"/>
+<div class="flex items-center gap-2">
+<span class="text-lg">🍲</span>
+<span class="font-body-md text-body-md text-ink-primary">Cùng nhau ăn lẩu hải sản tự thưởng ngập bàn!</span>
+</div>
+</label>
+<label class="flex items-center gap-3 p-3 rounded-2xl bg-surface-container-low hover:bg-surface-container cursor-pointer transition-colors">
+<input class="accent-primary w-4 h-4 flex-shrink-0" name="bet" type="radio"/>
+<div class="flex items-center gap-2">
+<span class="text-lg">🍰</span>
+<span class="font-body-md text-body-md text-ink-primary">Người xong sau sẽ bao trọn tiền trà bánh cả chuyến đi</span>
+</div>
+</label>
+</div>
+</div>
+</div>
+<!-- Section 5: Mascot Companion Non-Judgmental Pledge -->
+<div class="px-margin pt-space-lg">
+<div class="bg-bg-surface-subtle rounded-3xl p-space-md shadow-sm flex items-start gap-3">
+<div class="w-10 h-10 rounded-2xl bg-surface-container-lowest flex items-center justify-center flex-shrink-0 shadow-sm text-xl">
+        🐾
+      </div>
+<div class="flex flex-col">
+<h4 class="font-label-md text-label-md text-ink-primary font-bold">Cam kết ấm áp từ Mèo Xu:</h4>
+<p class="font-body-sm text-body-sm text-ink-secondary mt-0.5 leading-relaxed">
+          Hai bạn chỉ nhìn thấy tiến độ chung và số cá đã gom vào ống này. Meo Xu tuyệt đối <strong class="text-ink-primary">không soi lịch sử chi tiêu cá nhân</strong> của từng người. Thoải mái và tin tưởng nhau là số một meo!
+        </p>
+</div>
+</div>
+</div>
+<!-- Floating Sticky Action Button Area -->
+<div class="fixed bottom-0 inset-x-0 bg-surface/90 backdrop-blur-xl px-margin py-space-md shadow-[0_-8px_24px_rgba(74,55,40,0.06)] z-40 flex flex-col items-center gap-2 pb-safe">
+<button class="w-full h-14 bg-primary-container text-on-primary rounded-2xl font-body-lg text-body-lg font-bold flex items-center justify-center gap-2 shadow-[0_4px_16px_rgba(255,159,67,0.35)] active:scale-[0.98] transition-all" id="create-goal-btn" type="button">
+<span>Gửi lời mời mục tiêu cho Nam</span>
+<span class="material-symbols-outlined text-xl">send</span>
+</button>
+<div class="flex items-center gap-1.5 text-center">
+<span class="text-xs">💌</span>
+<span class="font-label-sm text-label-sm text-ink-secondary">Nam sẽ nhận được thư tay kèm một hộp cá khô tượng trưng</span>
+</div>
+</div>
+</div>
+<script>
+  // Interactive micro-behaviors for Quick Themes and Amount Buttons
+  const amountInput = document.getElementById('goal-amount-input');
+  const nameInput = document.getElementById('goal-name-input');
+  const conversionText = document.getElementById('conversion-text');
+  const themePills = document.querySelectorAll('.theme-pill');
+  const amountBtns = document.querySelectorAll('.amount-btn');
+  const splitTabs = document.querySelectorAll('.split-tab');
+
+  function updateConversion(valueStr) {
+    const rawNum = parseInt(valueStr.replace(/\./g, ''), 10) || 0;
+    const fishCount = Math.round(rawNum / 4000);
+    const workHours = Math.round(rawNum / 68500);
+    if (conversionText) {
+      conversionText.textContent = `≈ ${fishCount.toLocaleString('vi-VN')} con cá khô 🐟 hoặc ${workHours} giờ làm việc chung`;
+    }
+  }
+
+  // Theme Pill selection
+  themePills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      themePills.forEach(p => {
+        p.classList.remove('bg-primary-container', 'text-on-primary', 'shadow-sm');
+        p.classList.add('bg-surface-container', 'text-ink-primary');
+      });
+      pill.classList.remove('bg-surface-container', 'text-ink-primary');
+      pill.classList.add('bg-primary-container', 'text-on-primary', 'shadow-sm');
+
+      const themeName = pill.getAttribute('data-theme');
+      const themeAmount = pill.getAttribute('data-amount');
+      if (nameInput) nameInput.value = themeName;
+      if (amountInput && themeAmount) {
+        amountInput.value = themeAmount;
+        updateConversion(themeAmount);
+      }
+    });
+  });
+
+  // Amount Buttons selection
+  amountBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      amountBtns.forEach(b => {
+        b.classList.remove('bg-primary-container', 'text-on-primary', 'font-bold', 'shadow-sm');
+        b.classList.add('bg-surface-container', 'text-ink-primary');
+      });
+      btn.classList.remove('bg-surface-container', 'text-ink-primary');
+      btn.classList.add('bg-primary-container', 'text-on-primary', 'font-bold', 'shadow-sm');
+      
+      const val = btn.getAttribute('data-val');
+      if (amountInput && val) {
+        amountInput.value = val;
+        updateConversion(val);
+      }
+    });
+  });
+
+  // Split tabs interaction
+  splitTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      splitTabs.forEach(t => {
+        t.classList.remove('bg-surface-container-lowest', 'text-primary', 'shadow-sm', 'font-bold');
+        t.classList.add('text-ink-secondary', 'font-medium');
+      });
+      tab.classList.add('bg-surface-container-lowest', 'text-primary', 'shadow-sm', 'font-bold');
+      tab.classList.remove('text-ink-secondary', 'font-medium');
+    });
+  });
+
+  // Real-time input handling for amount
+  if (amountInput) {
+    amountInput.addEventListener('input', (e) => {
+      let val = e.target.value.replace(/\D/g, '');
+      if (val) {
+        val = parseInt(val, 10).toLocaleString('vi-VN');
+      }
+      e.target.value = val;
+      updateConversion(val);
+    });
+  }
+
+  // Cute CTA Toast Confirmation
+  const createGoalBtn = document.getElementById('create-goal-btn');
+  if (createGoalBtn) {
+    createGoalBtn.addEventListener('click', () => {
+      createGoalBtn.innerHTML = '<span>Đã gửi phong thư cá khô cho Nam! 🐟💌</span>';
+      createGoalBtn.classList.remove('bg-primary-container');
+      createGoalBtn.classList.add('bg-emotion-joy', 'text-ink-primary');
+      setTimeout(() => {
+        createGoalBtn.innerHTML = '<span>Gửi lời mời mục tiêu cho Nam</span><span class="material-symbols-outlined text-xl">send</span>';
+        createGoalBtn.classList.remove('bg-emotion-joy', 'text-ink-primary');
+        createGoalBtn.classList.add('bg-primary-container', 'text-on-primary');
+      }, 2500);
+    });
+  }
+</script></main></body></html>

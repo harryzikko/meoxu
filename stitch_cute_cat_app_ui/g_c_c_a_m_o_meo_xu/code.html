@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400..900;1,6..12,400..900&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "on-tertiary": "#ffffff", "surface-container-lowest": "#ffffff", "outline": "#877365", "inverse-primary": "#ffb77a", "tertiary-fixed-dim": "#98cbff", "secondary-container": "#fdb16a", "surface-variant": "#fbddc7", "on-secondary": "#ffffff", "on-secondary-fixed": "#2e1600", "dark-ink-primary": "#FFF4EA", "inverse-on-surface": "#ffede2", "status-fish-amber": "#FFA756", "surface-tint": "#8f4e00", "surface-bright": "#fff8f5", "on-primary": "#ffffff", "primary-fixed-dim": "#ffb77a", "secondary-fixed-dim": "#ffb877", "dark-ink-secondary": "#C8B6A6", "dark-bg-canvas": "#231B15", "on-secondary-fixed-variant": "#6c3a00", "on-primary-fixed": "#2e1500", "on-error": "#ffffff", "surface-dim": "#f2d4bf", "on-tertiary-container": "#004a77", "on-tertiary-fixed-variant": "#004a77", "surface": "#fff8f5", "on-primary-fixed-variant": "#6d3a00", "inverse-surface": "#3f2d1e", "on-tertiary-fixed": "#001d33", "bg-surface-card": "#FFFFFF", "bg-canvas-cream": "#FFF8F0", "secondary-fixed": "#ffdcc1", "surface-container-highest": "#fbddc7", "emotion-regret": "#F28B9B", "ink-primary": "#4A3728", "on-background": "#28180b", "surface-container-low": "#fff1e9", "ink-muted": "A89485", "emotion-impulse": "#FFD36B", "tertiary-fixed": "#cfe5ff", "on-error-container": "#93000a", "primary-fixed": "#ffdcc2", "primary-container": "#ff9f43", "ink-secondary": "#7D6451", "background": "#fff8f5", "secondary": "#8a5010", "tertiary": "#246293", "emotion-necessity": "#8EC5FC", "on-secondary-container": "#774100", "primary": "#8f4e00", "dark-bg-surface": "#2F251E", "tertiary-container": "#83baf0", "surface-container-high": "#ffe3cf", "surface-container": "#ffeadc", "outline-variant": "#dac2b1", "on-surface": "#28180b", "on-surface-variant": "#544437", "on-primary-container": "#6d3a00", "bg-surface-subtle": "#FDF2E4", "error-container": "#ffdad6", "emotion-joy": "#7ED6A5", "error": "#ba1a1a" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "space-xl": "1.75rem", "margin": "1.25rem", "space-md": "0.75rem", "space-sm": "0.5rem", "space-lg": "1.25rem", "space-xs": "0.25rem", "gutter": "1rem" }, fontFamily: { "body-md": ["Nunito Sans"], "label-sm": ["Nunito Sans"], "headline-lg": ["Nunito Sans"], "display-hero-mobile": ["Nunito Sans"], "label-md": ["Nunito Sans"], "currency-stat": ["Nunito Sans"], "display-hero": ["Nunito Sans"], "headline-sm": ["Nunito Sans"], "headline-md": ["Nunito Sans"], "body-sm": ["Nunito Sans"], "body-lg": ["Nunito Sans"], "work-hour-badge": ["Nunito Sans"] }, fontSize: { "body-md": ["14px", { "lineHeight": "22px", "fontWeight": "500" }], "label-sm": ["11px", { "lineHeight": "14px", "fontWeight": "600" }], "headline-lg": ["26px", { "lineHeight": "34px", "fontWeight": "800" }], "display-hero-mobile": ["32px", { "lineHeight": "40px", "fontWeight": "800" }], "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "700" }], "currency-stat": ["32px", { "lineHeight": "38px", "fontWeight": "900" }], "display-hero": ["38px", { "lineHeight": "46px", "fontWeight": "800" }], "headline-sm": ["17px", { "lineHeight": "24px", "fontWeight": "700" }], "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "700" }], "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "500" }], "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "600" }], "work-hour-badge": ["12px", { "lineHeight": "16px", "fontWeight": "700" }] } } } };</script><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#fff8f5;color:#28180b;font-family:'Nunito Sans',sans-serif;-webkit-tap-highlight-color:transparent;}body{overscroll-behavior-y:none;}.pb-safe{padding-bottom:calc(env(safe-area-inset-bottom,0px) + 0.5rem);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 500,'GRAD' 0,'opsz' 24;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-body-md flex flex-col min-h-screen text-on-surface"><header class="fixed top-0 inset-x-0 z-50 bg-surface/85 backdrop-blur-xl pt-safe shadow-[0_4px_20px_rgba(74,55,40,0.04)]"><div class="h-16 px-margin flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0 flex-shrink-0"><img alt="Mèo Xu Mascot Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1XFV_FycYMU7CB5zSLabjHUrjKZWriny3oTVC-wkpQyUj66Budgdr-4GItW2qRPwZUkm3tnat9A7YcZDNSQn0iV4xdDiMkNHcZXZKW6FDMusmikzCB8ksWDzp0yHT61Tcuj7qmGLeWfCvQZy3T0JMlF1K4Bm2EhhtJeBMQoOaM0u_H4PTrtKJGAIc3mDl0B5cARTTa3t0yGtpAxr_iYnK2F4S1MjHHcFZElnNcSD9ic"/><div class="flex flex-col justify-center min-w-0"><div class="flex items-baseline gap-space-xs"><span class="font-headline-sm text-headline-sm font-extrabold text-on-surface tracking-tight leading-none">Meo Xu</span><span class="text-label-sm font-label-sm text-on-surface-variant font-medium truncate hidden min-[360px]:inline">· Thư Của Mèo</span></div></div></div><div class="flex items-center gap-space-xs"><div class="flex items-center gap-1.5 px-2.5 py-1 bg-surface-container rounded-full shadow-[0_2px_8px_rgba(74,55,40,0.04)]"><div class="flex items-center gap-0.5 text-on-surface text-label-sm font-label-sm"><span class="text-xs leading-none">🔥</span><span class="font-bold">7d</span></div><span class="text-outline-variant font-bold leading-none text-[10px]">•</span><div class="flex items-center gap-0.5 text-primary text-label-sm font-label-sm"><span class="text-xs leading-none">🐟</span><span class="font-bold">120</span></div></div><a class="w-11 h-11 flex items-center justify-center flex-shrink-0 rounded-full transition-transform active:scale-95" data-path="goc-cua-meo" href="#"><img alt="Profile" class="w-8 h-8 rounded-full object-cover shadow-[0_2px_8px_rgba(74,55,40,0.08)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoAZ9ksNkqWEkDvI8rA3Kjv4cjj_4aLSie3CiSEzwSkopV3dsPshNGuNW1E6TA6v1uU4x07hcPr51MvvNCAREQt-7ZlJGQeA1xPhaWWEbXsRg9L-QgzDOYTYxlfOG98ut2EMJ3E9NeQlUXI-rwnw6Uh8gXLNJGXF_ouWF1UIVImhU89e5YJU_M6_4idDQ7FB9oH1hUvUzdTncCuiVE05GEodP0g747stA3gtZy02c"/></a></div></div></header><main class="flex flex-col relative w-full pt-16 pb-28 bg-surface min-h-screen"><div class="flex flex-col w-full px-margin pb-6 gap-space-lg">
+<!-- Top Quick Actions Bar (Photo Share & Room Settings) -->
+<div class="flex items-center justify-between mt-1">
+<div class="flex items-center gap-space-xs">
+<span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-surface-container-high text-primary">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">pets</span>
+</span>
+<span class="font-headline-sm text-headline-sm text-ink-primary font-extrabold tracking-tight">Góc của Mèo</span>
+</div>
+<div class="flex items-center gap-2">
+<!-- Camera Snap Button -->
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container hover:bg-surface-container-high text-ink-primary active:scale-95 transition-transform shadow-sm" id="snap-btn">
+<span class="material-symbols-outlined text-base text-primary">photo_camera</span>
+<span class="font-label-sm text-label-sm">Chụp ảnh</span>
+</button>
+<!-- Room Audio/Settings toggle -->
+<button class="w-8 h-8 rounded-full flex items-center justify-center bg-surface-container hover:bg-surface-container-high text-ink-secondary active:scale-95 transition-transform shadow-sm">
+<span class="material-symbols-outlined text-lg">tune</span>
+</button>
+</div>
+</div>
+<!-- Cat's Room Sanctuary (Visual Hero & Cozy Nook) -->
+<div class="relative w-full rounded-3xl bg-surface-container-lowest p-space-lg shadow-[0_6px_24px_rgba(74,55,40,0.06)] overflow-hidden flex flex-col items-center">
+<!-- Ambient Room Gradient Decor -->
+<div class="absolute -top-12 -right-12 w-48 h-48 bg-primary-fixed/30 rounded-full blur-2xl pointer-events-none"></div>
+<div class="absolute -bottom-8 -left-8 w-40 h-40 bg-surface-container-high/40 rounded-full blur-xl pointer-events-none"></div>
+<!-- Speech Bubble from Cat -->
+<div class="relative w-full max-w-xs mb-3 z-10">
+<div class="bg-surface-container-low px-3.5 py-2.5 rounded-2xl shadow-sm text-center relative">
+<p class="font-body-sm text-body-sm text-ink-primary leading-snug">
+          “Meo~ Cảm ơn Linh đã cho tớ ăn no 7 ngày liền nè! Phòng ấm thích quá meo~”
+        </p>
+<!-- Speech Bubble Tail -->
+<div class="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-surface-container-low rotate-45 rounded-[2px]"></div>
+</div>
+</div>
+<!-- Room Main Illustration Stage -->
+<div class="relative w-full h-56 flex items-center justify-center my-1 select-none">
+<!-- Cosy Room Decor Layer Background -->
+<img class="w-full h-full object-cover rounded-2xl absolute inset-0 opacity-80" data-alt="A warm sunlit anime watercolor style bedroom corner for a cute pet cat, soft morning rays, wooden floor, fluffy circular peach knit rug, tiny succulent houseplant in ceramic pot, low wooden side table, cozy peaceful vibe in warm cream and apricot tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDN67n2WtFyVN0Z8A7HjabnLHOOojL0i7XgX55hD2FvOFjgqNcZVBHcFqIWaWRZdqVsPdZ0vj3hyiFMg5TntaowrBHSUWbv9C_A5Od7KbXmWKTmc1VftU5mX0wgmYFOU8NWB1BqEfTH8s9Q8rMzNprDhkqG4rgwI1iqRCaFDmFlZ2wwqSVXRmftE1LN1LRDP82GxrAROBhixEEAZhF7ohatjjbfeE5E-NQ5eOAohX0"/>
+<!-- Soft gradient scrim over room backdrop -->
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-transparent to-transparent rounded-2xl"></div>
+<!-- Mascot Bé Xu Layer -->
+<div class="relative z-10 flex flex-col items-center">
+<!-- Equipped Accessory Badge Visual: Red Bow / Chef Hat -->
+<div class="absolute -top-3 right-6 z-20 bg-emotion-regret/20 px-2 py-0.5 rounded-full flex items-center gap-1 shadow-sm animate-bounce" id="equipped-accessory">
+<span class="text-xs">🎀</span>
+<span class="font-label-sm text-label-sm text-ink-primary font-bold">Nơ đỏ may mắn</span>
+</div>
+<!-- Cat Character Placeholder -->
+<div class="relative group cursor-pointer" id="cat-avatar-interactive">
+<img class="w-40 h-40 object-contain drop-shadow-[0_8px_16px_rgba(143,78,0,0.18)] transition-transform active:scale-95" data-alt="Adorable plump chubby ginger cat wearing a tiny cute red ribbon bow tie on collar, comfortably curled up on a soft plush cream cushion with contented happy closed eyes, purring whiskers, studio Ghibli aesthetic, soft warm ambient lighting, highly detailed fur." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJ67DaO1BkTaJJ0Ned21UDmtJ7XaDtnyzZTyZVjLnCErIqe40hPOKoECbm4KOTUAclJEwYtpZwpk8ipP9-09rcs4G375dOfw5apF1tE9-AORqN4DZvYokjXIeMN9b4rqe65cPdgRRxdpYjnJRH1Myz2eif5__xzhOvbrxpcD0NSDylatLocTo2R2vtkolGajjIU7Ek5b-Zc-ObaU5XURItkqxX3K2tX9tTD3zM1dQ"/>
+<!-- Floating purr hearts container for micro-interaction -->
+<div class="absolute inset-0 pointer-events-none flex items-center justify-center" id="purr-container"></div>
+</div>
+<!-- Food Plate with Dried Fish Beside Mat -->
+<div class="absolute -bottom-2 -left-6 z-10 bg-surface-container px-2.5 py-1 rounded-full flex items-center gap-1.5 shadow-sm">
+<span class="text-sm">🐟</span>
+<span class="font-label-sm text-label-sm text-primary font-extrabold">Đĩa đầy ắp</span>
+</div>
+</div>
+</div>
+<!-- Pet Interaction Button & Status -->
+<div class="flex items-center justify-between w-full mt-2 pt-2 border-none">
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm text-ink-primary font-extrabold">Bé Xu</span>
+<span class="px-2 py-0.5 rounded-full bg-primary-container/20 text-primary font-label-sm text-label-sm font-bold flex items-center gap-0.5">
+<span>Cấp 2: Mèo Trẻ</span>
+<span class="text-[10px]">🌟</span>
+</span>
+</div>
+<span class="font-body-sm text-body-sm text-ink-secondary truncate">Còn 7 ngày để thành Mèo Trưởng Thành</span>
+</div>
+<!-- Pet Interaction Pill -->
+<button class="flex-shrink-0 flex items-center gap-1 px-3.5 py-2 rounded-2xl bg-primary hover:bg-secondary text-on-primary font-label-md text-label-md active:scale-95 transition-all shadow-[0_4px_14px_rgba(143,78,0,0.2)]" id="pet-action-btn">
+<span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span>Vuốt ve</span>
+</button>
+</div>
+<!-- Level Progress Bar -->
+<div class="w-full mt-3 bg-surface-container rounded-full h-3 p-0.5 overflow-hidden">
+<div class="bg-primary h-full rounded-full transition-all duration-500 ease-out" style="width: 50%;"></div>
+</div>
+<div class="flex justify-between w-full mt-1 font-label-sm text-label-sm text-ink-muted">
+<span>Đã tích lũy: 7 ngày</span>
+<span>Mục tiêu: 14 ngày</span>
+</div>
+</div>
+<!-- Streak Section & Rest Protection Card -->
+<div class="flex flex-col bg-surface-container-lowest rounded-3xl p-space-lg shadow-[0_4px_20px_rgba(74,55,40,0.04)] gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-9 h-9 rounded-2xl bg-primary-container/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+</span>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-ink-primary font-bold">Chuỗi kiên trì</h2>
+<p class="font-body-sm text-body-sm text-ink-secondary">7 ngày liên tục ghi chép</p>
+</div>
+</div>
+<div class="flex items-center gap-1 bg-surface-container-low px-2.5 py-1 rounded-full">
+<span class="text-xs">🔥</span>
+<span class="font-label-md text-label-md text-primary font-extrabold">7 ngày</span>
+</div>
+</div>
+<!-- 7-Day Mini Calendar Strip with Cat Paws -->
+<div class="grid grid-cols-7 gap-1.5 pt-1">
+<!-- Mon -->
+<div class="flex flex-col items-center py-2 px-1 rounded-2xl bg-surface-container-low">
+<span class="font-label-sm text-label-sm text-ink-muted mb-1.5">T2</span>
+<div class="w-7 h-7 rounded-full bg-primary flex items-center justify-center text-on-primary shadow-xs">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">pets</span>
+</div>
+</div>
+<!-- Tue -->
+<div class="flex flex-col items-center py-2 px-1 rounded-2xl bg-surface-container-low">
+<span class="font-label-sm text-label-sm text-ink-muted mb-1.5">T3</span>
+<div class="w-7 h-7 rounded-full bg-primary flex items-center justify-center text-on-primary shadow-xs">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">pets</span>
+</div>
+</div>
+<!-- Wed -->
+<div class="flex flex-col items-center py-2 px-1 rounded-2xl bg-surface-container-low">
+<span class="font-label-sm text-label-sm text-ink-muted mb-1.5">T4</span>
+<div class="w-7 h-7 rounded-full bg-primary flex items-center justify-center text-on-primary shadow-xs">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">pets</span>
+</div>
+</div>
+<!-- Thu -->
+<div class="flex flex-col items-center py-2 px-1 rounded-2xl bg-surface-container-low">
+<span class="font-label-sm text-label-sm text-ink-muted mb-1.5">T5</span>
+<div class="w-7 h-7 rounded-full bg-primary flex items-center justify-center text-on-primary shadow-xs">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">pets</span>
+</div>
+</div>
+<!-- Fri -->
+<div class="flex flex-col items-center py-2 px-1 rounded-2xl bg-surface-container-low">
+<span class="font-label-sm text-label-sm text-ink-muted mb-1.5">T6</span>
+<div class="w-7 h-7 rounded-full bg-primary flex items-center justify-center text-on-primary shadow-xs">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">pets</span>
+</div>
+</div>
+<!-- Sat -->
+<div class="flex flex-col items-center py-2 px-1 rounded-2xl bg-surface-container-low">
+<span class="font-label-sm text-label-sm text-ink-muted mb-1.5">T7</span>
+<div class="w-7 h-7 rounded-full bg-primary flex items-center justify-center text-on-primary shadow-xs">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">pets</span>
+</div>
+</div>
+<!-- Sun (Today) -->
+<div class="flex flex-col items-center py-2 px-1 rounded-2xl bg-surface-container-high shadow-xs ring-0">
+<span class="font-label-sm text-label-sm text-primary font-bold mb-1.5">CN</span>
+<div class="w-7 h-7 rounded-full bg-primary flex items-center justify-center text-on-primary animate-pulse shadow-xs">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">pets</span>
+</div>
+</div>
+</div>
+<!-- Rest Card Protection Banner (Non-judgmental safeguard) -->
+<div class="flex items-center justify-between p-3 rounded-2xl bg-surface-container-low">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-lg">shield_with_heart</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-ink-primary">2/2 Thẻ nghỉ ngơi còn lại tháng này</span>
+<span class="font-body-sm text-body-sm text-ink-secondary text-xs">Lỡ quên 1 ngày mèo vẫn giữ chuỗi, không lo đứt đoạn</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-ink-secondary text-lg">info</span>
+</div>
+</div>
+<!-- Cat Wardrobe & Room Furniture Section -->
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-9 h-9 rounded-2xl bg-secondary-fixed flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-xl">checkroom</span>
+</span>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-ink-primary font-bold">Tủ đồ &amp; Nội thất</h2>
+<p class="font-body-sm text-body-sm text-ink-secondary">Dùng Cá khô 🐟 để làm điệu cho Xu</p>
+</div>
+</div>
+<!-- Fish balance reminder -->
+<div class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container text-primary font-label-md text-label-md font-bold">
+<span>🐟</span>
+<span>120 cá</span>
+</div>
+</div>
+<!-- Wardrobe Category Tabs -->
+<div class="flex p-1 rounded-2xl bg-surface-container-high/60 gap-1" id="wardrobe-tabs">
+<button class="flex-1 py-2 rounded-xl bg-surface-container-lowest text-primary font-label-md text-label-md font-bold shadow-xs transition-all text-center" data-category="accessories">
+        Phụ kiện mèo
+      </button>
+<button class="flex-1 py-2 rounded-xl text-ink-secondary font-label-md text-label-md font-bold hover:text-ink-primary transition-all text-center" data-category="furniture">
+        Nội thất phòng
+      </button>
+</div>
+<!-- Grid of Accessories (6 items) -->
+<div class="grid grid-cols-2 gap-space-sm" id="wardrobe-grid">
+<!-- Item 1: Nơ đỏ may mắn (Đang đeo) -->
+<div class="flex flex-col bg-surface-container-lowest rounded-3xl p-3 shadow-[0_4px_16px_rgba(74,55,40,0.04)] justify-between">
+<div class="relative w-full h-24 rounded-2xl bg-surface-container-low flex items-center justify-center mb-2 overflow-hidden">
+<img class="w-16 h-16 object-contain" data-alt="Charming festive small red bow tie ribbon for a pet cat with golden bell charm, clean studio background, cute warm pastel illustration." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAw4z7wde5dTiVI-U9t2suvcG7b568mzSJcxV_yHfEKJ5axtuwUH3Xk7z0IWrarn6L_Nks1qCvXUwNbNCzJ2rZJLZfVs-cobSzfrlXcWOcyJf_8EkJvDGhsnUc9gzceeh1tzu-11tq5oh-TJrU2K6IoLvnl7X7Ssv4tHGbyI68yR2IKlqhyCCz-pH_NKeLr7ywbJHrZ00wxb0b82vr0peHmWY7bjVDqoxUnzOj52Ak"/>
+<span class="absolute top-2 left-2 px-1.5 py-0.5 rounded-full bg-emotion-joy/30 text-ink-primary font-label-sm text-label-sm font-bold text-[10px]">
+            Đang đeo
+          </span>
+</div>
+<div class="flex flex-col mb-2">
+<span class="font-headline-sm text-headline-sm text-ink-primary font-bold text-sm">Nơ đỏ may mắn</span>
+<span class="font-body-sm text-body-sm text-ink-secondary text-xs">Đã sở hữu</span>
+</div>
+<button class="w-full py-1.5 rounded-xl bg-surface-container text-ink-muted font-label-sm text-label-sm font-bold cursor-default">
+          Đang sử dụng
+        </button>
+</div>
+<!-- Item 2: Mũ len quả chuông (Đã sở hữu - Có thể mặc thử) -->
+<div class="flex flex-col bg-surface-container-lowest rounded-3xl p-3 shadow-[0_4px_16px_rgba(74,55,40,0.04)] justify-between">
+<div class="relative w-full h-24 rounded-2xl bg-surface-container-low flex items-center justify-center mb-2 overflow-hidden">
+<img class="w-16 h-16 object-contain" data-alt="Handcrafted yellow knitted winter beanie hat for a cat with a fluffy white pompom and tiny jingling copper bell, cozy warm textured illustration." src="https://lh3.googleusercontent.com/aida-public/AB6AXuANdLeVtJ-kYLMMEpa60vMNmGDKBJ13JL4cY5FKJViOjWfcDHcVlXdDnXqjN_1cMm5VMs37XeOLYykjaylsapo4O8IheZ8nxBfYOvR9WehYRbyTsDn5X9rlBJbc5Fig-4WyCWCWsgMY5QB_3MG-tI7RLJlCwMrqZXKxv99EgQ1byY1twk2QlvBElyS_mg583zV2kGbVq1MsUABYycqP3XdI9r3tkh4H8FMgwTZRoZQ"/>
+<span class="absolute top-2 left-2 px-1.5 py-0.5 rounded-full bg-primary-container/20 text-primary font-label-sm text-label-sm font-bold text-[10px]">
+            Đã có
+          </span>
+</div>
+<div class="flex flex-col mb-2">
+<span class="font-headline-sm text-headline-sm text-ink-primary font-bold text-sm">Mũ len quả chuông</span>
+<span class="font-body-sm text-body-sm text-ink-secondary text-xs">Trong tủ đồ</span>
+</div>
+<button class="w-full py-1.5 rounded-xl bg-surface-container-high hover:bg-primary-container/30 text-ink-primary font-label-sm text-label-sm font-bold active:scale-95 transition-transform">
+          Đeo thử
+        </button>
+</div>
+<!-- Item 3: Kính tri thức ngố (80 cá - Đủ mua) -->
+<div class="flex flex-col bg-surface-container-lowest rounded-3xl p-3 shadow-[0_4px_16px_rgba(74,55,40,0.04)] justify-between">
+<div class="relative w-full h-24 rounded-2xl bg-surface-container-low flex items-center justify-center mb-2 overflow-hidden">
+<img class="w-16 h-16 object-contain" data-alt="Round tiny tortoiseshell glasses spectacles for a scholarly smart cat, cute studio lighting, warm pastel tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCO2-CDYzFFQbAeASt5tH2rgInW31M3NJn1dF5fnIXBb7V0QEVDGboZD9Wc-v56Dkdim3Xc1PjVvyu85fNOUXmb0QCBoip0W7J1yIaMOtInJrDLT0QdE8o0Hf7oOUgCnjOFCsynGvu0VgEfxr9Y8LQst18723GBs7LA1tnNcpCTG0W3c2hSf2NN0ztoRdt3yzSVX3KtHdWDo8yftxLcvmOCPLKsZqy8Ws-gh-5XFM8"/>
+</div>
+<div class="flex flex-col mb-2">
+<span class="font-headline-sm text-headline-sm text-ink-primary font-bold text-sm">Kính tri thức ngố</span>
+<span class="font-body-sm text-body-sm text-primary font-bold text-xs flex items-center gap-1">
+<span>🐟</span> 80 cá khô
+          </span>
+</div>
+<button class="w-full py-1.5 rounded-xl bg-primary hover:bg-secondary text-on-primary font-label-sm text-label-sm font-bold active:scale-95 transition-transform shadow-xs">
+          Mở khóa
+        </button>
+</div>
+<!-- Item 4: Khăn choàng ấm cúng (150 cá - Chưa đủ) -->
+<div class="flex flex-col bg-surface-container-lowest rounded-3xl p-3 shadow-[0_4px_16px_rgba(74,55,40,0.04)] justify-between opacity-90">
+<div class="relative w-full h-24 rounded-2xl bg-surface-container-low flex items-center justify-center mb-2 overflow-hidden">
+<img class="w-16 h-16 object-contain" data-alt="Chunky knitted soft plaid autumn scarf for a kitten in warm mustard and sage tones, soft woven wool texture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBCh1g4vTPm9gTftgnx0IRuNbq9smi4_Pg96kOqjqljrWz_Kuh7mx-fZIwTm7ZKtotNdBGG3fEcYGwfzC6a1Nw5hXwBIykGfEalrhQxxBcbuMdwEKGHS-aON7JIN9VS0mZ2wuqip9pyO3Oa1mbn_oa6r-GXUB6BdXZeLLhtK3YdYXBytbpKkUB_yol7_4FN3uySZtztLO0cyZr8oLI_RoPqy9Pipx7ehRPUd1obpc"/>
+<div class="absolute inset-0 bg-surface-container-highest/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-ink-secondary text-lg">lock</span>
+</div>
+</div>
+<div class="flex flex-col mb-2">
+<span class="font-headline-sm text-headline-sm text-ink-primary font-bold text-sm">Khăn choàng ấm</span>
+<span class="font-body-sm text-body-sm text-ink-muted text-xs flex items-center gap-1">
+<span>🐟</span> 150 cá khô
+          </span>
+</div>
+<button class="w-full py-1.5 rounded-xl bg-surface-container text-ink-muted font-label-sm text-label-sm font-bold cursor-not-allowed">
+          Thiếu 30 cá
+        </button>
+</div>
+<!-- Item 5: Đệm nằm cá hồi êm ái (200 cá) -->
+<div class="flex flex-col bg-surface-container-lowest rounded-3xl p-3 shadow-[0_4px_16px_rgba(74,55,40,0.04)] justify-between opacity-90">
+<div class="relative w-full h-24 rounded-2xl bg-surface-container-low flex items-center justify-center mb-2 overflow-hidden">
+<img class="w-16 h-16 object-contain" data-alt="Cute salmon fish shaped plush velvet pet cushion bed for a cat, pastel pink and cream accents, very fluffy and comfortable." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMp0uXCemJB8UScra6DbPkkpPFI1WXnjkS-s5swVlATcw5vM8EHwFRfIHITkfX5U5IbJA2q7C5c5RQtb3oA-LegjJrsS26nMqWfQRYmUYxXSmzO88LYDEmwjSV8dqGvekR5Ei-zW3VbIkl5SLfObFHTGNecnl-ysO7sBFezMv2syiqaDirhfS6l9E0KzcAM1WX-QKc4FO106pjkkflxlurdopavTDPBOK03HUOH-o"/>
+<div class="absolute inset-0 bg-surface-container-highest/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-ink-secondary text-lg">lock</span>
+</div>
+</div>
+<div class="flex flex-col mb-2">
+<span class="font-headline-sm text-headline-sm text-ink-primary font-bold text-sm">Đệm cá hồi êm</span>
+<span class="font-body-sm text-body-sm text-ink-muted text-xs flex items-center gap-1">
+<span>🐟</span> 200 cá khô
+          </span>
+</div>
+<button class="w-full py-1.5 rounded-xl bg-surface-container text-ink-muted font-label-sm text-label-sm font-bold cursor-not-allowed">
+          Mở khóa
+        </button>
+</div>
+<!-- Item 6: Cây cào móng mini (120 cá) -->
+<div class="flex flex-col bg-surface-container-lowest rounded-3xl p-3 shadow-[0_4px_16px_rgba(74,55,40,0.04)] justify-between">
+<div class="relative w-full h-24 rounded-2xl bg-surface-container-low flex items-center justify-center mb-2 overflow-hidden">
+<img class="w-16 h-16 object-contain" data-alt="Miniature cactus scratching post made of sisal rope for a house cat with small dangling flower toy, pastel aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCuRLpFfVzDMuE2tJ8m_fdV3KH0eQNl8ertN_kAL-M7a31WZlwqQeJDdSgBu9wCHsozbWNbIHEBPkrHsnHK8DLfy4wIxQm0Qjqf7zfB2vOL-ayyIBoTCJxGISbuvV64rJPI21W2MJ7JsxfVS8P32jHBDsIiWplLPsY5lIKg9EYeOrmdFOdxTj1r08rQIMoK1Rwpmo-bdtunAgYDu4ElGDRaYByoN-R1zZnF0Iov5Jc"/>
+</div>
+<div class="flex flex-col mb-2">
+<span class="font-headline-sm text-headline-sm text-ink-primary font-bold text-sm">Cây cào móng mini</span>
+<span class="font-body-sm text-body-sm text-primary font-bold text-xs flex items-center gap-1">
+<span>🐟</span> 120 cá khô
+          </span>
+</div>
+<button class="w-full py-1.5 rounded-xl bg-primary hover:bg-secondary text-on-primary font-label-sm text-label-sm font-bold active:scale-95 transition-transform shadow-xs">
+          Đổi ngay
+        </button>
+</div>
+</div>
+</div>
+<!-- Honor Badges Collection (Thành tựu danh dự) -->
+<div class="flex flex-col bg-surface-container-lowest rounded-3xl p-space-lg shadow-[0_4px_20px_rgba(74,55,40,0.04)] gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-9 h-9 rounded-2xl bg-tertiary-fixed flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-xl">military_tech</span>
+</span>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-ink-primary font-bold">Huy hiệu của Bạn &amp; Bé Xu</h2>
+<p class="font-body-sm text-body-sm text-ink-secondary">Ghi nhận từng bước chăm sóc tài chính nhỏ</p>
+</div>
+</div>
+<span class="font-label-md text-label-md text-ink-muted">2/4</span>
+</div>
+<!-- Badge List Mosaic -->
+<div class="grid grid-cols-2 gap-2.5">
+<!-- Badge 1: Bạn Mới (Unlocked) -->
+<div class="flex items-center gap-2.5 p-2.5 rounded-2xl bg-surface-container-low">
+<div class="w-10 h-10 rounded-2xl bg-emotion-joy/20 flex items-center justify-center text-xl shadow-xs">
+          🏅
+        </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-ink-primary truncate font-bold">Bạn Mới</span>
+<span class="font-body-sm text-body-sm text-ink-secondary text-xs truncate">Chăm chỉ khởi đầu</span>
+<span class="text-[10px] text-ink-muted font-bold">Đã nhận</span>
+</div>
+</div>
+<!-- Badge 2: 7 Ngày Rực Rỡ (Unlocked Just Now) -->
+<div class="flex items-center gap-2.5 p-2.5 rounded-2xl bg-primary-fixed/30 relative overflow-hidden shadow-xs">
+<div class="w-10 h-10 rounded-2xl bg-primary-container/30 flex items-center justify-center text-xl">
+          🔥
+        </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-ink-primary truncate font-bold">7 Ngày Rực Rỡ</span>
+<span class="font-body-sm text-body-sm text-primary text-xs truncate font-bold">Vừa mở khóa!</span>
+<span class="text-[10px] text-primary font-bold">+20 cá 🐟</span>
+</div>
+</div>
+<!-- Badge 3: Tuần Không Bốc Đồng (In Progress 5/7) -->
+<div class="flex items-center gap-2.5 p-2.5 rounded-2xl bg-surface-container-low">
+<div class="w-10 h-10 rounded-2xl bg-emotion-necessity/20 flex items-center justify-center text-xl">
+          🧘
+        </div>
+<div class="flex flex-col min-w-0 w-full">
+<span class="font-label-md text-label-md text-ink-primary truncate font-bold">Tuần Tỉnh Thức</span>
+<span class="font-body-sm text-body-sm text-ink-secondary text-xs truncate">Kiểm soát bốc đồng</span>
+<div class="w-full bg-surface-container rounded-full h-1.5 mt-1">
+<div class="bg-tertiary h-full rounded-full" style="width: 71%;"></div>
+</div>
+<span class="text-[10px] text-ink-muted mt-0.5">5/7 ngày</span>
+</div>
+</div>
+<!-- Badge 4: Chim Sớm (Locked) -->
+<div class="flex items-center gap-2.5 p-2.5 rounded-2xl bg-surface-container-low opacity-70">
+<div class="w-10 h-10 rounded-2xl bg-surface-container flex items-center justify-center text-xl grayscale">
+          🌅
+        </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-ink-primary truncate font-bold">Chim Sớm</span>
+<span class="font-body-sm text-body-sm text-ink-secondary text-xs truncate">Ghi chép trước 8h</span>
+<span class="text-[10px] text-ink-muted flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[11px]">lock</span> Khóa
+          </span>
+</div>
+</div>
+</div>
+</div>
+<!-- Warm Reminder Card & Secondary Actions -->
+<div class="flex flex-col items-center bg-surface-container-low rounded-3xl p-4 text-center gap-3">
+<div class="flex items-center gap-1.5 text-primary">
+<span class="material-symbols-outlined text-base">auto_awesome</span>
+<span class="font-body-sm text-body-sm font-bold">Lời nhắn từ Bé Xu</span>
+</div>
+<p class="font-body-sm text-body-sm text-ink-primary max-w-xs">
+      “Ghi chép đều đặn để nhận thêm cá khô nuôi tớ và mở thêm nhiều đồ ấm cho mùa đông nhé meo~”
+    </p>
+<div class="flex items-center gap-3 w-full max-w-xs">
+<!-- Save / Share Snapshot -->
+<button class="flex-1 py-3 px-3 rounded-2xl bg-surface-container hover:bg-surface-container-high text-ink-primary font-label-md text-label-md font-bold flex items-center justify-center gap-1.5 active:scale-95 transition-all shadow-xs" id="share-corner-btn">
+<span class="material-symbols-outlined text-base">ios_share</span>
+<span>Khoe góc nhà</span>
+</button>
+<!-- Quick Log to Earn Fish -->
+<a class="flex-1 py-3 px-3 rounded-2xl bg-primary hover:bg-secondary text-on-primary font-label-md text-label-md font-bold flex items-center justify-center gap-1.5 active:scale-95 transition-all shadow-[0_4px_14px_rgba(143,78,0,0.2)]" data-path="hom-nay" href="#">
+<span class="material-symbols-outlined text-base">add_circle</span>
+<span>Ghi chép nhận cá</span>
+</a>
+</div>
+</div>
+</div>
+<script>
+  // Pet Cat micro-interaction (Spawns floating hearts & purr sounds)
+  (function initPetInteraction() {
+    const petBtn = document.getElementById('pet-action-btn');
+    const catAvatar = document.getElementById('cat-avatar-interactive');
+    const purrContainer = document.getElementById('purr-container');
+
+    function spawnPurrHeart() {
+      if (!purrContainer) return;
+      const heart = document.createElement('div');
+      heart.innerText = ['💖', '✨', '🐾', '🐟'][Math.floor(Math.random() * 4)];
+      heart.className = 'absolute text-xl pointer-events-none transition-all duration-700 ease-out';
+      
+      const randomX = (Math.random() - 0.5) * 80;
+      heart.style.transform = `translate(${randomX}px, 0px) scale(0.6)`;
+      heart.style.opacity = '1';
+      purrContainer.appendChild(heart);
+
+      requestAnimationFrame(() => {
+        heart.style.transform = `translate(${randomX * 1.5}px, -60px) scale(1.3)`;
+        heart.style.opacity = '0';
+      });
+
+      setTimeout(() => {
+        heart.remove();
+      }, 750);
+    }
+
+    if (petBtn) {
+      petBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        spawnPurrHeart();
+        spawnPurrHeart();
+      });
+    }
+
+    if (catAvatar) {
+      catAvatar.addEventListener('click', () => {
+        spawnPurrHeart();
+      });
+    }
+
+    // Interactive Tab Switching between Accessories and Furniture
+    const wardrobeTabs = document.getElementById('wardrobe-tabs');
+    if (wardrobeTabs) {
+      const tabs = wardrobeTabs.querySelectorAll('button');
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          tabs.forEach(t => {
+            t.className = 'flex-1 py-2 rounded-xl text-ink-secondary font-label-md text-label-md font-bold hover:text-ink-primary transition-all text-center';
+          });
+          tab.className = 'flex-1 py-2 rounded-xl bg-surface-container-lowest text-primary font-label-md text-label-md font-bold shadow-xs transition-all text-center';
+        });
+      });
+    }
+  })();
+</script></main><nav class="fixed bottom-0 inset-x-0 z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_-4px_24px_rgba(74,55,40,0.06)]" data-active-classes="text-primary font-bold"><div class="flex items-center justify-around h-16 px-space-sm max-w-md mx-auto"><a class="flex flex-col items-center justify-center min-w-[64px] min-h-[44px] py-1 text-on-surface-variant transition-colors group" data-path="hom-nay" href="#"><span class="material-symbols-outlined text-2xl group-hover:scale-105 transition-transform">cottage</span><span class="font-label-sm text-label-sm mt-0.5">Hôm nay</span></a><a class="flex flex-col items-center justify-center min-w-[64px] min-h-[44px] py-1 text-on-surface-variant transition-colors group" data-path="so-chi-tieu" href="#"><span class="material-symbols-outlined text-2xl group-hover:scale-105 transition-transform">receipt_long</span><span class="font-label-sm text-label-sm mt-0.5">Sổ chi tiêu</span></a><a class="flex flex-col items-center justify-center min-w-[64px] min-h-[44px] py-1 text-on-surface-variant transition-colors group" data-path="thu-cua-meo" href="#"><span class="material-symbols-outlined text-2xl group-hover:scale-105 transition-transform">mark_email_read</span><span class="font-label-sm text-label-sm mt-0.5">Thư của Mèo</span></a><a class="flex flex-col items-center justify-center min-w-[64px] min-h-[44px] py-1 text-on-surface-variant transition-colors group" data-path="goc-cua-meo" href="#"><span class="material-symbols-outlined text-2xl group-hover:scale-105 transition-transform">pets</span><span class="font-label-sm text-label-sm mt-0.5">Góc của Mèo</span></a></div></nav></body></html>

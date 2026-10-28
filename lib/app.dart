@@ -7,10 +7,8 @@ import 'providers/profile_provider.dart';
 import 'features/onboarding/onboarding_screen.dart';
 import 'features/home/home_screen.dart';
 import 'features/transactions/transactions_screen.dart';
-import 'features/what_if/what_if_screen.dart';
 import 'features/cat_letter/cat_letter_screen.dart';
 import 'features/cat_house/cat_house_screen.dart';
-import 'features/settings/settings_screen.dart';
 
 class MeoXuApp extends ConsumerWidget {
   const MeoXuApp({super.key});
@@ -53,17 +51,11 @@ class _MainNavigationScaffoldState extends State<MainNavigationScaffold> {
     final screens = [
       HomeScreen(
         onNavigateToTransactions: () => setState(() => _currentIndex = 1),
-        onNavigateToCatHouse: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (_) => const CatHouseScreen()),
-          );
-        },
+        onNavigateToCatHouse: () => setState(() => _currentIndex = 3),
       ),
       const TransactionsScreen(),
-      const WhatIfScreen(),
       const CatLetterScreen(),
-      const SettingsScreen(),
+      const CatHouseScreen(),
     ];
 
     return Scaffold(
@@ -75,12 +67,12 @@ class _MainNavigationScaffoldState extends State<MainNavigationScaffold> {
         onDestinationSelected: (idx) => setState(() => _currentIndex = idx),
         destinations: const [
           NavigationDestination(
-            icon: Icon(Icons.home_outlined),
+            icon: Icon(Icons.cottage_outlined),
             selectedIcon: Icon(
-              Icons.home_rounded,
+              Icons.cottage_rounded,
               color: AppColors.primaryDark,
             ),
-            label: 'Trang chủ',
+            label: 'Hôm nay',
           ),
           NavigationDestination(
             icon: Icon(Icons.receipt_long_outlined),
@@ -88,31 +80,23 @@ class _MainNavigationScaffoldState extends State<MainNavigationScaffold> {
               Icons.receipt_long_rounded,
               color: AppColors.primaryDark,
             ),
-            label: 'Giao dịch',
+            label: 'Sổ chi tiêu',
           ),
           NavigationDestination(
-            icon: Icon(Icons.auto_awesome_outlined),
+            icon: Icon(Icons.mark_email_read_outlined),
             selectedIcon: Icon(
-              Icons.auto_awesome_rounded,
+              Icons.mark_email_read_rounded,
               color: AppColors.primaryDark,
             ),
-            label: 'Nếu như',
+            label: 'Thư của Mèo',
           ),
           NavigationDestination(
-            icon: Icon(Icons.mark_email_unread_outlined),
+            icon: Icon(Icons.pets_outlined),
             selectedIcon: Icon(
-              Icons.mark_email_unread_rounded,
+              Icons.pets_rounded,
               color: AppColors.primaryDark,
             ),
-            label: 'Thư mèo',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.settings_outlined),
-            selectedIcon: Icon(
-              Icons.settings_rounded,
-              color: AppColors.primaryDark,
-            ),
-            label: 'Cài đặt',
+            label: 'Góc của Mèo',
           ),
         ],
       ),

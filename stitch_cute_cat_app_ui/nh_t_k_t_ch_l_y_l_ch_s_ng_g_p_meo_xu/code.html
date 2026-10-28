@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400..900;1,6..12,400..900&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "on-tertiary": "#ffffff", "surface-container-lowest": "#ffffff", "outline": "#877365", "inverse-primary": "#ffb77a", "tertiary-fixed-dim": "#98cbff", "secondary-container": "#fdb16a", "surface-variant": "#fbddc7", "on-secondary": "#ffffff", "on-secondary-fixed": "#2e1600", "dark-ink-primary": "#FFF4EA", "inverse-on-surface": "#ffede2", "status-fish-amber": "#FFA756", "surface-tint": "#8f4e00", "surface-bright": "#fff8f5", "on-primary": "#ffffff", "primary-fixed-dim": "#ffb77a", "secondary-fixed-dim": "#ffb877", "dark-ink-secondary": "#C8B6A6", "dark-bg-canvas": "#231B15", "on-secondary-fixed-variant": "#6c3a00", "on-primary-fixed": "#2e1500", "on-error": "#ffffff", "surface-dim": "#f2d4bf", "on-tertiary-container": "#004a77", "on-tertiary-fixed-variant": "#004a77", "surface": "#fff8f5", "on-primary-fixed-variant": "#6d3a00", "inverse-surface": "#3f2d1e", "on-tertiary-fixed": "#001d33", "bg-surface-card": "#FFFFFF", "bg-canvas-cream": "#FFF8F0", "secondary-fixed": "#ffdcc1", "surface-container-highest": "#fbddc7", "emotion-regret": "#F28B9B", "ink-primary": "#4A3728", "on-background": "#28180b", "surface-container-low": "#fff1e9", "ink-muted": "A89485", "emotion-impulse": "#FFD36B", "tertiary-fixed": "#cfe5ff", "on-error-container": "#93000a", "primary-fixed": "#ffdcc2", "primary-container": "#ff9f43", "ink-secondary": "#7D6451", "background": "#fff8f5", "secondary": "#8a5010", "tertiary": "#246293", "emotion-necessity": "#8EC5FC", "on-secondary-container": "#774100", "primary": "#8f4e00", "dark-bg-surface": "#2F251E", "tertiary-container": "#83baf0", "surface-container-high": "#ffe3cf", "surface-container": "#ffeadc", "outline-variant": "#dac2b1", "on-surface": "#28180b", "on-surface-variant": "#544437", "on-primary-container": "#6d3a00", "bg-surface-subtle": "#FDF2E4", "error-container": "#ffdad6", "emotion-joy": "#7ED6A5", "error": "#ba1a1a" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "space-xl": "1.75rem", "margin": "1.25rem", "space-md": "0.75rem", "space-sm": "0.5rem", "space-lg": "1.25rem", "space-xs": "0.25rem", "gutter": "1rem" }, fontFamily: { "body-md": ["Nunito Sans"], "label-sm": ["Nunito Sans"], "headline-lg": ["Nunito Sans"], "display-hero-mobile": ["Nunito Sans"], "label-md": ["Nunito Sans"], "currency-stat": ["Nunito Sans"], "display-hero": ["Nunito Sans"], "headline-sm": ["Nunito Sans"], "headline-md": ["Nunito Sans"], "body-sm": ["Nunito Sans"], "body-lg": ["Nunito Sans"], "work-hour-badge": ["Nunito Sans"] }, fontSize: { "body-md": ["14px", { "lineHeight": "22px", "fontWeight": "500" }], "label-sm": ["11px", { "lineHeight": "14px", "fontWeight": "600" }], "headline-lg": ["26px", { "lineHeight": "34px", "fontWeight": "800" }], "display-hero-mobile": ["32px", { "lineHeight": "40px", "fontWeight": "800" }], "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "700" }], "currency-stat": ["32px", { "lineHeight": "38px", "fontWeight": "900" }], "display-hero": ["38px", { "lineHeight": "46px", "fontWeight": "800" }], "headline-sm": ["17px", { "lineHeight": "24px", "fontWeight": "700" }], "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "700" }], "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "500" }], "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "600" }], "work-hour-badge": ["12px", { "lineHeight": "16px", "fontWeight": "700" }] } } } };</script><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#fff8f5;color:#28180b;font-family:'Nunito Sans',sans-serif;-webkit-tap-highlight-color:transparent;}body{overscroll-behavior-y:none;}.pb-safe{padding-bottom:calc(env(safe-area-inset-bottom,0px) + 0.5rem);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 500,'GRAD' 0,'opsz' 24;}body{min-height:max(884px,100dvh);}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-body-md flex flex-col min-h-screen text-on-surface"><header class="fixed top-0 inset-x-0 z-50 bg-surface/85 backdrop-blur-xl pt-safe shadow-[0_4px_20px_rgba(74,55,40,0.04)]"><div class="h-16 px-margin flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-xs"><button aria-label="Quay lại" class="w-11 h-11 -ml-2 flex items-center justify-center text-on-surface rounded-full active:bg-surface-container transition-colors" onclick="history.back()"><span class="material-symbols-outlined text-2xl">arrow_back_ios_new</span></button><div class="flex flex-col justify-center"><h1 class="font-headline-sm text-headline-sm font-bold text-on-surface tracking-tight truncate max-w-[200px]">Chế Độ Hai Chú Mèo   Couple Mode</h1><p class="font-label-sm text-label-sm text-on-surface-variant truncate max-w-[200px]">Hai chú mèo đồng hành</p></div></div><div class="flex items-center gap-space-xs"><div class="flex items-center gap-1 px-2.5 py-1 bg-surface-container rounded-full shadow-[0_2px_8px_rgba(74,55,40,0.04)]"><span class="text-xs leading-none">🐟</span><span class="font-bold text-primary text-label-sm font-label-sm">120</span></div><div class="w-11 h-11 flex items-center justify-center flex-shrink-0"><img alt="Profile" class="w-8 h-8 rounded-full object-cover shadow-[0_2px_8px_rgba(74,55,40,0.08)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoAZ9ksNkqWEkDvI8rA3Kjv4cjj_4aLSie3CiSEzwSkopV3dsPshNGuNW1E6TA6v1uU4x07hcPr51MvvNCAREQt-7ZlJGQeA1xPhaWWEbXsRg9L-QgzDOYTYxlfOG98ut2EMJ3E9NeQlUXI-rwnw6Uh8gXLNJGXF_ouWF1UIVImhU89e5YJU_M6_4idDQ7FB9oH1hUvUzdTncCuiVE05GEodP0g747stA3gtZy02c"/></div></div></div></header><main class="flex flex-col relative w-full pt-16 bg-surface min-h-screen"><div class="flex flex-col w-full px-margin pb-28 pt-2">
+<!-- Warm Illustration Banner -->
+<div class="relative w-full rounded-3xl overflow-hidden shadow-[0_4px_20px_rgba(74,55,40,0.06)] bg-surface-container-low mb-space-lg">
+<img class="w-full h-44 object-cover object-center" data-alt="A warm watercolor and soft pastel storybook illustration of two cute companion cats, one soft ginger tabby and one fluffy white kitten, resting affectionately together on a traditional woven mat in a sunlit Japanese room. Beside them sits a cozy ceramic bowl overflowing with dried silver fish treats, with gentle golden sunlight streaming through paper shoji screens, evoking romance, tranquility, and shared couple savings." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAD0TwLAEgvkSlWvSFGz7FsT8_BKwbf880DCCom5Inxyth0AnnhRGi_F_dpqzT1tYX7vKcww8Z7GtiekJHA8OpeHXV2FByBjz7ZjoCLyW82zvCQpKeoiDoJ_fMXIOVBub86isZNwHVDQ6DOje1s4s4Wjmw0DlUUs17P82o2iwAyq2GUcqKTn8quv231rVZidjnvtQ0tYT-0fIOi-_G4u8rL6VduhvKEesG1ER_wWec"/>
+<div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/85 via-inverse-surface/35 to-transparent flex flex-col justify-end p-space-md text-on-primary">
+<div class="flex items-center gap-1.5 mb-1">
+<span class="px-2 py-0.5 rounded-full bg-primary-container/90 text-on-primary font-label-sm text-label-sm shadow-sm backdrop-blur-sm">
+          Chế độ Cặp Đôi 🐾
+        </span>
+<span class="text-label-sm font-label-sm text-surface-container-high">Bảo mật riêng tư 100%</span>
+</div>
+<h2 class="font-headline-md text-headline-md font-bold tracking-tight text-on-primary flex items-center gap-2">
+        Chuyến trốn phố Đà Lạt 🌲🏕️
+      </h2>
+</div>
+</div>
+<!-- Target Summary Card -->
+<div class="bg-bg-surface-card rounded-3xl p-space-lg shadow-[0_4px_20px_rgba(74,55,40,0.05)] mb-space-lg">
+<!-- Stat Header -->
+<div class="flex items-start justify-between gap-space-sm mb-space-md">
+<div>
+<div class="flex items-baseline gap-1.5">
+<span class="font-currency-stat text-currency-stat font-extrabold text-primary tracking-tight">6.800.000đ</span>
+<span class="font-body-sm text-body-sm text-ink-secondary">/ 10.000.000đ</span>
+</div>
+<div class="flex items-center gap-1.5 mt-0.5 text-ink-primary">
+<span class="text-sm">🐟</span>
+<span class="font-label-md text-label-md">Đã gom <strong>1.700 cá khô</strong></span>
+<span class="font-label-sm text-label-sm text-ink-secondary">(còn thiếu 800 cá nữa là vali đầy)</span>
+</div>
+</div>
+<div class="px-3 py-1.5 rounded-2xl bg-secondary-container/30 flex flex-col items-center justify-center flex-shrink-0">
+<span class="font-headline-sm text-headline-sm font-black text-on-secondary-container">68%</span>
+<span class="font-label-sm text-label-sm text-ink-secondary">đạt mốc</span>
+</div>
+</div>
+<!-- Dual Progress Bar: Linh & Nam with cats meeting -->
+<div class="relative pt-6 pb-2">
+<!-- Mascot Position Indicators -->
+<div class="relative w-full h-8 mb-1">
+<!-- Linh's Kitten (Ginger Bé Xu) moving right -->
+<div class="absolute -top-1 transition-all duration-500 flex flex-col items-center" style="left: calc(35% - 18px);">
+<div class="px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm whitespace-nowrap shadow-sm mb-0.5">
+            Linh 🐾 35%
+          </div>
+<span class="text-lg leading-none transform -scale-x-100">🐱</span>
+</div>
+<!-- Nam's Kitten (White Bé Miu) moving left -->
+<div class="absolute -top-1 transition-all duration-500 flex flex-col items-center" style="left: calc(68% - 18px);">
+<div class="px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm whitespace-nowrap shadow-sm mb-0.5">
+            Nam 🐾 33%
+          </div>
+<span class="text-lg leading-none">😸</span>
+</div>
+</div>
+<!-- Segmented Bar -->
+<div class="w-full h-3.5 bg-surface-container rounded-full overflow-hidden flex shadow-inner">
+<!-- Linh segment (35%) -->
+<div class="h-full bg-primary-container transition-all duration-500" style="width: 35%;"></div>
+<!-- Nam segment (33%) -->
+<div class="h-full bg-tertiary-container transition-all duration-500" style="width: 33%;"></div>
+<!-- Remaining -->
+<div class="h-full bg-transparent flex-1"></div>
+</div>
+<!-- Footnote under progress -->
+<div class="flex items-center justify-between mt-2 font-label-sm text-label-sm text-ink-secondary">
+<div class="flex items-center gap-1">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container inline-block"></span>
+<span>Linh: <strong>3.500.000đ</strong></span>
+</div>
+<div class="flex items-center gap-1">
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary-container inline-block"></span>
+<span>Nam: <strong>3.300.000đ</strong></span>
+</div>
+</div>
+</div>
+<!-- Pacing & Estimated Date Pill -->
+<div class="mt-space-md p-space-sm bg-bg-surface-subtle rounded-2xl flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl">event_available</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-ink-primary">Đích đến: 25/11/2024 (còn 28 ngày)</span>
+<span class="font-label-sm text-label-sm text-ink-secondary">Tốc độ gom: ~120.000đ/ngày (cả hai)</span>
+</div>
+</div>
+<div class="flex items-center gap-1 px-2.5 py-1 rounded-xl bg-emotion-joy/20 text-[#2B6A45] font-label-sm text-label-sm font-bold">
+<span>Sớm 5 ngày 🚀</span>
+</div>
+</div>
+</div>
+<!-- Quick Action Cluster -->
+<div class="grid grid-cols-2 gap-space-sm mb-space-lg">
+<!-- Primary CTA: Deposit Fish -->
+<button class="col-span-1 h-14 bg-primary-container active:scale-95 transition-transform rounded-2xl flex items-center justify-center gap-2 px-space-md text-on-primary font-body-lg text-body-lg font-bold shadow-[0_4px_16px_rgba(255,159,67,0.35)]" id="quickContributeBtn" onclick="alert('Đã mở hộp thả cá khô! Chúc hai bạn sớm đến đích 🐟✨')">
+<span class="material-symbols-outlined text-2xl">savings</span>
+<span>Thả thêm cá +</span>
+</button>
+<!-- Partner Cheer CTA -->
+<button class="col-span-1 h-14 bg-bg-surface-subtle active:scale-95 transition-transform rounded-2xl flex items-center justify-center gap-2 px-space-md text-ink-primary font-body-lg text-body-lg font-bold shadow-[0_2px_10px_rgba(74,55,40,0.04)]" id="cheerPartnerBtn" onclick="alert('Đã gửi một cái xoa đầu và 1 cá thơm tới Nam! 💌🐾')">
+<span class="text-xl">💌</span>
+<span>Gửi cá thơm</span>
+</button>
+</div>
+<!-- Milestone Journey Timeline -->
+<div class="bg-bg-surface-card rounded-3xl p-space-lg shadow-[0_4px_20px_rgba(74,55,40,0.04)] mb-space-lg">
+<div class="flex items-center justify-between mb-space-md">
+<div class="flex items-center gap-1.5">
+<span class="text-lg">🗺️</span>
+<h3 class="font-headline-sm text-headline-sm font-bold text-ink-primary">Hành trình cột mốc</h3>
+</div>
+<span class="font-label-sm text-label-sm text-primary font-bold">2/4 chặng đã mở</span>
+</div>
+<!-- Milestones List -->
+<div class="flex flex-col gap-space-md relative">
+<!-- Vertical guide line -->
+<div class="absolute left-4 top-4 bottom-4 w-0.5 bg-surface-container -z-0"></div>
+<!-- Milestone 1: Done -->
+<div class="flex items-start gap-space-md relative z-10">
+<div class="w-8 h-8 rounded-full bg-emotion-joy/30 flex items-center justify-center text-[#2B6A45] flex-shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-lg font-bold">check</span>
+</div>
+<div class="flex-1 p-space-sm rounded-2xl bg-surface-container-low flex items-center justify-between">
+<div>
+<h4 class="font-body-md text-body-md font-bold text-ink-primary">25% • Vé xe giường đôi</h4>
+<p class="font-label-sm text-label-sm text-ink-secondary">2.500.000đ • Hoàn thành ngày 12/10</p>
+</div>
+<span class="text-xl">🚌</span>
+</div>
+</div>
+<!-- Milestone 2: Done -->
+<div class="flex items-start gap-space-md relative z-10">
+<div class="w-8 h-8 rounded-full bg-emotion-joy/30 flex items-center justify-center text-[#2B6A45] flex-shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-lg font-bold">check</span>
+</div>
+<div class="flex-1 p-space-sm rounded-2xl bg-surface-container-low flex items-center justify-between">
+<div>
+<h4 class="font-body-md text-body-md font-bold text-ink-primary">50% • Homestay view thông reo</h4>
+<p class="font-label-sm text-label-sm text-ink-secondary">5.000.000đ • Hoàn thành ngày 22/10</p>
+</div>
+<span class="text-xl">🏡</span>
+</div>
+</div>
+<!-- Milestone 3: In Progress (Active) -->
+<div class="flex items-start gap-space-md relative z-10">
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-on-primary flex-shrink-0 shadow-sm">
+<span class="font-label-sm text-label-sm font-black">68%</span>
+</div>
+<div class="flex-1 p-space-sm rounded-2xl bg-primary-fixed/30 flex items-center justify-between">
+<div>
+<div class="flex items-center gap-1.5">
+<h4 class="font-body-md text-body-md font-bold text-primary">75% • Tiệc BBQ &amp; Lẩu ấm bụng</h4>
+<span class="px-1.5 py-0.2 rounded bg-primary text-on-primary text-[10px] font-bold">Đang tới</span>
+</div>
+<p class="font-label-sm text-label-sm text-ink-secondary">7.500.000đ • Chỉ còn 700.000đ nữa thôi!</p>
+</div>
+<span class="text-xl">🍢</span>
+</div>
+</div>
+<!-- Milestone 4: Locked -->
+<div class="flex items-start gap-space-md relative z-10">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-ink-secondary flex-shrink-0">
+<span class="material-symbols-outlined text-lg">lock</span>
+</div>
+<div class="flex-1 p-space-sm rounded-2xl bg-surface-container-lowest opacity-75 flex items-center justify-between">
+<div>
+<h4 class="font-body-md text-body-md font-bold text-ink-secondary">100% • Vali đầy ắp cá &amp; Đi thôi!</h4>
+<p class="font-label-sm text-label-sm text-ink-muted">10.000.000đ • Cán đích trọn vẹn</p>
+</div>
+<span class="text-xl grayscale">🎉</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Contribution Feed Section -->
+<div class="flex flex-col mb-space-lg">
+<!-- Feed Title & Privacy Assurance Badge -->
+<div class="flex items-center justify-between mb-space-sm">
+<div class="flex items-center gap-2">
+<span class="text-xl">📖</span>
+<h3 class="font-headline-sm text-headline-sm font-bold text-ink-primary">Nhật ký đóng góp</h3>
+</div>
+<div class="flex items-center gap-1 text-ink-secondary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-sm">lock</span>
+<span>Ví riêng bảo mật</span>
+</div>
+</div>
+<!-- Filter Pills -->
+<div class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none mb-space-sm">
+<button class="px-3.5 py-1.5 rounded-full bg-ink-primary text-on-primary font-label-md text-label-md flex-shrink-0 shadow-sm">
+        Tất cả (8)
+      </button>
+<button class="px-3.5 py-1.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-md text-label-md flex-shrink-0 active:bg-secondary-fixed">
+        🐱 Linh &amp; Bé Xu
+      </button>
+<button class="px-3.5 py-1.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-md text-label-md flex-shrink-0 active:bg-tertiary-fixed">
+        😸 Nam &amp; Bé Miu
+      </button>
+<button class="px-3.5 py-1.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-md text-label-md flex-shrink-0">
+        🎁 Tự động lăn vào
+      </button>
+</div>
+<!-- Feed Group: Hôm nay (28/10) -->
+<div class="flex flex-col gap-space-sm mb-space-md">
+<div class="flex items-center gap-2 px-1">
+<span class="font-label-md text-label-md font-bold text-ink-secondary">HÔM NAY • 28 THÁNG 10</span>
+<div class="h-px bg-surface-container flex-1"></div>
+<span class="font-label-sm text-label-sm text-primary font-bold">+300.000đ (75 🐟)</span>
+</div>
+<!-- Item 1: Linh -->
+<div class="bg-bg-surface-card rounded-2xl p-space-md shadow-[0_2px_12px_rgba(74,55,40,0.03)] flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed flex items-center justify-center text-sm shadow-sm">
+              🐱
+            </div>
+<div>
+<span class="font-body-md text-body-md font-bold text-ink-primary">Linh &amp; Bé Xu</span>
+<span class="font-label-sm text-label-sm text-ink-secondary ml-1.5">19:30</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-body-lg text-body-lg font-black text-primary">+100.000đ</span>
+<span class="font-label-sm text-label-sm text-ink-secondary block">25 con cá 🐟</span>
+</div>
+</div>
+<div class="p-2.5 rounded-xl bg-surface-container-low font-body-sm text-body-sm text-ink-primary flex items-start gap-2">
+<span class="text-base flex-shrink-0">✨</span>
+<div class="flex-1">
+<span>"Dư từ đĩa cá hôm nay tự động lăn vào ống nè."</span>
+<div class="mt-1 flex items-center gap-1.5">
+<span class="px-2 py-0.5 rounded-full bg-emotion-joy/20 text-[#2B6A45] font-label-sm text-label-sm">
+                😊 Vui vẻ &amp; An tâm
+              </span>
+</div>
+</div>
+</div>
+</div>
+<!-- Item 2: Nam -->
+<div class="bg-bg-surface-card rounded-2xl p-space-md shadow-[0_2px_12px_rgba(74,55,40,0.03)] flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-tertiary-fixed flex items-center justify-center text-sm shadow-sm">
+              😸
+            </div>
+<div>
+<span class="font-body-md text-body-md font-bold text-ink-primary">Nam &amp; Bé Miu</span>
+<span class="font-label-sm text-label-sm text-ink-secondary ml-1.5">14:15</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-body-lg text-body-lg font-black text-tertiary">+200.000đ</span>
+<span class="font-label-sm text-label-sm text-ink-secondary block">50 con cá 🐟</span>
+</div>
+</div>
+<div class="p-2.5 rounded-xl bg-surface-container-low font-body-sm text-body-sm text-ink-primary flex items-start gap-2">
+<span class="text-base flex-shrink-0">🎉</span>
+<div class="flex-1">
+<span>"Thưởng dự án nhỏ, thả thêm cho mau đi Đà Lạt nè em iu!"</span>
+<div class="mt-1 flex items-center gap-1.5">
+<span class="px-2 py-0.5 rounded-full bg-emotion-joy/20 text-[#2B6A45] font-label-sm text-label-sm">
+                💃 Mèo nhảy múa
+              </span>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container/20 text-on-secondary-container font-label-sm text-label-sm">
+                ❤️ Yêu thương
+              </span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Feed Group: Hôm qua (27/10) -->
+<div class="flex flex-col gap-space-sm mb-space-md">
+<div class="flex items-center gap-2 px-1">
+<span class="font-label-md text-label-md font-bold text-ink-secondary">HÔM QUA • 27 THÁNG 10</span>
+<div class="h-px bg-surface-container flex-1"></div>
+<span class="font-label-sm text-label-sm text-primary font-bold">+150.000đ (38 🐟)</span>
+</div>
+<!-- Item 3: Linh -->
+<div class="bg-bg-surface-card rounded-2xl p-space-md shadow-[0_2px_12px_rgba(74,55,40,0.03)] flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed flex items-center justify-center text-sm shadow-sm">
+              🐱
+            </div>
+<div>
+<span class="font-body-md text-body-md font-bold text-ink-primary">Linh &amp; Bé Xu</span>
+<span class="font-label-sm text-label-sm text-ink-secondary ml-1.5">21:00</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-body-lg text-body-lg font-black text-primary">+150.000đ</span>
+<span class="font-label-sm text-label-sm text-ink-secondary block">38 con cá 🐟</span>
+</div>
+</div>
+<div class="p-2.5 rounded-xl bg-surface-container-low font-body-sm text-body-sm text-ink-primary flex items-start gap-2">
+<span class="text-base flex-shrink-0">🍲</span>
+<div class="flex-1">
+<span>"Hôm nay nấu cơm nhà không đi cà phê, dư được một khoản bỏ heo."</span>
+<div class="mt-1 flex items-center gap-1.5">
+<span class="px-2 py-0.5 rounded-full bg-emotion-necessity/20 text-[#2A5782] font-label-sm text-label-sm">
+                🍳 Tự nấu ngon lành
+              </span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Feed Group: Chủ Nhật (26/10) -->
+<div class="flex flex-col gap-space-sm mb-space-md">
+<div class="flex items-center gap-2 px-1">
+<span class="font-label-md text-label-md font-bold text-ink-secondary">CHỦ NHẬT • 26 THÁNG 10</span>
+<div class="h-px bg-surface-container flex-1"></div>
+<span class="font-label-sm text-label-sm text-primary font-bold">+1.100.000đ (275 🐟)</span>
+</div>
+<!-- Item 4: Chốt sổ định kỳ đôi -->
+<div class="bg-bg-surface-card rounded-2xl p-space-md shadow-[0_2px_12px_rgba(74,55,40,0.03)] flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-primary-container/20 flex items-center justify-center text-sm shadow-sm">
+              🐾
+            </div>
+<div>
+<span class="font-body-md text-body-md font-bold text-ink-primary">Cùng góp định kỳ Chủ Nhật</span>
+<span class="font-label-sm text-label-sm text-ink-secondary ml-1.5">20:00</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-body-lg text-body-lg font-black text-primary">+1.000.000đ</span>
+<span class="font-label-sm text-label-sm text-ink-secondary block">250 con cá 🐟</span>
+</div>
+</div>
+<div class="p-2.5 rounded-xl bg-surface-container-low font-body-sm text-body-sm text-ink-primary">
+<p>Mỗi người 500.000đ theo cam kết cuối tuần chốt sổ.</p>
+<div class="mt-2 flex items-center gap-2 p-2 rounded-lg bg-surface-container-lowest">
+<span class="text-lg">🧋🧋</span>
+<span class="font-label-sm text-label-sm text-ink-secondary">Bé Xu &amp; Bé Miu cùng cụng ly trà sữa mừng mốc 60%!</span>
+</div>
+</div>
+</div>
+<!-- Item 5: Kèo vui trả nợ lẩu -->
+<div class="bg-bg-surface-card rounded-2xl p-space-md shadow-[0_2px_12px_rgba(74,55,40,0.03)] flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-tertiary-fixed flex items-center justify-center text-sm shadow-sm">
+              😸
+            </div>
+<div>
+<span class="font-body-md text-body-md font-bold text-ink-primary">Kèo vui Nam trả phạt</span>
+<span class="font-label-sm text-label-sm text-ink-secondary ml-1.5">17:45</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-body-lg text-body-lg font-black text-tertiary">+100.000đ</span>
+<span class="font-label-sm text-label-sm text-ink-secondary block">25 con cá 🐟</span>
+</div>
+</div>
+<div class="p-2.5 rounded-xl bg-surface-container-low font-body-sm text-body-sm text-ink-primary">
+<p>"Nam trả nợ kèo thua game tuần trước, tự giác thả thêm 100k vào quỹ chung 😂🍲"</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Little Notes / Mascot Whisper Card -->
+<div class="bg-gradient-to-br from-bg-surface-card to-bg-surface-subtle rounded-3xl p-space-lg shadow-[0_4px_20px_rgba(74,55,40,0.04)] mb-space-lg">
+<div class="flex items-start gap-space-sm mb-space-sm">
+<span class="text-2xl">🐾</span>
+<div class="flex-1">
+<h4 class="font-headline-sm text-headline-sm font-bold text-ink-primary">Lời thì thầm của Bé Xu &amp; Bé Miu</h4>
+<p class="font-body-md text-body-md text-ink-secondary mt-1">
+          "Chỉ còn <strong class="text-primary">3.200.000đ</strong> nữa thôi là hai đứa mình được lên xe nằm cạnh nhau, hít thở sương sớm và ăn ngô nướng Đà Lạt rồi meo~"
+        </p>
+</div>
+</div>
+<div class="flex items-center justify-end gap-space-sm mt-space-md pt-space-sm border-t border-surface-container">
+<button class="px-4 py-2 rounded-xl bg-bg-surface-card active:scale-95 transition-transform text-ink-primary font-label-md text-label-md font-bold shadow-sm flex items-center gap-1.5" onclick="alert('Đã tạo ảnh kỷ niệm đĩa cá tình yêu để lưu vào thư viện! 📸✨')">
+<span class="material-symbols-outlined text-base text-primary">share</span>
+<span>Chia sẻ ảnh đĩa cá</span>
+</button>
+<button class="px-4 py-2 rounded-xl bg-primary-container active:scale-95 transition-transform text-on-primary font-label-md text-label-md font-bold shadow-sm flex items-center gap-1.5" onclick="alert('Hai bé mèo gửi lời cảm ơn và ôm bạn thật chặt! 🐾💛')">
+<span class="material-symbols-outlined text-base">favorite</span>
+<span>Gửi tim đôi</span>
+</button>
+</div>
+</div>
+</div>
+<script>
+  // Micro-interaction for feedback
+  const buttons = document.querySelectorAll('button');
+  buttons.forEach(btn => {
+    btn.addEventListener('touchstart', () => {}, {passive: true});
+  });
+</script></main></body></html>

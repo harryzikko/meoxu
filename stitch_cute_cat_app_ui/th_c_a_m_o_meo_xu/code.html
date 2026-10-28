@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400..900;1,6..12,400..900&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "on-tertiary": "#ffffff", "surface-container-lowest": "#ffffff", "outline": "#877365", "inverse-primary": "#ffb77a", "tertiary-fixed-dim": "#98cbff", "secondary-container": "#fdb16a", "surface-variant": "#fbddc7", "on-secondary": "#ffffff", "on-secondary-fixed": "#2e1600", "dark-ink-primary": "#FFF4EA", "inverse-on-surface": "#ffede2", "status-fish-amber": "#FFA756", "surface-tint": "#8f4e00", "surface-bright": "#fff8f5", "on-primary": "#ffffff", "primary-fixed-dim": "#ffb77a", "secondary-fixed-dim": "#ffb877", "dark-ink-secondary": "#C8B6A6", "dark-bg-canvas": "#231B15", "on-secondary-fixed-variant": "#6c3a00", "on-primary-fixed": "#2e1500", "on-error": "#ffffff", "surface-dim": "#f2d4bf", "on-tertiary-container": "#004a77", "on-tertiary-fixed-variant": "#004a77", "surface": "#fff8f5", "on-primary-fixed-variant": "#6d3a00", "inverse-surface": "#3f2d1e", "on-tertiary-fixed": "#001d33", "bg-surface-card": "#FFFFFF", "bg-canvas-cream": "#FFF8F0", "secondary-fixed": "#ffdcc1", "surface-container-highest": "#fbddc7", "emotion-regret": "#F28B9B", "ink-primary": "#4A3728", "on-background": "#28180b", "surface-container-low": "#fff1e9", "ink-muted": "A89485", "emotion-impulse": "#FFD36B", "tertiary-fixed": "#cfe5ff", "on-error-container": "#93000a", "primary-fixed": "#ffdcc2", "primary-container": "#ff9f43", "ink-secondary": "#7D6451", "background": "#fff8f5", "secondary": "#8a5010", "tertiary": "#246293", "emotion-necessity": "#8EC5FC", "on-secondary-container": "#774100", "primary": "#8f4e00", "dark-bg-surface": "#2F251E", "tertiary-container": "#83baf0", "surface-container-high": "#ffe3cf", "surface-container": "#ffeadc", "outline-variant": "#dac2b1", "on-surface": "#28180b", "on-surface-variant": "#544437", "on-primary-container": "#6d3a00", "bg-surface-subtle": "#FDF2E4", "error-container": "#ffdad6", "emotion-joy": "#7ED6A5", "error": "#ba1a1a" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "space-xl": "1.75rem", "margin": "1.25rem", "space-md": "0.75rem", "space-sm": "0.5rem", "space-lg": "1.25rem", "space-xs": "0.25rem", "gutter": "1rem" }, fontFamily: { "body-md": ["Nunito Sans"], "label-sm": ["Nunito Sans"], "headline-lg": ["Nunito Sans"], "display-hero-mobile": ["Nunito Sans"], "label-md": ["Nunito Sans"], "currency-stat": ["Nunito Sans"], "display-hero": ["Nunito Sans"], "headline-sm": ["Nunito Sans"], "headline-md": ["Nunito Sans"], "body-sm": ["Nunito Sans"], "body-lg": ["Nunito Sans"], "work-hour-badge": ["Nunito Sans"] }, fontSize: { "body-md": ["14px", { "lineHeight": "22px", "fontWeight": "500" }], "label-sm": ["11px", { "lineHeight": "14px", "fontWeight": "600" }], "headline-lg": ["26px", { "lineHeight": "34px", "fontWeight": "800" }], "display-hero-mobile": ["32px", { "lineHeight": "40px", "fontWeight": "800" }], "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "700" }], "currency-stat": ["32px", { "lineHeight": "38px", "fontWeight": "900" }], "display-hero": ["38px", { "lineHeight": "46px", "fontWeight": "800" }], "headline-sm": ["17px", { "lineHeight": "24px", "fontWeight": "700" }], "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "700" }], "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "500" }], "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "600" }], "work-hour-badge": ["12px", { "lineHeight": "16px", "fontWeight": "700" }] } } } };</script><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#fff8f5;color:#28180b;font-family:'Nunito Sans',sans-serif;-webkit-tap-highlight-color:transparent;}body{overscroll-behavior-y:none;}.pb-safe{padding-bottom:calc(env(safe-area-inset-bottom,0px) + 0.5rem);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 500,'GRAD' 0,'opsz' 24;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-body-md flex flex-col min-h-screen text-on-surface"><header class="fixed top-0 inset-x-0 z-50 bg-surface/85 backdrop-blur-xl pt-safe shadow-[0_4px_20px_rgba(74,55,40,0.04)]"><div class="h-16 px-margin flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0 flex-shrink-0"><img alt="Mèo Xu Mascot Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1XFV_FycYMU7CB5zSLabjHUrjKZWriny3oTVC-wkpQyUj66Budgdr-4GItW2qRPwZUkm3tnat9A7YcZDNSQn0iV4xdDiMkNHcZXZKW6FDMusmikzCB8ksWDzp0yHT61Tcuj7qmGLeWfCvQZy3T0JMlF1K4Bm2EhhtJeBMQoOaM0u_H4PTrtKJGAIc3mDl0B5cARTTa3t0yGtpAxr_iYnK2F4S1MjHHcFZElnNcSD9ic"/><div class="flex flex-col justify-center min-w-0"><div class="flex items-baseline gap-space-xs"><span class="font-headline-sm text-headline-sm font-extrabold text-on-surface tracking-tight leading-none">Meo Xu</span><span class="text-label-sm font-label-sm text-on-surface-variant font-medium truncate hidden min-[360px]:inline">· Thư Của Mèo</span></div></div></div><div class="flex items-center gap-space-xs"><div class="flex items-center gap-1.5 px-2.5 py-1 bg-surface-container rounded-full shadow-[0_2px_8px_rgba(74,55,40,0.04)]"><div class="flex items-center gap-0.5 text-on-surface text-label-sm font-label-sm"><span class="text-xs leading-none">🔥</span><span class="font-bold">7d</span></div><span class="text-outline-variant font-bold leading-none text-[10px]">•</span><div class="flex items-center gap-0.5 text-primary text-label-sm font-label-sm"><span class="text-xs leading-none">🐟</span><span class="font-bold">120</span></div></div><a class="w-11 h-11 flex items-center justify-center flex-shrink-0 rounded-full transition-transform active:scale-95" data-path="goc-cua-meo" href="#"><img alt="Profile" class="w-8 h-8 rounded-full object-cover shadow-[0_2px_8px_rgba(74,55,40,0.08)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoAZ9ksNkqWEkDvI8rA3Kjv4cjj_4aLSie3CiSEzwSkopV3dsPshNGuNW1E6TA6v1uU4x07hcPr51MvvNCAREQt-7ZlJGQeA1xPhaWWEbXsRg9L-QgzDOYTYxlfOG98ut2EMJ3E9NeQlUXI-rwnw6Uh8gXLNJGXF_ouWF1UIVImhU89e5YJU_M6_4idDQ7FB9oH1hUvUzdTncCuiVE05GEodP0g747stA3gtZy02c"/></a></div></div></header><main class="flex flex-col relative w-full pt-16 pb-28 bg-surface min-h-screen"><div class="flex flex-col w-full">
+<div class="px-margin pt-space-md pb-space-xl flex flex-col gap-space-lg">
+<!-- Envelope Wax Seal Header Card -->
+<div class="relative w-full bg-surface-container-high rounded-3xl p-space-lg shadow-sm flex flex-col items-center overflow-hidden">
+<!-- Decorative Stamp Top Right -->
+<div class="absolute top-3 right-3 w-12 h-14 bg-surface-container-lowest rounded-lg p-1 shadow-sm flex flex-col items-center justify-center rotate-6">
+<span class="text-sm">🐾</span>
+<span class="font-label-sm text-label-sm text-primary tracking-tighter">MEOW</span>
+</div>
+<!-- Mascot Cosy Scene -->
+<div class="relative w-28 h-28 my-1 flex items-center justify-center">
+<div class="absolute inset-0 bg-primary-container/20 rounded-full blur-md"></div>
+<img class="relative w-24 h-24 object-contain" data-alt="A round, charming chubby cream-and-ginger cartoon kitten sitting cross-legged wearing a tiny knit scarf, sipping a steaming mug of chamomile flower tea with dried orange slices. Soft pastel warm tones, cosy storybook illustration style, gentle ambient sunlight." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIPdORtNmblLkD6jVpCftbIyw8b1SUzgMApHNeyoRFvWoSn1sNlwdOI3fLDanvgzSQRg1B0WIe0SkWMqf9XfIvPPofv5GM5Rdf8ZcND_1KBUHe13Dt8gFPW0RviRsoY2Jy2B28loEFTsLC-N8LUTV_a2Xa3fd5CPlBJpjMxP1ATmYmkBR-hw1PMyg-N2snjh8O_6Zdnfrwk0zP4yaunhdH7vIT3CjGjl22FkUov08"/>
+</div>
+<div class="inline-flex items-center gap-1.5 px-3 py-1 bg-surface-container-lowest rounded-full shadow-sm mb-2">
+<span class="text-xs">📮</span>
+<span class="font-label-sm text-label-sm text-ink-secondary">Thư Tuần Số #18</span>
+</div>
+<h1 class="font-headline-sm text-headline-sm text-on-surface text-center tracking-tight">
+        Thư Chủ Nhật từ bé Mèo Xu gửi Linh 💌
+      </h1>
+<p class="font-body-sm text-body-sm text-ink-secondary text-center mt-1">
+        Cùng Mèo cuộn tròn bên tách trà hoa cúc và nhìn lại tuần qua nhé!
+      </p>
+</div>
+<!-- Main Parchment Letter Card -->
+<div class="relative w-full bg-surface-container-lowest rounded-3xl p-space-lg shadow-md flex flex-col gap-space-lg">
+<!-- Weekly Allowance Summary -->
+<div class="flex flex-col gap-space-xs bg-bg-surface-subtle rounded-2xl p-space-md">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-ink-secondary uppercase tracking-wider">Tổng kết tuần này</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 bg-emotion-joy/20 text-on-surface rounded-full font-label-sm text-label-sm font-bold">
+<span class="text-xs">🌱</span> -12%
+          </span>
+</div>
+<div class="flex items-baseline gap-1.5 mt-0.5">
+<span class="font-currency-stat text-currency-stat text-primary tracking-tight">1.450.000đ</span>
+</div>
+<p class="font-body-sm text-body-sm text-ink-primary">
+          Tuần này Linh chi tiêu giảm 12% so với tuần trước rồi đấy, giỏi giang và ngoan lắm nè!
+        </p>
+</div>
+<!-- Weekly Rhythm Sparkline -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-on-surface">Nhịp chi 7 ngày</span>
+<span class="font-label-sm text-label-sm text-ink-secondary">Thứ 6 rộn ràng nhất</span>
+</div>
+<!-- Inline Mini Sparkline SVG -->
+<div class="w-full bg-surface-container-low rounded-2xl p-space-sm pt-4 flex flex-col gap-2">
+<svg class="w-full h-20 overflow-visible" fill="none" viewbox="0 0 320 80">
+<!-- Grid lines -->
+<line class="text-outline-variant/30" stroke="currentColor" stroke-dasharray="2 4" x1="0" x2="320" y1="20" y2="20"></line>
+<line class="text-outline-variant/30" stroke="currentColor" stroke-dasharray="2 4" x1="0" x2="320" y1="60" y2="60"></line>
+<!-- Area fill -->
+<path class="fill-primary-container/20" d="M 10 65 L 55 58 L 105 60 L 155 50 L 205 18 L 255 45 L 305 52 L 305 75 L 10 75 Z"></path>
+<!-- Line trend -->
+<path class="text-primary" d="M 10 65 L 55 58 L 105 60 L 155 50 L 205 18 L 255 45 L 305 52" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></path>
+<!-- Data dots -->
+<circle class="fill-surface-container-lowest stroke-primary stroke-2" cx="10" cy="65" r="3.5"></circle>
+<circle class="fill-surface-container-lowest stroke-primary stroke-2" cx="55" cy="58" r="3.5"></circle>
+<circle class="fill-surface-container-lowest stroke-primary stroke-2" cx="105" cy="60" r="3.5"></circle>
+<circle class="fill-surface-container-lowest stroke-primary stroke-2" cx="155" cy="50" r="3.5"></circle>
+<!-- Peak Friday Indicator -->
+<circle class="fill-secondary-container stroke-primary stroke-2" cx="205" cy="18" r="5"></circle>
+<circle class="fill-surface-container-lowest stroke-primary stroke-2" cx="255" cy="45" r="3.5"></circle>
+<circle class="fill-surface-container-lowest stroke-primary stroke-2" cx="305" cy="52" r="3.5"></circle>
+</svg>
+<div class="flex justify-between px-1 text-ink-secondary font-label-sm text-label-sm">
+<span>T2</span><span>T3</span><span>T4</span><span>T5</span><span class="text-primary font-bold">T6</span><span>T7</span><span>CN</span>
+</div>
+</div>
+</div>
+<!-- Section: Mèo Quan Sát Thấy -->
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center gap-2">
+<span class="text-lg">🔍</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Mèo quan sát thấy...</span>
+</div>
+<div class="flex flex-col gap-space-sm">
+<!-- Pattern 1: Late Night Regret -->
+<div class="flex items-start gap-space-sm p-space-md bg-surface-container-low rounded-2xl">
+<div class="w-10 h-10 rounded-xl bg-emotion-regret/20 flex items-center justify-center flex-shrink-0 text-xl">
+              😿
+            </div>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-sm text-headline-sm text-on-surface">Sau 22h đêm và cảm xúc bâng khuâng</span>
+<p class="font-body-sm text-body-sm text-ink-secondary mt-0.5">
+<span class="font-bold text-on-surface">70%</span> khoản bạn thấy hối hận xảy ra sau 22h đêm (chủ yếu là lướt sàn online mua đồ ăn vặt và phụ kiện nhỏ xíu nè).
+              </p>
+</div>
+</div>
+<!-- Pattern 2: Friday Peak -->
+<div class="flex items-start gap-space-sm p-space-md bg-surface-container-low rounded-2xl">
+<div class="w-10 h-10 rounded-xl bg-emotion-joy/20 flex items-center justify-center flex-shrink-0 text-xl">
+              ⚡
+            </div>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-sm text-headline-sm text-on-surface">Thứ Sáu tự thưởng</span>
+<p class="font-body-sm text-body-sm text-ink-secondary mt-0.5">
+                Thứ Sáu là ngày Linh vui vẻ chi nhiều nhất, gấp <span class="font-bold text-on-surface">1.8 lần</span> các ngày trong tuần để thư giãn sau giờ làm.
+              </p>
+</div>
+</div>
+<!-- Pattern 3: Milk Tea Impulse -->
+<div class="flex items-start gap-space-sm p-space-md bg-surface-container-low rounded-2xl">
+<div class="w-10 h-10 rounded-xl bg-emotion-impulse/20 flex items-center justify-center flex-shrink-0 text-xl">
+              🧋
+            </div>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-sm text-headline-sm text-on-surface">Hương vị trà sữa quen thuộc</span>
+<p class="font-body-sm text-body-sm text-ink-secondary mt-0.5">
+                Trà sữa chiếm <span class="font-bold text-on-surface">15%</span> tổng chi tiêu, nhưng 4/5 lần uống Linh ghi nhận cảm thấy bốc đồng thay vì vui trọn vẹn đó nha.
+              </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Section: Nếu như... (Gentle simulation) -->
+<div class="relative flex flex-col gap-space-sm bg-surface-container p-space-lg rounded-3xl overflow-hidden">
+<div class="flex items-center gap-2">
+<span class="text-xl">✨</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Gợi ý nhỏ: "Nếu như..."</span>
+</div>
+<p class="font-body-md text-body-md text-ink-primary">
+          Nếu Linh thử đợi 15 phút trước khi bấm thanh toán sau 22h, tháng này mình có thể dư thêm <span class="font-bold text-primary">420.000đ</span> đấy~
+        </p>
+<!-- Converted Value Card -->
+<div class="bg-surface-container-lowest rounded-2xl p-space-md flex items-center gap-space-sm shadow-sm mt-1">
+<div class="w-10 h-10 rounded-xl bg-secondary-container/30 flex items-center justify-center flex-shrink-0 text-xl">
+            🥩
+          </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm text-ink-secondary">Quy đổi niềm vui trải nghiệm:</span>
+<span class="font-body-md text-body-md font-bold text-on-surface">≈ 1 vé IMAX + 1 bữa BBQ cùng bạn thân</span>
+</div>
+</div>
+</div>
+<!-- Section: Lời Khen & Phần Thưởng Tuần -->
+<div class="flex flex-col gap-space-sm bg-primary/10 rounded-3xl p-space-lg">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="text-xl">🏆</span>
+<span class="font-headline-sm text-headline-sm text-primary">Mèo khen bạn tuần này</span>
+</div>
+<span class="px-2.5 py-0.5 bg-primary text-on-primary rounded-full font-label-sm text-label-sm">
+            Chuỗi 7 ngày
+          </span>
+</div>
+<p class="font-body-sm text-body-sm text-ink-primary">
+          Linh đã duy trì chuỗi 7 ngày liên tiếp không bỏ bữa ghi chép nào! Chăm chỉ ghé thăm làm Mèo hạnh phúc lắm.
+        </p>
+<!-- Reward Items Row -->
+<div class="grid grid-cols-2 gap-space-sm mt-2">
+<div class="bg-surface-container-lowest p-space-sm rounded-2xl flex items-center gap-2 shadow-sm">
+<span class="text-2xl">🐟</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-ink-secondary">Thưởng</span>
+<span class="font-body-sm text-body-sm font-bold text-primary">+30 Cá Khô</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-space-sm rounded-2xl flex items-center gap-2 shadow-sm">
+<span class="text-2xl">🏅</span>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm text-ink-secondary">Huy hiệu mới</span>
+<span class="font-body-sm text-body-sm font-bold text-on-surface truncate">Bạn Chăm Chỉ</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Letter Sign-off -->
+<div class="flex items-center justify-between pt-space-xs">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-secondary-container/20 flex items-center justify-center text-sm">
+            🐾
+          </div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-ink-secondary">Người bạn đồng hành</span>
+<span class="font-body-sm text-body-sm font-bold text-on-surface">Mèo Xu của Linh</span>
+</div>
+</div>
+<div class="font-label-sm text-label-sm text-ink-secondary italic">
+          Chủ Nhật, 21:00
+        </div>
+</div>
+</div>
+<!-- Interactive Bottom Actions -->
+<div class="flex flex-col gap-space-sm w-full">
+<button class="w-full h-12 bg-primary text-on-primary font-body-lg text-body-lg rounded-2xl flex items-center justify-center gap-2 shadow-sm active:scale-[0.98] transition-transform" id="saveMemoryBtn">
+<span class="material-symbols-outlined text-xl">favorite</span>
+<span>Lưu thư vào kỷ niệm</span>
+</button>
+<button class="w-full h-12 bg-surface-container text-on-surface font-body-lg text-body-lg rounded-2xl flex items-center justify-center gap-2 shadow-sm active:scale-[0.98] transition-transform" id="shareLetterBtn">
+<span class="material-symbols-outlined text-xl">share</span>
+<span>Chia sẻ cho bạn bè</span>
+</button>
+</div>
+<!-- Warm Mascot Micro Toast Feedback -->
+<div class="hidden fixed bottom-24 left-1/2 -translate-x-1/2 px-4 py-2 bg-on-surface text-surface rounded-full shadow-lg items-center gap-2 text-label-md font-label-md z-50 transition-opacity" id="toastMessage">
+<span>🐱</span>
+<span id="toastText">Đã lưu thư vào album của bạn nè!</span>
+</div>
+</div>
+</div>
+<script>
+  (function() {
+    const saveBtn = document.getElementById('saveMemoryBtn');
+    const shareBtn = document.getElementById('shareLetterBtn');
+    const toast = document.getElementById('toastMessage');
+    const toastText = document.getElementById('toastText');
+
+    let toastTimer = null;
+    function showToast(message) {
+      if (!toast) return;
+      toastText.textContent = message;
+      toast.classList.remove('hidden');
+      toast.classList.add('flex');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toast.classList.add('hidden');
+        toast.classList.remove('flex');
+      }, 2500);
+    }
+
+    if (saveBtn) {
+      saveBtn.addEventListener('click', function() {
+        saveBtn.classList.add('bg-secondary');
+        saveBtn.innerHTML = '<span class="material-symbols-outlined text-xl" style="font-variation-settings: \'FILL\' 1;">favorite</span><span>Đã lưu vào kỷ niệm</span>';
+        showToast('Mèo đã cất bức thư này vào góc kỷ niệm của bạn rồi nhé! 🌸');
+      });
+    }
+
+    if (shareBtn) {
+      shareBtn.addEventListener('click', function() {
+        if (navigator.share) {
+          navigator.share({
+            title: 'Thư Chủ Nhật từ Mèo Xu',
+            text: 'Tuần này mình đã chi tiêu tiết kiệm hơn 12% và nhận được huy hiệu Người Bạn Chăm Chỉ!',
+            url: window.location.href,
+          }).catch(() => {});
+        } else {
+          showToast('Đã sao chép link bức thư ấm áp để gửi bạn bè! ✨');
+        }
+      });
+    }
+  })();
+</script></main><nav class="fixed bottom-0 inset-x-0 z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_-4px_24px_rgba(74,55,40,0.06)]" data-active-classes="text-primary font-bold"><div class="flex items-center justify-around h-16 px-space-sm max-w-md mx-auto"><a class="flex flex-col items-center justify-center min-w-[64px] min-h-[44px] py-1 text-on-surface-variant transition-colors group" data-path="hom-nay" href="#"><span class="material-symbols-outlined text-2xl group-hover:scale-105 transition-transform">cottage</span><span class="font-label-sm text-label-sm mt-0.5">Hôm nay</span></a><a class="flex flex-col items-center justify-center min-w-[64px] min-h-[44px] py-1 text-on-surface-variant transition-colors group" data-path="so-chi-tieu" href="#"><span class="material-symbols-outlined text-2xl group-hover:scale-105 transition-transform">receipt_long</span><span class="font-label-sm text-label-sm mt-0.5">Sổ chi tiêu</span></a><a class="flex flex-col items-center justify-center min-w-[64px] min-h-[44px] py-1 text-on-surface-variant transition-colors group" data-path="thu-cua-meo" href="#"><span class="material-symbols-outlined text-2xl group-hover:scale-105 transition-transform">mark_email_read</span><span class="font-label-sm text-label-sm mt-0.5">Thư của Mèo</span></a><a class="flex flex-col items-center justify-center min-w-[64px] min-h-[44px] py-1 text-on-surface-variant transition-colors group" data-path="goc-cua-meo" href="#"><span class="material-symbols-outlined text-2xl group-hover:scale-105 transition-transform">pets</span><span class="font-label-sm text-label-sm mt-0.5">Góc của Mèo</span></a></div></nav></body></html>

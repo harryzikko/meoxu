@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400..900;1,6..12,400..900&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "on-tertiary": "#ffffff", "surface-container-lowest": "#ffffff", "outline": "#877365", "inverse-primary": "#ffb77a", "tertiary-fixed-dim": "#98cbff", "secondary-container": "#fdb16a", "surface-variant": "#fbddc7", "on-secondary": "#ffffff", "on-secondary-fixed": "#2e1600", "dark-ink-primary": "#FFF4EA", "inverse-on-surface": "#ffede2", "status-fish-amber": "#FFA756", "surface-tint": "#8f4e00", "surface-bright": "#fff8f5", "on-primary": "#ffffff", "primary-fixed-dim": "#ffb77a", "secondary-fixed-dim": "#ffb877", "dark-ink-secondary": "#C8B6A6", "dark-bg-canvas": "#231B15", "on-secondary-fixed-variant": "#6c3a00", "on-primary-fixed": "#2e1500", "on-error": "#ffffff", "surface-dim": "#f2d4bf", "on-tertiary-container": "#004a77", "on-tertiary-fixed-variant": "#004a77", "surface": "#fff8f5", "on-primary-fixed-variant": "#6d3a00", "inverse-surface": "#3f2d1e", "on-tertiary-fixed": "#001d33", "bg-surface-card": "#FFFFFF", "bg-canvas-cream": "#FFF8F0", "secondary-fixed": "#ffdcc1", "surface-container-highest": "#fbddc7", "emotion-regret": "#F28B9B", "ink-primary": "#4A3728", "on-background": "#28180b", "surface-container-low": "#fff1e9", "ink-muted": "A89485", "emotion-impulse": "#FFD36B", "tertiary-fixed": "#cfe5ff", "on-error-container": "#93000a", "primary-fixed": "#ffdcc2", "primary-container": "#ff9f43", "ink-secondary": "#7D6451", "background": "#fff8f5", "secondary": "#8a5010", "tertiary": "#246293", "emotion-necessity": "#8EC5FC", "on-secondary-container": "#774100", "primary": "#8f4e00", "dark-bg-surface": "#2F251E", "tertiary-container": "#83baf0", "surface-container-high": "#ffe3cf", "surface-container": "#ffeadc", "outline-variant": "#dac2b1", "on-surface": "#28180b", "on-surface-variant": "#544437", "on-primary-container": "#6d3a00", "bg-surface-subtle": "#FDF2E4", "error-container": "#ffdad6", "emotion-joy": "#7ED6A5", "error": "#ba1a1a" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "space-xl": "1.75rem", "margin": "1.25rem", "space-md": "0.75rem", "space-sm": "0.5rem", "space-lg": "1.25rem", "space-xs": "0.25rem", "gutter": "1rem" }, fontFamily: { "body-md": ["Nunito Sans"], "label-sm": ["Nunito Sans"], "headline-lg": ["Nunito Sans"], "display-hero-mobile": ["Nunito Sans"], "label-md": ["Nunito Sans"], "currency-stat": ["Nunito Sans"], "display-hero": ["Nunito Sans"], "headline-sm": ["Nunito Sans"], "headline-md": ["Nunito Sans"], "body-sm": ["Nunito Sans"], "body-lg": ["Nunito Sans"], "work-hour-badge": ["Nunito Sans"] }, fontSize: { "body-md": ["14px", { "lineHeight": "22px", "fontWeight": "500" }], "label-sm": ["11px", { "lineHeight": "14px", "fontWeight": "600" }], "headline-lg": ["26px", { "lineHeight": "34px", "fontWeight": "800" }], "display-hero-mobile": ["32px", { "lineHeight": "40px", "fontWeight": "800" }], "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "700" }], "currency-stat": ["32px", { "lineHeight": "38px", "fontWeight": "900" }], "display-hero": ["38px", { "lineHeight": "46px", "fontWeight": "800" }], "headline-sm": ["17px", { "lineHeight": "24px", "fontWeight": "700" }], "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "700" }], "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "500" }], "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "600" }], "work-hour-badge": ["12px", { "lineHeight": "16px", "fontWeight": "700" }] } } } };</script><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#fff8f5;color:#28180b;font-family:'Nunito Sans',sans-serif;-webkit-tap-highlight-color:transparent;}body{overscroll-behavior-y:none;}.pb-safe{padding-bottom:calc(env(safe-area-inset-bottom,0px) + 0.5rem);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 500,'GRAD' 0,'opsz' 24;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-body-md flex flex-col min-h-screen text-on-surface"><header class="fixed top-0 inset-x-0 z-50 bg-surface/85 backdrop-blur-xl pt-safe shadow-[0_4px_20px_rgba(74,55,40,0.04)]"><div class="h-16 px-margin flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-xs"><button aria-label="Quay lại" class="w-11 h-11 -ml-2 flex items-center justify-center text-on-surface rounded-full active:bg-surface-container transition-colors" onclick="history.back()"><span class="material-symbols-outlined text-2xl">arrow_back_ios_new</span></button><div class="flex items-center gap-space-xs"><img alt="Mèo Xu Mascot Logo" class="h-7 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1XFV_FycYMU7CB5zSLabjHUrjKZWriny3oTVC-wkpQyUj66Budgdr-4GItW2qRPwZUkm3tnat9A7YcZDNSQn0iV4xdDiMkNHcZXZKW6FDMusmikzCB8ksWDzp0yHT61Tcuj7qmGLeWfCvQZy3T0JMlF1K4Bm2EhhtJeBMQoOaM0u_H4PTrtKJGAIc3mDl0B5cARTTa3t0yGtpAxr_iYnK2F4S1MjHHcFZElnNcSD9ic"/><h1 class="font-headline-sm text-headline-sm font-bold text-on-surface tracking-tight truncate max-w-[160px]">Chi Tiết Giao Dịch</h1></div></div><div class="flex items-center gap-space-xs"><div class="flex items-center gap-1 px-2.5 py-1 bg-surface-container rounded-full shadow-[0_2px_8px_rgba(74,55,40,0.04)]"><span class="text-xs leading-none">🐟</span><span class="font-bold text-primary text-label-sm font-label-sm">120</span></div><div class="w-11 h-11 flex items-center justify-center flex-shrink-0"><img alt="Profile" class="w-8 h-8 rounded-full object-cover shadow-[0_2px_8px_rgba(74,55,40,0.08)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoAZ9ksNkqWEkDvI8rA3Kjv4cjj_4aLSie3CiSEzwSkopV3dsPshNGuNW1E6TA6v1uU4x07hcPr51MvvNCAREQt-7ZlJGQeA1xPhaWWEbXsRg9L-QgzDOYTYxlfOG98ut2EMJ3E9NeQlUXI-rwnw6Uh8gXLNJGXF_ouWF1UIVImhU89e5YJU_M6_4idDQ7FB9oH1hUvUzdTncCuiVE05GEodP0g747stA3gtZy02c"/></div></div></div></header><main class="flex flex-col relative w-full pt-16 bg-surface min-h-screen"><div class="flex flex-col w-full pb-safe">
+<!-- Inner Page Header Badge / Subtitle -->
+<div class="px-margin pt-3 pb-2 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-surface-container text-primary">
+<span class="material-symbols-outlined text-lg">pets</span>
+</span>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-ink-primary font-extrabold tracking-tight">Cài đặt &amp; Tùy biến</h2>
+<p class="font-label-sm text-label-sm text-ink-secondary">Không gian ấm áp của bạn và Mèo Xu</p>
+</div>
+</div>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-high text-primary font-label-sm text-label-sm">
+<span class="w-2 h-2 rounded-full bg-emotion-joy"></span>
+      Đang đồng bộ
+    </span>
+</div>
+<!-- Profile & Mascot Companion Card -->
+<section class="px-margin py-2">
+<div class="bg-bg-surface-card rounded-3xl p-5 shadow-[0_6px_24px_rgba(74,55,40,0.06)] relative overflow-hidden">
+<!-- Ambient playful background glow -->
+<div class="absolute -right-8 -top-8 w-36 h-36 rounded-full bg-surface-container-high/40 pointer-events-none blur-2xl"></div>
+<div class="flex items-center gap-4 relative z-10">
+<!-- Mascot Avatar with ring badge -->
+<div class="relative flex-shrink-0">
+<div class="w-18 h-18 rounded-full p-1 bg-surface-container flex items-center justify-center shadow-[0_4px_16px_rgba(143,78,0,0.12)]">
+<img class="w-16 h-16 rounded-full object-cover" data-alt="Cute chubby ginger orange cat mascot named Be Xu with rosy flushed cheeks, warm amber eyes, sweet peaceful smile, fluffy fur, 3D clay aesthetic, soft sunlit cafe lighting, highly detailed character design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCycGNJs_1WE2iC2TX0j4A4-0xZt6weXbxJh2yzhOoILvVq9zj_bGDRp8HGOr4sg65Ih4pyiVjNmbnbf6O8_Bi75kmjs-v65A1806ITE8jgtXJ5-tb0vD4y92JGWIYkghMpCr6jgG2uzZf4Kk4cdgoARl44u9v78oxjA4P6Slxh2dCbUntjkyQJEmPZ5rqNl69_002YocDBwatmBT8gDIWAGsLF24ecnZgSVt3lsKA"/>
+</div>
+<div class="absolute -bottom-1 -right-1 bg-primary text-on-primary rounded-full px-1.5 py-0.5 font-label-sm text-label-sm flex items-center shadow-sm">
+            Lv.2
+          </div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm text-ink-primary font-bold truncate">Linh &amp; Bé Xu</h3>
+<span class="font-work-hour-badge text-work-hour-badge text-primary bg-surface-container-low px-2 py-0.5 rounded-full">
+              Mèo Trẻ
+            </span>
+</div>
+<p class="font-body-sm text-body-sm text-ink-secondary mt-0.5 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm text-primary">calendar_today</span>
+            7 ngày gắn bó cùng nhau
+          </p>
+<div class="mt-2.5 flex items-center gap-2">
+<div class="inline-flex items-center gap-1 bg-bg-surface-subtle px-2.5 py-1 rounded-full">
+<span class="text-sm">🐟</span>
+<span class="font-work-hour-badge text-work-hour-badge text-primary">120 Cá khô</span>
+</div>
+<button class="inline-flex items-center gap-1 bg-surface-container-high px-2.5 py-1 rounded-full text-on-secondary-container font-label-sm text-label-sm hover:bg-surface-variant transition-colors active:scale-95" id="open-skin-modal">
+<span class="material-symbols-outlined text-xs">palette</span>
+              Đổi skin &amp; giống
+            </button>
+</div>
+</div>
+</div>
+<!-- Mascot Note Snippet -->
+<div class="mt-4 pt-3.5 bg-bg-surface-subtle rounded-2xl p-3 flex items-start gap-2.5">
+<span class="text-lg flex-shrink-0">🐾</span>
+<p class="font-body-sm text-body-sm text-ink-primary leading-snug">
+<span class="font-bold text-primary">Bé Xu thủ thỉ:</span> "Hôm nay tụi mình đã đi dạo qua 3 ngày liền không tiêu hoang rồi đó nha!"
+        </p>
+</div>
+</div>
+</section>
+<!-- BLOCK 1: Financial Baseline & Allowance ("Ví của Bạn & Bé Xu") -->
+<section class="px-margin py-3">
+<div class="bg-bg-surface-card rounded-3xl p-5 shadow-[0_4px_20px_rgba(74,55,40,0.04)]">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2.5">
+<span class="w-9 h-9 rounded-2xl bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-xl">savings</span>
+</span>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-ink-primary font-bold">Ví của Bạn &amp; Bé Xu</h3>
+<p class="font-label-sm text-label-sm text-ink-secondary">Thiết lập ngân sách hàng tháng</p>
+</div>
+</div>
+<button class="w-8 h-8 rounded-full bg-surface-container-low flex items-center justify-center text-primary active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-sm">edit</span>
+</button>
+</div>
+<!-- Daily Allowance Spotlight -->
+<div class="rounded-2xl p-4 bg-gradient-to-r from-surface-container-high/60 via-surface-container-low to-surface-container/80 mb-4 flex items-center justify-between">
+<div>
+<span class="font-label-sm text-label-sm text-ink-secondary uppercase tracking-wider block">Hôm nay thoải mái tiêu</span>
+<div class="font-currency-stat text-currency-stat text-primary font-extrabold tracking-tight mt-0.5">
+            170.000<span class="text-headline-sm">đ</span>
+</div>
+<span class="font-label-sm text-label-sm text-ink-secondary flex items-center gap-1 mt-0.5">
+<span>🍽️</span> Đĩa cá khô hôm nay vẫn đầy ắp
+          </span>
+</div>
+<div class="w-14 h-14 rounded-full bg-bg-surface-card flex items-center justify-center shadow-sm text-2xl flex-shrink-0">
+          🐟
+        </div>
+</div>
+<!-- Details Stack -->
+<div class="space-y-3">
+<!-- Monthly Income -->
+<div class="flex items-center justify-between p-3 rounded-2xl bg-bg-surface-subtle">
+<div class="flex items-center gap-3">
+<span class="w-8 h-8 rounded-xl bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-base">payments</span>
+</span>
+<div>
+<span class="font-body-md text-body-md text-ink-primary font-bold block">Thu nhập cố định</span>
+<span class="font-label-sm text-label-sm text-ink-secondary">Vào ngày 05 hàng tháng</span>
+</div>
+</div>
+<span class="font-body-lg text-body-lg text-ink-primary font-extrabold">12.000.000 đ</span>
+</div>
+<!-- Fixed Expenses -->
+<div class="p-3 rounded-2xl bg-bg-surface-subtle">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="w-8 h-8 rounded-xl bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-base">home</span>
+</span>
+<div>
+<span class="font-body-md text-body-md text-ink-primary font-bold block">Chi phí cố định (3 khoản)</span>
+<span class="font-label-sm text-label-sm text-ink-secondary">Nhà 3.5tr • Điện nước 600k • Gửi mẹ 1tr</span>
+</div>
+</div>
+<span class="font-body-lg text-body-lg text-ink-primary font-extrabold">5.100.000 đ</span>
+</div>
+<div class="mt-2.5 pt-2 flex items-center justify-end">
+<button class="font-label-sm text-label-sm text-primary font-bold flex items-center gap-1 active:underline">
+              Xem chi tiết &amp; thêm khoản
+              <span class="material-symbols-outlined text-xs">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Pre-save target -->
+<div class="flex items-center justify-between p-3 rounded-2xl bg-bg-surface-subtle">
+<div class="flex items-center gap-3">
+<span class="w-8 h-8 rounded-xl bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-base">lock_clock</span>
+</span>
+<div>
+<span class="font-body-md text-body-md text-ink-primary font-bold block">Trích tiết kiệm trước</span>
+<span class="font-label-sm text-label-sm text-ink-secondary">Mục tiêu 15% tổng thu nhập</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-body-lg text-body-lg text-ink-primary font-extrabold block">1.800.000 đ</span>
+<span class="font-label-sm text-label-sm text-emotion-joy font-bold">Đã giữ an toàn</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- BLOCK 2: Unique Feature - Working Hours Converter -->
+<section class="px-margin py-3">
+<div class="bg-bg-surface-card rounded-3xl p-5 shadow-[0_4px_20px_rgba(74,55,40,0.04)] relative">
+<div class="flex items-start justify-between gap-3 mb-4">
+<div class="flex items-center gap-2.5">
+<span class="w-9 h-9 rounded-2xl bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-xl">schedule</span>
+</span>
+<div>
+<div class="flex items-center gap-2">
+<h3 class="font-headline-sm text-headline-sm text-ink-primary font-bold">Quy đổi Giờ làm việc</h3>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm">Độc bản</span>
+</div>
+<p class="font-label-sm text-label-sm text-ink-secondary">Hiểu giá trị mồ hôi công sức</p>
+</div>
+</div>
+<!-- Main Switch -->
+<label class="relative inline-flex items-center cursor-pointer flex-shrink-0">
+<input checked="" class="sr-only peer" id="toggle-work-hours" type="checkbox"/>
+<div class="w-12 h-7 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[3px] after:start-[3px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container shadow-inner"></div>
+</label>
+</div>
+<p class="font-body-sm text-body-sm text-ink-secondary mb-4 leading-relaxed bg-bg-surface-subtle p-3 rounded-2xl">
+        Thay vì chỉ nhìn thấy con số 45.000đ vô tri, Meo Xu sẽ thì thầm: <span class="font-bold text-primary">"≈ 40 phút làm việc chăm chỉ"</span> giúp bạn tạm dừng suy ngẫm trước mỗi lần chạm thẻ.
+      </p>
+<!-- Metrics Calculation Card -->
+<div class="grid grid-cols-2 gap-3 mb-4">
+<div class="bg-surface-container-low p-3.5 rounded-2xl">
+<span class="font-label-sm text-label-sm text-ink-secondary block">Giờ chuẩn/tháng</span>
+<span class="font-headline-md text-headline-md text-ink-primary font-extrabold mt-0.5 block">176 giờ</span>
+<span class="font-label-sm text-label-sm text-ink-muted">8h/ngày × 22 công</span>
+</div>
+<div class="bg-surface-container-high/60 p-3.5 rounded-2xl">
+<span class="font-label-sm text-label-sm text-ink-secondary block">1 Giờ công tương đương</span>
+<span class="font-headline-md text-headline-md text-primary font-extrabold mt-0.5 block">68.180 đ</span>
+<span class="font-label-sm text-label-sm text-ink-secondary">Thu nhập / 176h</span>
+</div>
+</div>
+<!-- Display Rule Toggles -->
+<div class="space-y-2.5 pt-1">
+<span class="font-label-md text-label-md text-ink-primary uppercase tracking-wide block">Tùy chọn cách hiển thị</span>
+<div class="flex items-center justify-between p-2.5 rounded-xl bg-bg-surface-subtle">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-ink-secondary">timelapse</span>
+<span class="font-body-sm text-body-sm text-ink-primary font-bold">Dưới 1 giờ: Hiện theo Phút</span>
+</div>
+<span class="font-work-hour-badge text-work-hour-badge text-primary bg-bg-surface-card px-2 py-0.5 rounded-lg shadow-sm">
+            Vd: 25 phút
+          </span>
+</div>
+<div class="flex items-center justify-between p-2.5 rounded-xl bg-bg-surface-subtle">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-ink-secondary">calendar_view_day</span>
+<span class="font-body-sm text-body-sm text-ink-primary font-bold">Trên 8 giờ: Quy đổi Ngày công</span>
+</div>
+<span class="font-work-hour-badge text-work-hour-badge text-primary bg-bg-surface-card px-2 py-0.5 rounded-lg shadow-sm">
+            Vd: 1,2 ngày công
+          </span>
+</div>
+</div>
+</div>
+</section>
+<!-- BLOCK 3: Gentle Reminders & Voice Tone -->
+<section class="px-margin py-3">
+<div class="bg-bg-surface-card rounded-3xl p-5 shadow-[0_4px_20px_rgba(74,55,40,0.04)]">
+<div class="flex items-center gap-2.5 mb-4">
+<span class="w-9 h-9 rounded-2xl bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-xl">notifications_active</span>
+</span>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-ink-primary font-bold">Nhắc nhở &amp; Giọng điệu của Mèo</h3>
+<p class="font-label-sm text-label-sm text-ink-secondary">Âm hưởng nhẹ nhàng, không phán xét</p>
+</div>
+</div>
+<div class="space-y-3.5">
+<!-- Reminder Time Row -->
+<div class="flex items-center justify-between p-3.5 rounded-2xl bg-bg-surface-subtle">
+<div class="flex items-center gap-3">
+<span class="w-8 h-8 rounded-xl bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-base">bedtime</span>
+</span>
+<div>
+<span class="font-body-md text-body-md text-ink-primary font-bold block">Giờ nhắc ghi chép</span>
+<span class="font-label-sm text-label-sm text-ink-secondary">Thư giãn buổi tối bên tách trà</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5 bg-bg-surface-card px-3 py-1.5 rounded-xl shadow-sm text-primary font-bold font-body-md text-body-md">
+<span>21:30</span>
+<span class="material-symbols-outlined text-xs">expand_more</span>
+</div>
+</div>
+<!-- "Rule of 3 Nos" Feature -->
+<div class="p-3.5 rounded-2xl bg-surface-container-low/70">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-base text-primary">verified_user</span>
+<span class="font-body-md text-body-md text-ink-primary font-bold">Cam kết "3 Không" của Mèo</span>
+</div>
+<span class="font-label-sm text-label-sm text-primary font-extrabold bg-surface-container-high px-2 py-0.5 rounded-full">
+              Đang bảo vệ
+            </span>
+</div>
+<ul class="space-y-1.5 font-label-sm text-label-sm text-ink-secondary pl-6 list-disc">
+<li>Tự động im lặng nếu bạn đã ghi sổ trong ngày</li>
+<li>Tối đa 1 thông báo/ngày, không spam ngắt quãng</li>
+<li>Lời nhắn êm tai, hoàn toàn không tạo cảm giác tội lỗi</li>
+</ul>
+</div>
+<!-- Weekend Break Toggle -->
+<div class="flex items-center justify-between p-3.5 rounded-2xl bg-bg-surface-subtle">
+<div class="flex items-center gap-3">
+<span class="w-8 h-8 rounded-xl bg-surface-container flex items-center justify-center text-ink-secondary">
+<span class="material-symbols-outlined text-base">weekend</span>
+</span>
+<div>
+<span class="font-body-md text-body-md text-ink-primary font-bold block">Nghỉ ngơi cuối tuần</span>
+<span class="font-label-sm text-label-sm text-ink-secondary">Tắt thông báo vào Thứ 7 &amp; Chủ Nhật</span>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-12 h-7 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[3px] after:start-[3px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container shadow-inner"></div>
+</label>
+</div>
+<!-- Notification Sound -->
+<div class="flex items-center justify-between p-3.5 rounded-2xl bg-bg-surface-subtle">
+<div class="flex items-center gap-3">
+<span class="w-8 h-8 rounded-xl bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-base">volume_up</span>
+</span>
+<div>
+<span class="font-body-md text-body-md text-ink-primary font-bold block">Âm thanh thông báo</span>
+<span class="font-label-sm text-label-sm text-ink-secondary">Tiếng kêu khi gửi lời nhắn</span>
+</div>
+</div>
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-bg-surface-card shadow-sm text-ink-primary font-body-sm text-body-sm font-bold active:scale-95 transition-transform">
+<span>Tiếng Meo êm ái</span>
+<span class="text-xs">🎵</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- BLOCK 4: Preferences & Visual Styling -->
+<section class="px-margin py-3">
+<div class="bg-bg-surface-card rounded-3xl p-5 shadow-[0_4px_20px_rgba(74,55,40,0.04)]">
+<div class="flex items-center gap-2.5 mb-4">
+<span class="w-9 h-9 rounded-2xl bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-xl">palette</span>
+</span>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-ink-primary font-bold">Trải nghiệm &amp; Giao diện</h3>
+<p class="font-label-sm text-label-sm text-ink-secondary">Cá nhân hóa tông màu và hiển thị</p>
+</div>
+</div>
+<!-- Theme Switcher Selector -->
+<div class="mb-4">
+<span class="font-label-md text-label-md text-ink-primary uppercase tracking-wide block mb-2">Chế độ hiển thị</span>
+<div class="grid grid-cols-2 gap-3">
+<!-- Light Theme Active -->
+<button class="p-3 rounded-2xl bg-surface-container-high/70 flex flex-col items-center text-center shadow-sm transition-all">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary mb-1.5">
+<span class="material-symbols-outlined">light_mode</span>
+</div>
+<span class="font-body-md text-body-md text-ink-primary font-extrabold">Nắng Ấm (Sáng)</span>
+<span class="font-label-sm text-label-sm text-primary font-bold mt-0.5">● Đang dùng</span>
+</button>
+<!-- Dark Theme Inactive -->
+<button class="p-3 rounded-2xl bg-bg-surface-subtle flex flex-col items-center text-center transition-all opacity-80 hover:opacity-100">
+<div class="w-10 h-10 rounded-full bg-inverse-surface flex items-center justify-center text-inverse-on-surface mb-1.5">
+<span class="material-symbols-outlined">dark_mode</span>
+</div>
+<span class="font-body-md text-body-md text-ink-primary font-bold">Mèo Than (Tối)</span>
+<span class="font-label-sm text-label-sm text-ink-muted mt-0.5">Dịu mắt ban đêm</span>
+</button>
+</div>
+</div>
+<!-- Language & Currency Selection -->
+<div class="space-y-3">
+<div class="flex items-center justify-between p-3.5 rounded-2xl bg-bg-surface-subtle">
+<div class="flex items-center gap-3">
+<span class="w-8 h-8 rounded-xl bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-base">language</span>
+</span>
+<div>
+<span class="font-body-md text-body-md text-ink-primary font-bold block">Ngôn ngữ giao diện</span>
+<span class="font-label-sm text-label-sm text-ink-secondary">English sắp cập bến</span>
+</div>
+</div>
+<span class="font-body-md text-body-md text-ink-primary font-bold bg-bg-surface-card px-3 py-1.5 rounded-xl shadow-sm">
+            Tiếng Việt 🇻🇳
+          </span>
+</div>
+<div class="flex items-center justify-between p-3.5 rounded-2xl bg-bg-surface-subtle">
+<div class="flex items-center gap-3">
+<span class="w-8 h-8 rounded-xl bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-base">monetization_on</span>
+</span>
+<div>
+<span class="font-body-md text-body-md text-ink-primary font-bold block">Đơn vị tiền tệ</span>
+<span class="font-label-sm text-label-sm text-ink-secondary">Định dạng số theo tiêu chuẩn Việt Nam</span>
+</div>
+</div>
+<span class="font-body-md text-body-md text-ink-primary font-bold bg-bg-surface-card px-3 py-1.5 rounded-xl shadow-sm">
+            VNĐ (đ)
+          </span>
+</div>
+</div>
+</div>
+</section>
+<!-- BLOCK 5: Privacy & Local-first Security -->
+<section class="px-margin py-3">
+<div class="bg-bg-surface-card rounded-3xl p-5 shadow-[0_4px_20px_rgba(74,55,40,0.04)]">
+<div class="flex items-center gap-2.5 mb-4">
+<span class="w-9 h-9 rounded-2xl bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-xl">shield</span>
+</span>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-ink-primary font-bold">Bảo mật &amp; Quyền riêng tư</h3>
+<p class="font-label-sm text-label-sm text-ink-secondary">Triết lý Local-first ưu tiên thiết bị</p>
+</div>
+</div>
+<!-- App Lock -->
+<div class="flex items-center justify-between p-3.5 rounded-2xl bg-bg-surface-subtle mb-3">
+<div class="flex items-center gap-3">
+<span class="w-8 h-8 rounded-xl bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-base">fingerprint</span>
+</span>
+<div>
+<span class="font-body-md text-body-md text-ink-primary font-bold block">Khóa ứng dụng</span>
+<span class="font-label-sm text-label-sm text-ink-secondary">FaceID / Vân tay &amp; PIN</span>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-12 h-7 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[3px] after:start-[3px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container shadow-inner"></div>
+</label>
+</div>
+<!-- Local-first Explainer Pill -->
+<div class="p-3.5 rounded-2xl bg-bg-surface-subtle mb-3.5 flex items-start gap-3">
+<span class="material-symbols-outlined text-xl text-primary flex-shrink-0 mt-0.5">offline_bolt</span>
+<div>
+<span class="font-body-md text-body-md text-ink-primary font-bold block">Dữ liệu hoàn toàn là của bạn</span>
+<p class="font-body-sm text-body-sm text-ink-secondary mt-0.5">
+            Dữ liệu ghi chép được lưu 100% tại máy, hoạt động hoàn hảo cả khi không có mạng. Meo Xu không đọc lén thông tin ví tiền của bạn.
+          </p>
+</div>
+</div>
+<!-- Data Export & Backup Actions -->
+<div class="grid grid-cols-2 gap-3 mb-2">
+<button class="p-3 rounded-2xl bg-surface-container-low flex flex-col items-center justify-center text-center active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-xl text-primary mb-1">download</span>
+<span class="font-body-sm text-body-sm text-ink-primary font-bold">Xuất dữ liệu CSV</span>
+<span class="font-label-sm text-label-sm text-ink-secondary">Báo cáo linh hoạt</span>
+</button>
+<button class="p-3 rounded-2xl bg-surface-container-low flex flex-col items-center justify-center text-center active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-xl text-primary mb-1">cloud_upload</span>
+<span class="font-body-sm text-body-sm text-ink-primary font-bold">Sao lưu iCloud/Drive</span>
+<span class="font-label-sm text-label-sm text-ink-secondary">Vừa lưu lúc 20:45</span>
+</button>
+</div>
+</div>
+</section>
+<!-- BLOCK 6: About App & Loving Closing Note -->
+<section class="px-margin py-3 mb-6">
+<div class="bg-bg-surface-card rounded-3xl p-5 shadow-[0_4px_20px_rgba(74,55,40,0.04)] text-center relative overflow-hidden">
+<!-- Mascot Stamp illustration placeholder -->
+<div class="w-16 h-16 rounded-full mx-auto mb-3 bg-surface-container p-2 flex items-center justify-center shadow-inner">
+<img class="w-12 h-12 object-contain" data-alt="Charming hand-drawn seal of Meo Xu the cat with whiskers and paw print, warm vintage terracotta ink stamp on textured handmade cream paper." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCA_0y4HzylUyZO6a-s09k4SGt1ykeowlSEVTPrz1PHlqOzGFtcMvURaK7JbOadD7xeFC06GM1BptcfYiK3DCdvHt66_nCRMPVhFWsT9Y01E85oIIOCvfqrVn9Q0NkN52IvnFkieYoj2kdyRl2aFLq2jluiVQV50OVe-0gUL0z8Adw0VyX-CXFjVqlIyCofSYBidxWT7KjA3lZ96HA18h7LyYg8hFisbZCzz9GQrLo"/>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-ink-primary font-extrabold">Meo Xu</h4>
+<span class="font-label-sm text-label-sm text-primary bg-surface-container-high px-2.5 py-0.5 rounded-full inline-block mt-1">
+        Phiên bản v1.2.0 (Thử nghiệm Antigravity)
+      </span>
+<blockquote class="font-body-md text-body-md text-ink-secondary italic mt-3 px-4">
+        “Không bắt bạn kỷ luật khắt khe, chỉ giúp bạn hiểu chính mình hơn mỗi ngày.”
+      </blockquote>
+<div class="mt-5 flex items-center justify-center gap-3">
+<button class="px-4 py-2.5 rounded-2xl bg-bg-surface-subtle text-ink-primary font-body-sm text-body-sm font-bold flex items-center gap-1.5 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-base">share</span>
+          Chia sẻ với bạn bè
+        </button>
+<button class="px-4 py-2.5 rounded-2xl bg-bg-surface-subtle text-ink-primary font-body-sm text-body-sm font-bold flex items-center gap-1.5 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-base">chat</span>
+          Gửi lời nhắn
+        </button>
+</div>
+<!-- Gentle System Reset or Log Out (Safe soft styling) -->
+<div class="mt-6 pt-4 flex items-center justify-center gap-4 text-ink-secondary">
+<button class="font-label-sm text-label-sm text-ink-secondary hover:text-error transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">restart_alt</span>
+          Đặt lại sổ chi tiêu
+        </button>
+<span class="text-outline-variant">•</span>
+<button class="font-label-sm text-label-sm text-ink-secondary hover:text-primary transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">logout</span>
+          Đăng xuất tài khoản
+        </button>
+</div>
+</div>
+</section>
+<!-- Interactive Skin Selection Modal Sheet (Hidden by default, triggered via JS) -->
+<div class="fixed inset-0 z-50 bg-ink-primary/40 backdrop-blur-sm hidden flex-col justify-end p-margin pb-safe transition-opacity" id="skin-modal">
+<div class="bg-bg-surface-card rounded-3xl p-5 shadow-2xl w-full max-w-lg mx-auto">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2">
+<span class="text-2xl">🐱</span>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-ink-primary font-bold">Chọn bạn Mèo đồng hành</h3>
+<p class="font-label-sm text-label-sm text-ink-secondary">Bạn mèo sẽ thay đổi diện mạo cùng bạn</p>
+</div>
+</div>
+<button class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-ink-primary" id="close-skin-modal">
+<span class="material-symbols-outlined text-base">close</span>
+</button>
+</div>
+<!-- Skin Cards Carousel / Grid -->
+<div class="grid grid-cols-3 gap-2.5 mb-5">
+<!-- 1. Mèo Cam (Active) -->
+<button class="p-2.5 rounded-2xl bg-surface-container-high/80 flex flex-col items-center text-center relative group">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center text-2xl mb-1 shadow-sm">
+            🐈
+          </div>
+<span class="font-label-md text-label-md text-ink-primary font-bold">Mèo Cam</span>
+<span class="font-label-sm text-label-sm text-primary font-bold">Bé Xu</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-primary"></span>
+</button>
+<!-- 2. Mèo Mướp -->
+<button class="p-2.5 rounded-2xl bg-bg-surface-subtle flex flex-col items-center text-center hover:bg-surface-container transition-colors">
+<div class="w-12 h-12 rounded-full bg-bg-surface-card flex items-center justify-center text-2xl mb-1 shadow-sm">
+            🐱
+          </div>
+<span class="font-label-md text-label-md text-ink-primary font-bold">Mèo Mướp</span>
+<span class="font-label-sm text-label-sm text-ink-secondary">Vằn Vện</span>
+</button>
+<!-- 3. Mèo Tam Thể -->
+<button class="p-2.5 rounded-2xl bg-bg-surface-subtle flex flex-col items-center text-center hover:bg-surface-container transition-colors">
+<div class="w-12 h-12 rounded-full bg-bg-surface-card flex items-center justify-center text-2xl mb-1 shadow-sm">
+            😸
+          </div>
+<span class="font-label-md text-label-md text-ink-primary font-bold">Tam Thể</span>
+<span class="font-label-sm text-label-sm text-ink-secondary">May Mắn</span>
+</button>
+<!-- 4. Mèo Than (Đen) -->
+<button class="p-2.5 rounded-2xl bg-bg-surface-subtle flex flex-col items-center text-center hover:bg-surface-container transition-colors">
+<div class="w-12 h-12 rounded-full bg-bg-surface-card flex items-center justify-center text-2xl mb-1 shadow-sm">
+            🐈‍⬛
+          </div>
+<span class="font-label-md text-label-md text-ink-primary font-bold">Mèo Than</span>
+<span class="font-label-sm text-label-sm text-ink-secondary">Bí Ẩn</span>
+</button>
+<!-- 5. Mèo Trắng Bông -->
+<button class="p-2.5 rounded-2xl bg-bg-surface-subtle flex flex-col items-center text-center hover:bg-surface-container transition-colors">
+<div class="w-12 h-12 rounded-full bg-bg-surface-card flex items-center justify-center text-2xl mb-1 shadow-sm">
+            🤍
+          </div>
+<span class="font-label-md text-label-md text-ink-primary font-bold">Mèo Trắng</span>
+<span class="font-label-sm text-label-sm text-ink-secondary">Bông Tuyết</span>
+</button>
+<!-- 6. Phụ kiện Tai Chuông (Khóa Lv.3) -->
+<div class="p-2.5 rounded-2xl bg-bg-surface-subtle/50 flex flex-col items-center text-center opacity-60">
+<div class="w-12 h-12 rounded-full bg-surface-container-low flex items-center justify-center text-base text-ink-muted mb-1">
+<span class="material-symbols-outlined text-lg">lock</span>
+</div>
+<span class="font-label-md text-label-md text-ink-muted font-bold">Mũ Cá Hề</span>
+<span class="font-label-sm text-label-sm text-ink-muted">Cấp 3 mở</span>
+</div>
+</div>
+<button class="w-full h-12 rounded-2xl bg-primary-container text-on-primary font-body-lg text-body-lg font-bold flex items-center justify-center shadow-[0_4px_16px_rgba(255,159,67,0.3)] active:scale-[0.98] transition-transform" id="save-skin-btn">
+        Lưu bạn đồng hành
+      </button>
+</div>
+</div>
+</div>
+<script>
+  (function initSettingsInteractions() {
+    const skinModal = document.getElementById('skin-modal');
+    const openSkinBtn = document.getElementById('open-skin-modal');
+    const closeSkinBtn = document.getElementById('close-skin-modal');
+    const saveSkinBtn = document.getElementById('save-skin-btn');
+
+    function toggleSkinModal(show) {
+      if (show) {
+        skinModal.classList.remove('hidden');
+        skinModal.classList.add('flex');
+      } else {
+        skinModal.classList.add('hidden');
+        skinModal.classList.remove('flex');
+      }
+    }
+
+    if (openSkinBtn) openSkinBtn.addEventListener('click', () => toggleSkinModal(true));
+    if (closeSkinBtn) closeSkinBtn.addEventListener('click', () => toggleSkinModal(false));
+    if (saveSkinBtn) toggleSkinModal(false);
+    
+    // Close on outer click
+    if (skinModal) {
+      skinModal.addEventListener('click', (e) => {
+        if (e.target === skinModal) toggleSkinModal(false);
+      });
+    }
+
+    // Toggle interaction visual feedback for work hours converter
+    const workToggle = document.getElementById('toggle-work-hours');
+    if (workToggle) {
+      workToggle.addEventListener('change', (e) => {
+        const isChecked = e.target.checked;
+        const feedbackBadge = document.querySelector('.bg-secondary-container');
+        if (feedbackBadge) {
+          feedbackBadge.textContent = isChecked ? 'Đang BẬT' : 'Đang TẮT';
+        }
+      });
+    }
+  })();
+</script></main></body></html>

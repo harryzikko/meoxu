@@ -7,7 +7,9 @@ import '../../core/utils/currency_formatter.dart';
 import '../../providers/profile_provider.dart';
 import '../../providers/transaction_provider.dart';
 import 'fixed_expenses_screen.dart';
+import 'work_hours_screen.dart';
 import '../cat_house/cat_house_screen.dart';
+import '../couple/couple_mode_screen.dart';
 
 class SettingsScreen extends ConsumerWidget {
   const SettingsScreen({super.key});
@@ -118,6 +120,30 @@ class SettingsScreen extends ConsumerWidget {
 
           // Section: Trải nghiệm & Mèo Xu
           _buildSectionHeader('Trải nghiệm ứng dụng & Mèo Xu'),
+          _buildSettingCard(
+            isDark: isDark,
+            icon: Icons.favorite_rounded,
+            title: 'Chế độ Hai Chú Mèo (Couple Mode)',
+            subtitle: 'Đồng hành cùng người thương, chia sẻ ống tiết kiệm chung',
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const CoupleModeScreen()),
+              );
+            },
+          ),
+          _buildSettingCard(
+            isDark: isDark,
+            icon: Icons.schedule_rounded,
+            title: 'Quy đổi Giờ làm việc (Độc bản)',
+            subtitle: 'Thiết lập lương, số giờ/ngày, hiển thị phút/ngày công',
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const WorkHoursScreen()),
+              );
+            },
+          ),
           _buildSettingCard(
             isDark: isDark,
             icon: Icons.pets_rounded,

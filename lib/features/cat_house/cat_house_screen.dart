@@ -9,6 +9,9 @@ import '../../models/badge_item.dart';
 import '../../providers/profile_provider.dart';
 import '../../providers/cat_provider.dart';
 import '../home/widgets/meo_mascot_widget.dart';
+import '../couple/couple_mode_screen.dart';
+import '../settings/settings_screen.dart';
+import '../settings/work_hours_screen.dart';
 
 class CatHouseScreen extends ConsumerStatefulWidget {
   const CatHouseScreen({super.key});
@@ -190,8 +193,18 @@ class _CatHouseScreenState extends ConsumerState<CatHouseScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Nhà của ${profile.catName}'),
+        title: Text('Góc của ${profile.catName}'),
         actions: [
+          IconButton(
+            tooltip: 'Cài đặt & Giờ làm việc',
+            icon: const Icon(Icons.settings_outlined),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const SettingsScreen()),
+              );
+            },
+          ),
           IconButton(
             tooltip: 'Đổi tên mèo',
             icon: const Icon(Icons.edit_note_rounded),
@@ -203,6 +216,82 @@ class _CatHouseScreenState extends ConsumerState<CatHouseScreen> {
         padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
         child: Column(
           children: [
+            // Couple Mode Callout Banner
+            InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const CoupleModeScreen()),
+                );
+              },
+              borderRadius: BorderRadius.circular(22),
+              child: Container(
+                padding: const EdgeInsets.all(14),
+                decoration: BoxDecoration(
+                  gradient: const LinearGradient(
+                    colors: [Color(0xFFFFF0E0), Color(0xFFFFE0C2)],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
+                  borderRadius: BorderRadius.circular(22),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.04),
+                      blurRadius: 10,
+                    ),
+                  ],
+                ),
+                child: Row(
+                  children: [
+                    Container(
+                      width: 44,
+                      height: 44,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(14),
+                      ),
+                      child: const Center(
+                        child: Text('🐱💖😺', style: TextStyle(fontSize: 16)),
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+                    const Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              Text(
+                                'Chế Độ Hai Chú Mèo',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w800,
+                                  fontSize: 14,
+                                  color: AppColors.primaryDark,
+                                ),
+                              ),
+                              SizedBox(width: 4),
+                              Text('🐾', style: TextStyle(fontSize: 12)),
+                            ],
+                          ),
+                          SizedBox(height: 2),
+                          Text(
+                            'Cùng người thương tích lũy ống tiền chung & theo dõi đĩa cá!',
+                            style: TextStyle(
+                              fontSize: 11,
+                              color: AppColors.textSecondary,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const Icon(Icons.arrow_forward_ios_rounded,
+                        size: 14, color: AppColors.primaryDark),
+                  ],
+                ),
+              ),
+            ),
+            const SizedBox(height: 14),
+
             // Cat Room Showcase Container
             Container(
               padding: const EdgeInsets.all(20),

@@ -6,6 +6,7 @@ import '../../models/transaction_item.dart';
 import '../../models/fixed_expense.dart';
 import '../../models/cat_state.dart';
 import '../../models/streak_state.dart';
+import '../../models/couple_state.dart';
 
 class AppDatabase {
   static final AppDatabase instance = AppDatabase._init();
@@ -25,7 +26,7 @@ class AppDatabase {
 
     return await openDatabase(
       path,
-      version: 2,
+      version: 3,
       onCreate: _createDB,
       onUpgrade: _upgradeDB,
     );
@@ -45,6 +46,98 @@ class AppDatabase {
         await db.execute('ALTER TABLE user_profile ADD COLUMN eye_color TEXT');
       } catch (_) {}
     }
+
+    if (oldVersion < 3) {
+      try {
+        await _createCoupleTables(db);
+      } catch (_) {}
+    }
+  }
+
+  Future<void> _createCoupleTables(Database db) async {
+    await db.execute('''
+      CREATE TABLE IF NOT EXISTS couple_profile (
+        id INTEGER PRIMARY KEY,
+        user_nickname TEXT,
+        partner_name TEXT,
+        partner_cat_name TEXT,
+        partner_cat_breed TEXT,
+        days_together INTEGER,
+        partner_fish_percentage REAL,
+        partner_status_label TEXT,
+        partner_safe_days INTEGER,
+        user_safe_days INTEGER,
+        connect_code TEXT
+      )
+    ''');
+
+    await db.execute('''
+      CREATE TABLE IF NOT EXISTS couple_goals (
+        id TEXT PRIMARY KEY,
+        title TEXT NOT NULL,
+        target_amount REAL NOT NULL,
+        user_contribution REAL NOT NULL,
+        partner_contribution REAL NOT NULL,
+        target_date TEXT NOT NULL,
+        status TEXT NOT NULL
+      )
+    ''');
+
+    await db.execute('''
+      CREATE TABLE IF NOT EXISTS couple_contributions (
+        id TEXT PRIMARY KEY,
+        goal_id TEXT NOT NULL,
+        contributor_name TEXT NOT NULL,
+        amount REAL NOT NULL,
+        message TEXT,
+        date_time TEXT NOT NULL
+      )
+    ''');
+
+    // Default couple profile
+    await db.insert('couple_profile', {
+      'id': 1,
+      ...const CoupleProfile().toMap(),
+    }, conflictAlgorithm: ConflictAlgorithm.ignore);
+
+    // Default Dalat goal
+    final defaultGoal = CoupleGoal(
+      id: 'dalat_trip_1',
+      title: 'Chuyến trốn phố Đà Lạt 🌲🏕️',
+      targetAmount: 10000000.0,
+      userContribution: 3500000.0,
+      partnerContribution: 3300000.0,
+      targetDate: DateTime.now().add(const Duration(days: 45)),
+      status: 'active',
+    );
+    await db.insert('couple_goals', defaultGoal.toMap(),
+        conflictAlgorithm: ConflictAlgorithm.ignore);
+
+    // Initial contribution history
+    await db.insert(
+      'couple_contributions',
+      CoupleContribution(
+        id: 'c1',
+        goalId: 'dalat_trip_1',
+        contributorName: 'Nam',
+        amount: 500000.0,
+        message: 'Thưởng KPI tuần này nè em iu, bỏ vali liền!',
+        dateTime: DateTime.now().subtract(const Duration(days: 2)),
+      ).toMap(),
+      conflictAlgorithm: ConflictAlgorithm.ignore,
+    );
+    await db.insert(
+      'couple_contributions',
+      CoupleContribution(
+        id: 'c2',
+        goalId: 'dalat_trip_1',
+        contributorName: 'Linh',
+        amount: 600000.0,
+        message: 'Bớt trà sữa tuần này được 12 con cá bự nè~',
+        dateTime: DateTime.now().subtract(const Duration(days: 1)),
+      ).toMap(),
+      conflictAlgorithm: ConflictAlgorithm.ignore,
+    );
   }
 
   Future<void> _createDB(Database db, int version) async {
@@ -136,6 +229,9 @@ class AppDatabase {
     );
     await db.insert('cat_state', {'id': 1, ...const CatState().toMap()});
     await db.insert('streak_state', {'id': 1, ...const StreakState().toMap()});
+
+    // Create Couple Tables & default data
+    await _createCoupleTables(db);
   }
 
   // --- Profile Operations ---
@@ -270,6 +366,62 @@ class AppDatabase {
       'keyword': keyword.toLowerCase().trim(),
       'category_id': categoryId,
     }, conflictAlgorithm: ConflictAlgorithm.replace);
+  }
+
+  // --- Couple Operations ---
+  Future<CoupleProfile> getCoupleProfile() async {
+    final db = await database;
+    final maps = await db.query('couple_profile', where: 'id = 1');
+    if (maps.isNotEmpty) {
+      return CoupleProfile.fromMap(maps.first);
+    }
+    const defaultCouple = CoupleProfile();
+    await db.insert('couple_profile', {'id': 1, ...defaultCouple.toMap()});
+    return defaultCouple;
+  }
+
+  Future<void> updateCoupleProfile(CoupleProfile couple) async {
+    final db = await database;
+    await db.insert(
+      'couple_profile',
+      {'id': 1, ...couple.toMap()},
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+  }
+
+  Future<List<CoupleGoal>> getCoupleGoals() async {
+    final db = await database;
+    final results = await db.query('couple_goals', orderBy: 'target_date ASC');
+    return results.map((e) => CoupleGoal.fromMap(e)).toList();
+  }
+
+  Future<void> saveCoupleGoal(CoupleGoal goal) async {
+    final db = await database;
+    await db.insert(
+      'couple_goals',
+      goal.toMap(),
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+  }
+
+  Future<List<CoupleContribution>> getCoupleContributions(String goalId) async {
+    final db = await database;
+    final results = await db.query(
+      'couple_contributions',
+      where: 'goal_id = ?',
+      whereArgs: [goalId],
+      orderBy: 'date_time DESC',
+    );
+    return results.map((e) => CoupleContribution.fromMap(e)).toList();
+  }
+
+  Future<void> insertCoupleContribution(CoupleContribution contribution) async {
+    final db = await database;
+    await db.insert(
+      'couple_contributions',
+      contribution.toMap(),
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
   }
 
   Future<void> close() async {
