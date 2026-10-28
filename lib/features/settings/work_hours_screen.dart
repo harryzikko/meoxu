@@ -458,7 +458,7 @@ class _WorkHoursScreenState extends ConsumerState<WorkHoursScreen> {
               elevation: 0,
             ),
             onPressed: () {
-              ref.read(profileProvider.notifier).updateProfile(
+              ref.read(profileProvider.notifier).updateWorkHoursSettings(
                     monthlyIncome: _monthlyIncome,
                     monthlyWorkHours: _totalMonthlyHours,
                     showWorkHours: _showWorkHours,

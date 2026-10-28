@@ -65,6 +65,19 @@ class ProfileNotifier extends StateNotifier<UserProfile> {
     await updateProfile(updated);
   }
 
+  Future<void> updateWorkHoursSettings({
+    required double monthlyIncome,
+    required double monthlyWorkHours,
+    required bool showWorkHours,
+  }) async {
+    final updated = state.copyWith(
+      monthlyIncome: monthlyIncome,
+      monthlyWorkHours: monthlyWorkHours,
+      showWorkHours: showWorkHours,
+    );
+    await updateProfile(updated);
+  }
+
   Future<void> completeOnboarding() async {
     final updated = state.copyWith(isOnboarded: true);
     await updateProfile(updated);
