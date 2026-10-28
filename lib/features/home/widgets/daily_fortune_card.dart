@@ -398,7 +398,7 @@ class _DailyFortuneCardState extends ConsumerState<DailyFortuneCard>
                   offset: const Offset(0, 4),
                 ),
               ],
-            ],
+            ),
             child: const Center(
               child: Text('🐾', style: TextStyle(fontSize: 26)),
             ),
